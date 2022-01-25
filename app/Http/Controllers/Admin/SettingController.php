@@ -9,6 +9,15 @@ use Illuminate\Contracts\Cache\Factory;
 
 class SettingController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    function __construct()
+    {
+        $this->middleware('permission:settings', ['only' => ['edit', 'update','index']]);
+    }
     public function index()
     {
         $settings = Setting::all();

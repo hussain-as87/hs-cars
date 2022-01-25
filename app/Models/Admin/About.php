@@ -10,7 +10,7 @@ class About extends Model
 {
     use HasFactory, HasTranslations;
     public $timestamps = false;
-    protected $guarded = [];
+    protected $fillable = ['description', 'photo'];
     public $translatable = ['description'];
 
     protected function asJson($value)

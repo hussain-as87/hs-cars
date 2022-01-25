@@ -3,10 +3,10 @@ $user_count = App\Models\User::all()->count();
 @endphp
 @extends('Admin.layout.app')
 @section('title')
-{{ __('home') }}
+{{ __('Home') }}
 @endsection
 @section('title-page')
-{{ __('home') }}
+{{ __('Home') }}
 @endsection
 @section('content')
 <div class="row">

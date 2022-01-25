@@ -65,7 +65,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'AdminDashboard/'], function (
     Route::prefix('about')->group(function () {
         Route::get('/', [AboutController::class, 'index'])->name('about.index');
         Route::get('/edit', [AboutController::class, 'edit'])->name('about.edit');
-        Route::put('/edit', [AboutController::class, 'update'])->name('about.update');
+        Route::put('/update', [AboutController::class, 'update'])->name('about.update');
     });
 
     Route::prefix('posts')->group(function () {
@@ -82,11 +82,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'AdminDashboard/'], function (
         Route::get('/{id}', [SettingController::class, 'edit'])->name('settings.edit');
         Route::put('/{id}', [SettingController::class, 'update'])->name('settings.update');
     });
-    Route::prefix('about')->group(function () {
-        Route::get('/', [AboutController::class, 'index'])->name('about.index');
-        Route::get('/{id}', [AboutController::class, 'edit'])->name('about.edit');
-        Route::put('/{id}', [AboutController::class, 'update'])->name('about.update');
-    });
+    
 });
 
 Route::group(['middleware' => 'auth', 'prefix' => '/', 'name' => 'home.'], function () {
