@@ -1,6 +1,6 @@
 <nav class="sidebar">
     <div class="sidebar-header">
-        <a href="#" class="sidebar-brand">
+        <a href="{{ route('admin.home') }}" class="sidebar-brand">
             {{ __(config('settings.website_name')) }}<span>   {{ __(env('APP_NAME')) }}  </span>
         </a>
         <div class="sidebar-toggler not-active">
