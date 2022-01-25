@@ -9,8 +9,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Service extends Model
 {
     use HasFactory ,HasTranslations;
-    protected $gaurded = [];
     public $translatable = ['name', 'description'];
+    public $fillable = ['name', 'description', 'user_id', 'logo'];
 
     public function user()
     {

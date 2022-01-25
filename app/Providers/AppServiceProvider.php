@@ -2,7 +2,11 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\App;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -24,6 +28,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Schema::defaultStringLength(124);
+        $locale = config('locales.fallback_locale');
+        App::setLocale($locale);
+        Lang::setLocale($locale);
+        Session::put('locale', $locale);
+        Schema::defaultStringLength(125);
+        Paginator::useBootstrap();
     }
 }
