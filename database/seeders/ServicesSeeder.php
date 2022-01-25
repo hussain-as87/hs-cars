@@ -34,7 +34,7 @@ class ServicesSeeder extends Seeder
                 flows by their place and
                 supplies it with the necessary
                 regelialia.", "ar" => "يتدفق نهر صغير يسمى Duden من مكانه ويمده بالشعارات اللازمة."
-            ], 'logo' => 'flaticon-wedding-car',
+            ], 'logo' => 'flaticon-transportation',
              'user_id' => 1
         ]);
         Service::create([
@@ -45,7 +45,7 @@ class ServicesSeeder extends Seeder
                 flows by their place and
                 supplies it with the necessary
                 regelialia.", "ar" => "يتدفق نهر صغير يسمى Duden من مكانه ويمده بالشعارات اللازمة."
-            ], 'logo' => 'flaticon-wedding-car',
+            ], 'logo' => 'flaticon-car',
             'user_id' => 1
         ]);
         Service::create([
@@ -56,7 +56,7 @@ class ServicesSeeder extends Seeder
                 flows by their place
                 and supplies it with the necessary
                 regelialia.", "ar" => "يتدفق نهر صغير يسمى Duden من مكانه ويمده بالشعارات اللازمة."
-            ], 'logo' => 'flaticon-wedding-car',
+            ], 'logo' => 'flaticon-transportation',
             'user_id' => 1
         ]);
     }

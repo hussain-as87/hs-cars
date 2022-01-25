@@ -33,23 +33,23 @@
                 </a>
             </li>
             @endcan
-            @can('settings')
+            @can('service-list')
             <li class="nav-item">
                 <a class="nav-link" data-toggle="collapse" href="#sercive" role="button" aria-expanded="false" aria-controls="sercive">
-                    <i class="mdi mdi-18px  mdi-briefcase-outline "></i>
+                    <i class="mdi mdi-18px  mdi-briefcase-outline"></i>
                     <span class="link-title">{{__('services')}}</span>
                     <i class="link-arrow" data-feather="chevron-down"></i>
                 </a>
                 <div class="collapse" id="sercive">
                     <ul class="nav sub-menu">
-                        @can('role-list')
+                        @can('service-list')
                         <li class="nav-item">
                             <a href="{{route('services.index')}}" class="nav-link">{{__('services')}}</a>
                         </li>
                         @endcan
-                        @can('role-create')
+                        @can('service-create')
                         <li class="nav-item">
-                            <a href="{{route('services.create')}}" class="nav-link">{{__('create service')}}</a>
+                            <a href="{{route('services.create')}}" class="nav-link">{{__('service-create')}}</a>
                         </li>
                         @endcan
                     </ul>

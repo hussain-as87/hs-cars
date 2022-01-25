@@ -23,6 +23,17 @@ class PermissionTableSeeder extends Seeder
             'user-create',
             'user-edit',
             'user-delete',
+            'service-list',
+            'service-create',
+            'service-edit',
+            'service-delete',
+            'car-list',
+            'car-create',
+            'car-edit',
+            'car-delete',
+            'about-list',
+            'about-edit',
+            'about-delete',
             'settings',
         ];
 

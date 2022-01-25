@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\SettingController;
 
 /*
@@ -36,14 +37,23 @@ Auth::routes();
 
 
 Route::group(['middleware' => 'auth', 'prefix' => 'AdminDashboard/'], function () {
-    Route::get('/home', function(){
+    Route::get('/home', function () {
         return view('Admin.home');
     })->name('admin.home');
 
     Route::resource('roles', RoleController::class);
     Route::resource('users', UserController::class);
     Route::resource('cars', CarsController::class)->except('show');
-    Route::resource('services', CarsController::class)->except('show');
+
+
+    Route::group(['prefix' => 'services', 'as' => 'services.'], function () {
+        Route::get('/', [ServiceController::class, 'index'])->name('index');
+        Route::get('/create', [ServiceController::class, 'create'])->name('create');
+        Route::post('/store', [ServiceController::class, 'store'])->name('store');
+        Route::get('/edit/{id}', [ServiceController::class, 'edit'])->name('edit');
+        Route::put('/update/{id}', [ServiceController::class, 'update'])->name('update');
+        Route::delete('/destroy/{id}', [ServiceController::class, 'destroy'])->name('destroy');
+    });
 
 
     Route::prefix('profile')->group(function () {
@@ -79,6 +89,6 @@ Route::group(['middleware' => 'auth', 'prefix' => 'AdminDashboard/'], function (
     });
 });
 
-Route::group(['middleware'=>'auth','prefix'=>'/','name'=>'home.'],function(){
-    Route::get('/',[HomeController::class,'index'])->name('index');
+Route::group(['middleware' => 'auth', 'prefix' => '/', 'name' => 'home.'], function () {
+    Route::get('/', [HomeController::class, 'index'])->name('index');
 });
