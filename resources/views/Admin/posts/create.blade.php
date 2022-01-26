@@ -11,21 +11,6 @@
       <div class="modal-body">
          <form enctype="multipart/form-data" method="POST" action="{{ route('posts.store') }}">
                     @csrf
-                    @if(session('alert-success'))
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        <span class="alert-text"><strong>{{ session('alert-success') }}</strong></span>
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    @elseif(session('alert-error'))
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <span class="alert-text"><strong>{{ session('alert-error') }}</strong></span>
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    @endif
                     <div class="form-group mb-0 row">
                         <div class="col-lg-3">
                             <label for="description" class="col-form-label">{{__('description')}}</label>

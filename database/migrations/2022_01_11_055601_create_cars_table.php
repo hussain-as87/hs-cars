@@ -19,8 +19,8 @@ class CreateCarsTable extends Migration
             $table->json('name');
             $table->json('description');
             $table->text('image');
-            $table->text('milegge');
-            $table->text('transmission');
+            $table->text('mileage');
+            $table->text('transmission_type');
             $table->text('seats');
             $table->text('luggage');
             $table->text('fuel');

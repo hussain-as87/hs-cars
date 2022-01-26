@@ -19,18 +19,6 @@
             </div>
         </div>
 
-
-        @if (count($errors) > 0)
-        <div class="alert alert-danger">
-            <strong>Whoops!</strong> There were some problems with your input.<br><br>
-            <ul>
-                @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-        @endif
-
         <br />
         <form action="{{ route('about.update') }}" method="POST" enctype="multipart/form-data">
             @csrf
@@ -57,7 +45,7 @@
                 <div class="row">
                     <div class="form-group col-md-10">
                         <label for="photo">{{ __('photo') }}</label>
-                        <input type="file" name="photo" class="form-control @error('photo') border-danger @enderror"  id="photo" value="{{ old('photo') ?? $about->photo }}">
+                        <input type="file" name="photo" class="form-control @error('photo') border-danger @enderror" id="photo" value="{{ old('photo') ?? $about->photo }}">
                         @error('photo')
                         <small class="alert-danger">{{ $message }}</small>
                         @enderror

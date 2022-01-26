@@ -25,15 +25,6 @@
             @method('PUT')
             <fieldset>
 
-                @if(session('alert'))
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <span class="alert-text"><strong>{{ session('alert') }}</strong></span>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                @endif
-
                 <div class="pl-lg-4">
                     <div class="row">
                         <div class="col-lg-4">

@@ -105,7 +105,7 @@ License: You must have a valid license purchased only from above link or https:/
             @include('Admin.layout.sections._navbar')
             <!-- partial -->
 
-            <div class="page-content">
+            <div class="page-content" style="width: 100%;">
 
                 <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
                     <div>
@@ -130,7 +130,7 @@ License: You must have a valid license purchased only from above link or https:/
                         </button>  --}}
                     </div>
                 </div>
-
+                @include('Admin.layout.sections.__alert')
                 @yield('content')
 
             </div>
