@@ -22,8 +22,7 @@
         <br />
         <form action="{{ route('cars.store') }}" method="POST" enctype="multipart/form-data">
             @include('Admin.cars.form')
+        </form>
     </div>
-    </form>
-</div>
-</div>
-@endsection
+
+    @endsection

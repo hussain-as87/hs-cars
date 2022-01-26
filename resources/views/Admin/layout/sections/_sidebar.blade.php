@@ -126,7 +126,7 @@
   --}}{{-- @can('role-create')
   --}}
                         <li class="nav-item">
-                            <a href="{{route('cars.create')}}" class="nav-link">{{__('create car')}}</a>
+                            <a href="{{route('cars.create')}}" class="nav-link">{{__('car-create')}}</a>
                         </li>
                         {{-- @endcan
   --}}

@@ -22,7 +22,6 @@
         <form method="post" action="{{ route('cars.update',$car->id) }}" enctype="multipart/form-data">
             @method('PUT')
             @include('Admin.cars.form')
-    </div>
     </form>
 </div>
 </div>
