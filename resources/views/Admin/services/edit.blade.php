@@ -18,28 +18,15 @@
                 </div>
             </div>
         </div>
-
-
-        @if (count($errors) > 0)
-        <div class="alert alert-danger">
-            <strong>Whoops!</strong> There were some problems with your input.<br><br>
-            <ul>
-                @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-        @endif
-
         <br />
         <form method="post" action="{{ route('services.update',$service->id) }}">
-        @method('PUT')
+            @method('PUT')
             @include('Admin.services.form')
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-primary">{{ __('Submit') }} <i data-feather="save" class="icon-sm mr-2"></i></button>
             </div>
-            </div>
-        </form>
     </div>
+    </form>
+</div>
 </div>
 @endsection

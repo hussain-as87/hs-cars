@@ -60,9 +60,9 @@ class PostController extends Controller
         }
         $post = Post::create($data);
         if ($post) {
-            return redirect()->back()->with('alert-success', __('Successfully Save !'));
+            return redirect()->back()->with('success', __('Successfully Save !'));
         } else {
-            return redirect()->back()->with('alert-error', __('Failed To Save!'));
+            return redirect()->back()->with('error', __('Failed To Save!'));
         }
     }
 
@@ -121,9 +121,9 @@ class PostController extends Controller
         } else {
             $excec = $post->update($data);
             if ($excec) {
-                return redirect()->back()->with('alert-success', __('Successfully Save !'));
+                return redirect()->back()->with('success', __('Successfully Save !'));
             } else {
-                return redirect()->back()->with('alert-error', __('Failed To Save!'));
+                return redirect()->back()->with('error', __('Failed To Save!'));
             }
         }
     }
@@ -141,9 +141,9 @@ class PostController extends Controller
         } else {
             $excec = $post->delete();
             if ($excec) {
-                return redirect()->back()->with('alert-success', __('Successfully Delete !'));
+                return redirect()->back()->with('delte', __('Successfully Delete !'));
             } else {
-                return redirect()->back()->with('alert-error', __('Failed To Delete!'));
+                return redirect()->back()->with('error', __('Failed To Delete!'));
             }
         }
     }

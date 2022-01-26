@@ -15,7 +15,7 @@ class ServiceController extends Controller
      */
     function __construct()
     {
-        $this->middleware('permission:service-list|role-create|service-edit|service-delete', ['only' => ['index', 'store']]);
+        $this->middleware('permission:service-list|service-create|service-edit|service-delete', ['only' => ['index', 'store']]);
         $this->middleware('permission:service-create', ['only' => ['create', 'store']]);
         $this->middleware('permission:service-edit', ['only' => ['edit', 'update']]);
         $this->middleware('permission:service-delete', ['only' => ['destroy']]);
@@ -89,16 +89,17 @@ class ServiceController extends Controller
     {
         $this->getValidation($request);
 
+        $data['name'] = $request->name;
+        $data['user_id'] = auth()->id();
+        $data['description'] = $request->description;
+        $data['logo'] = $request->logo;
+
         $service = Service::find($id);
+
         if (!$service) {
             return redirect()->route('error-404')->with('direction', 'services.index');
         } else {
-            $data['name'] = $request->name;
-            $data['user_id'] = auth()->id();
-            $data['description'] = $request->description;
-            $data['logo'] = $request->logo;
             $service->update($data);
-
             return redirect()->route('services.index')
                 ->with('success', 'Services updated successfully');
         }
@@ -117,7 +118,7 @@ class ServiceController extends Controller
         } else {
             $service->delete();
             return redirect()->route('services.index')
-                ->with('success', 'Service deleted successfully');
+                ->with('delete', 'Service deleted successfully');
         }
     }
     protected function getValidation($request)

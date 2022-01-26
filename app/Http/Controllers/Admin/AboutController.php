@@ -35,7 +35,7 @@ class AboutController extends Controller
     {
         $request->validate([
             'description' => 'required',
-            'photo' => 'required|file|image|mimes:png,jpg,jepg'
+            'photo' => 'required_if:photo,null|file|image|mimes:png,jpg,jepg'
         ]);
         $about = About::first();
         $data['description'] = $request->description;

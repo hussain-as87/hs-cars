@@ -12,17 +12,6 @@
     <div class="card-body">
         <h5>{{ __('edit setting') }}</h5>
         <a class="btn btn-info" href="{{ route('settings.index') }}"> {{__ ('Go Back') }} <i data-feather="arrow-left" class="icon-sm mr-2"></i></a>
-        @if (count($errors) > 0)
-        <div class="alert alert-danger">
-            <strong>Whoops!</strong> There were some problems with your input.<br><br>
-            <ul>
-                @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-        @endif
-
         <br />
         <form action="{{ route('settings.update',$setting->id) }}" method="post">
             @method('put')

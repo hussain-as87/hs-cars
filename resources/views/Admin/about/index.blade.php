@@ -13,8 +13,8 @@
             @endcan</h4>
         <div class="table-responsive pt-3">
             <div class="row">
-                <div class="col-9">{{ $about->description }}</div>
-                <div class="col-3"><img src="{{ asset('storage/about/'.$about->photo) }}" /></div>
+                <div class="col-7">{{ $about->description }}</div>
+                <div class="col-5"><img style="width:400px" src="{{ asset('storage/about/'.$about->photo) }}" /></div>
             </div>
         </div>
     </div>

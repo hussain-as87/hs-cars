@@ -1,64 +1,34 @@
 @extends('Admin.layout.app')
-
 @section('title')
-{{ __('create role') }}
+{{ __('car-create') }}
 @endsection
 @section('title-page')
-{{ __('create role') }}
+{{ __('car-create') }}
 @endsection
 @section('content')
 <div class="card">
-    <div class="card-body">
+    <div class="card-body col-12">
         <div class="row">
             <div class="col-lg-12 margin-tb">
                 <div class="pull-left">
-                    <h2>{{ __('create role') }}</h2>
+                    <h2>{{ __('car-create') }}</h2>
                 </div>
                 <div class="pull-right">
-                    <a class="btn btn-info" href="{{ route('roles.index') }}"> {{ __('Go Back') }} <i data-feather="arrow-left" class="icon-sm mr-2"></i></a>
+                    @can('create-car')
+                    <a class="btn btn-info" href="{{ route('cars.index') }}"> {{ __('Go Back') }} <i data-feather="arrow-left" class="icon-sm mr-2"></i></a>
+                    @endcan
                 </div>
             </div>
         </div>
-
-
-        @if (count($errors) > 0)
-        <div class="alert alert-danger">
-            <strong>Whoops!</strong> There were some problems with your input.<br><br>
-            <ul>
-                @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-        @endif
 
         <br />
-        {!! Form::open(array('route' => 'roles.store','method'=>'POST')) !!}
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>{{ __('name') }}:</strong>
-                    {!! Form::text('name', null, array('placeholder' => __('name'),'class' => 'form-control')) !!}
-                </div>
-            </div>
-            <br />
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>{{ __('permission') }}:</strong>
-                    <br />
-                    <br />
-                    @foreach($permission as $value)
-                    <label>{{ Form::checkbox('permission[]', $value->id, false, array('class' => 'name')) }}
-                        {{ __($value->name) }}</label>
-                    <br />
-                    @endforeach
-                </div>
-            </div>
+        <form action="{{ route('cars.store') }}" method="POST">
+            @include('Admin.cars.form')
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-primary">{{ __('Submit') }} <i data-feather="save" class="icon-sm mr-2"></i></button>
             </div>
-        </div>
-        {!! Form::close() !!}
     </div>
+    </form>
+</div>
 </div>
 @endsection

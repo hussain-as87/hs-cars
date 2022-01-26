@@ -1,15 +1,15 @@
 @extends('Admin.layout.app')
 @section('title')
-{{ __('roles') }}
+{{ __('cars') }}
 @endsection
 @section('title-page')
-{{ __('roles') }}
+{{ __('cars') }}
 @endsection
 @section('content')
 <div class="card">
     <div class="card-body">
-        <h4 class="card-title"> @can('role-create')
-            <a class="btn btn-secondary" href="{{ route('roles.create') }}">{{__('create role')}} <i data-feather="plus" class="icon-sm mr-2"></i></a>
+        <h4 class="card-title"> @can('car-create')
+            <a class="btn btn-secondary" href="{{ route('cars.create') }}">{{__('car-create')}} <i data-feather="plus" class="icon-sm mr-2"></i></a>
             @endcan</h4>
         <div class="table-responsive pt-3">
             <table class="table table-bordered">
