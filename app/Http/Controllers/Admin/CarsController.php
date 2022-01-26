@@ -19,10 +19,10 @@ class CarsController extends Controller
      */
     function __construct()
     {
-        $this->middleware('permission:car-list|car-create|car-edit|car-delete', ['only' => ['index', 'store']]);
+      /*   $this->middleware('permission:car-list|car-create|car-edit|car-delete', ['only' => ['index', 'store']]);
         $this->middleware('permission:car-create', ['only' => ['create', 'store']]);
         $this->middleware('permission:car-edit', ['only' => ['edit', 'update']]);
-        $this->middleware('permission:car-delete', ['only' => ['destroy']]);
+        $this->middleware('permission:car-delete', ['only' => ['destroy']]); */
     }
     /**
      * Display a listing of the resource.
@@ -56,9 +56,10 @@ class CarsController extends Controller
         $data['name'] = $request->name;
         $data['description'] = $request->description;
         if ($request->hasFile('image')) {
-            $image_name = ImageUpload::upload_image($request->image, $this->path_image);
-            $data['image'] = $image_name;
+            $image = ImageUpload::upload_image($request->image, $this->path_image);
+            $data['image'] = $image;
         }
+        $data['user_id'] = $request->user()->id;
         $data['mileage'] = $request->mileage;
         $data['transmission_type'] = $request->transmission_type;
         $data['seats'] = $request->seats;
@@ -88,6 +89,20 @@ class CarsController extends Controller
         }
         return view('Admin.cars.edit', compact('car'));
     }
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $car = Car::find($id);
+        if (!$car) {
+            return redirect()->route('error-404')->with('direction', 'cars.index');
+        }
+        return view('Admin.cars.show', compact('car'));
+    }
 
     /**
      * Update the specified resource in storage.
@@ -103,8 +118,8 @@ class CarsController extends Controller
         $data['name'] = $request->name;
         $data['description'] = $request->description;
         if ($request->hasFile('image')) {
-            $image_name = ImageUpload::upload_image($request->image, $this->path_image);
-            $data['image'] = $image_name;
+            $image = ImageUpload::upload_image($request->image, $this->path_image);
+            $data['image'] = $image;
         }
         $data['mileage'] = $request->mileage;
         $data['transmission_type'] = $request->transmission_type;
@@ -144,7 +159,7 @@ class CarsController extends Controller
         return $request->validate([
             'name' => 'required',
             'description' => 'required|max:500',
-            'image' => 'required|file|image|mimes:png,jpg,jepg',
+            'image' => 'required_if:image,null|file|image|mimes:png,jpg,jepg',
             'mileage' => 'required',
             'transmission_type' => 'required',
             'seats' => 'required',

@@ -43,7 +43,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'AdminDashboard/'], function (
 
     Route::resource('roles', RoleController::class);
     Route::resource('users', UserController::class);
-    Route::resource('cars', CarsController::class)->except('show');
+    Route::resource('cars', CarsController::class);
 
 
     Route::group(['prefix' => 'services', 'as' => 'services.'], function () {
@@ -82,7 +82,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'AdminDashboard/'], function (
         Route::get('/{id}', [SettingController::class, 'edit'])->name('settings.edit');
         Route::put('/{id}', [SettingController::class, 'update'])->name('settings.update');
     });
-    
+
 });
 
 Route::group(['middleware' => 'auth', 'prefix' => '/', 'name' => 'home.'], function () {

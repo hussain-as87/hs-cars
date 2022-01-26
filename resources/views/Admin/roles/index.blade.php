@@ -25,9 +25,9 @@
                     <tr class="">
                         <td>{{ ++$i }}</td>
                         <td>{{ $role->name }}</td>
-                        <td><a class="btn btn-info" href="{{ route('roles.show',$role->id) }}">{{ __('show') }} <i data-feather="columns" class="icon-sm mr-2"></i></a>
+                        <td><a class="btn btn-info" href="{{ route('roles.show',$role->id) }}">{{ __('show') }} <i data-feather="eye" class="icon-sm mr-2"></i></a>
                             @can('role-edit')
-                            <a class="btn btn-primary" href="{{ route('roles.edit',$role->id) }}">{{ __('edit') }} <i data-feather="edit" class="icon-sm mr-2"></i></a>
+                            <a class="btn btn-secondary" href="{{ route('roles.edit',$role->id) }}">{{ __('edit') }} <i data-feather="edit-3" class="icon-sm mr-2"></i></a>
                             @endcan
                             @can('role-delete')
                             <a href="" class="btn btn-danger">

@@ -19,12 +19,9 @@
             </div>
         </div>
         <br />
-        <form method="post" action="{{ route('cars.update',$car->id) }}">
+        <form method="post" action="{{ route('cars.update',$car->id) }}" enctype="multipart/form-data">
             @method('PUT')
             @include('Admin.cars.form')
-            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-primary">{{ __('Submit') }} <i data-feather="save" class="icon-sm mr-2"></i></button>
-            </div>
     </div>
     </form>
 </div>

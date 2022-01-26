@@ -1,7 +1,7 @@
 @if (count($errors) > 0 || $message = Session::get('error'))
-<div class="alert alert-fill-danger col-12">
+<div class="alert alert-fill-danger">
     <i data-feather="alert-circle"></i>
-    <strong>{{ __('Whoops') }}!</strong> {{ __($message) }}.<br><br>
+    <strong>{{ __('Whoops') }}!</strong> {{ __('There were some problems with your input') }}.<br><br>
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
     </button>
@@ -28,3 +28,4 @@
     </button>
 </div>
 @endif
+
