@@ -114,7 +114,11 @@ License: You must have a valid license purchased only from above link or https:/
                     <div class="d-flex align-items-center flex-wrap text-nowrap">
                         <div class="input-group date datepicker dashboard-date mr-2 mb-2 mb-md-0 d-md-none d-xl-flex" id="dashboardDate">
                             <span class="input-group-addon bg-transparent"><i data-feather="calendar" class=" text-primary"></i></span>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control text-light" style="height:36px;padding:2px;text-align:center">
+                        </div>
+                        <div class="input-group date datepicker dashboard-date mr-2 mb-2 mb-md-0 d-md-none d-xl-flex" id="">
+                            <span class="input-group-addon bg-transparent"><i data-feather="clock" class="text-primary"></i></span>
+                            <div class="text-light " id="__time"></div>
                         </div>
                         {{-- <button type="button" class="btn btn-outline-info btn-icon-text mr-2 d-none d-md-block">
                             <i class="btn-icon-prepend" data-feather="download"></i>
@@ -178,5 +182,23 @@ License: You must have a valid license purchased only from above link or https:/
     <script src="{{ asset('assets/js/dashboard.js') }}"></script>
     <script src="{{ asset('assets/js/datepicker.js') }}"></script>
     <!-- end custom js for this page -->
+    <script type="text/javascript">
+        function showTime() {
+            var date = new Date()
+                , t = new Date(Date(
+                    date.getFullYear()
+                    , date.getMonth()
+                    , date.getDate()
+                    , date.getHours()
+                    , date.getMinutes()
+                    , date.getSeconds()
+                ));
+
+            document.getElementById('__time').innerHTML = t.toLocaleTimeString();
+        }
+
+        setInterval(showTime, 1000);
+
+    </script>
 </body>
 </html>
