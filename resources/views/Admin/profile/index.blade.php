@@ -28,8 +28,8 @@
                                     <span class="profile-name">{{auth()->user()->name}}</span>
                                 </div>
                                 <div class="d-none d-md-block">
-                                    <a href="{{route('profile.edit')}}" class="btn btn-primary btn-icon-text btn-edit-profile">
-                                        <i data-feather="edit" class="btn-icon-prepend"></i> {{__('edit profile')}}
+                                    <a href="{{route('profile.edit')}}" class="btn btn-secondary btn-icon-text btn-edit-profile">
+                                        <i data-feather="edit-3" class="btn-icon-prepend"></i> {{__('edit profile')}}
                                     </a>
                                 </div>
                             </div>

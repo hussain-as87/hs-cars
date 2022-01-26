@@ -32,7 +32,7 @@
 
                         <td>
                             @can('service-edit')
-                            <a class="btn btn-primary" href="{{ route('services.edit',$service->id) }}">{{ __('edit') }} <i data-feather="edit" class="icon-sm mr-2"></i></a>
+                            <a class="btn btn-secondary" href="{{ route('services.edit',$service->id) }}">{{ __('edit') }} <i data-feather="edit-3" class="icon-sm mr-2"></i></a>
                             @endcan
                             @can('service-delete')
                             <a href="" class="btn btn-danger">
