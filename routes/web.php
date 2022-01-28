@@ -88,3 +88,8 @@ Route::group(['middleware' => 'auth', 'prefix' => 'AdminDashboard/'], function (
 Route::group(['middleware' => 'auth', 'prefix' => '/', 'name' => 'home.'], function () {
     Route::get('/', [HomeController::class, 'index'])->name('index');
 });
+
+
+
+Route::post('/dark', [HomeController::class, 'change_them_dark'])->name('change.them.dark');
+Route::post('/light', [HomeController::class, 'change_them_light'])->name('change.them.light');
