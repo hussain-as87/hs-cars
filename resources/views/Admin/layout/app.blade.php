@@ -25,6 +25,14 @@ License: You must have a valid license purchased only from above link or https:/
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.rtl.min.css" integrity="sha384-trxYGD5BY4TyBTvU5H23FalSCYwpLA0vWEvXXGm5eytyztxb+97WzzY+IWDOSbav" crossorigin="anonymous">
 
     @endif --}}
+
+    @if(Session::get('them'))
+    <link rel="stylesheet" href="{{ asset('assets/css/demo_'.Session::get('them').'/style.css') }}">
+    @else
+    <link rel="stylesheet" href="{{ asset('assets/css/demo_2/style.css') }}">
+    @endisset
+
+
     <link rel="stylesheet" href="{{ asset('assets/vendors/sweetalert2/sweetalert2.min.css') }}">
 
     <!-- core:css -->
@@ -37,9 +45,7 @@ License: You must have a valid license purchased only from above link or https:/
     <link rel="stylesheet" href="{{asset('assets/fonts/feather-font/css/iconfont.css')}}">
     <link rel="stylesheet" href="{{asset('assets/vendors/flag-icon-css/css/flag-icon.min.css')}}">
     <!-- endinject -->
-    <!-- Layout styles -->
-    <link rel="stylesheet" href="{{asset('assets/css/demo_2/style.css')}}">
-    <!-- End layout tailwind -->
+
     {{-- <!-- Layout styles -->
     <link rel="stylesheet" href="{{asset('assets/css/demo_2/tailwind.css')}}">
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
@@ -86,20 +92,27 @@ License: You must have a valid license purchased only from above link or https:/
                     <i data-feather="settings"></i>
                 </a>
                 <div class="theme-wrapper">
-                    <h6 class="text-muted mb-2">Light Theme:</h6>
-                    <a class="theme-item" href="../demo_1/dashboard-one.html">
-                        <img src="../assets/images/screenshots/light.jpg" alt="light theme">
-                    </a>
-                    <h6 class="text-muted mb-2">Dark Theme:</h6>
-                    <a class="theme-item active" href="../demo_2/dashboard-one.html">
-                        <img src="../assets/images/screenshots/dark.jpg" alt="light theme">
-                    </a>
+                    <form action="{{ route('change.them.light') }}" method="post">
+                        @csrf
+                        <h6 class="text-muted mb-2">{{ __('Light Theme') }}:</h6>
+                        <button type="submit" class="theme-item">
+                            <img src="{{ asset('assets/images/screenshots/light.jpg') }}" alt="light theme">
+                        </button>
+                    </form>
+                    <form action="{{ route('change.them.dark') }}" method="post">
+                        @csrf
+                        <h6 class="text-muted mb-2">{{ __('Dark Theme') }}:</h6>
+                        <button type="submit" class="theme-item active">
+                            <img src="{{ asset('assets/images/screenshots/dark.jpg') }}" alt="dark theme">
+                        </button>
+                    </form>
                 </div>
+
             </div>
         </nav>
         <!-- partial -->
 
-        <div class="page-wrapper">
+        <div class="page-wrapper" @if(Session::get('them','1')) style="background:#ebebeb" @endif>
 
             <!-- partial:partials/_navbar.html -->
             @include('Admin.layout.sections._navbar')
@@ -114,11 +127,18 @@ License: You must have a valid license purchased only from above link or https:/
                     <div class="d-flex align-items-center flex-wrap text-nowrap">
                         <div class="input-group date datepicker dashboard-date mr-2 mb-2 mb-md-0 d-md-none d-xl-flex" id="dashboardDate">
                             <span class="input-group-addon bg-transparent"><i data-feather="calendar" class=" text-primary"></i></span>
-                            <input type="text" class="form-control text-light" style="height:36px;padding:2px;text-align:center">
+                            <input type="text" class="form-control @if(Session::get('them','1'))
+                            @else
+                         text-light
+                            @endif" style="height:36px;padding:2px;text-align:center">
                         </div>
                         <div class="input-group date datepicker dashboard-date mr-2 mb-2 mb-md-0 d-md-none d-xl-flex" id="">
                             <span class="input-group-addon bg-transparent"><i data-feather="clock" class="text-primary"></i></span>
-                            <div class="text-light " id="__time"></div>
+                            <div class="@if(Session::get('them','1'))
+                                  text-dark
+                                  @else
+                                  text-light
+                            @endif  " id="__time"></div>
                         </div>
                         {{-- <button type="button" class="btn btn-outline-info btn-icon-text mr-2 d-none d-md-block">
                             <i class="btn-icon-prepend" data-feather="download"></i>
@@ -135,6 +155,8 @@ License: You must have a valid license purchased only from above link or https:/
                     </div>
                 </div>
                 @include('Admin.layout.sections.__alert')
+
+
                 @yield('content')
 
             </div>
