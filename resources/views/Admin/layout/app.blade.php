@@ -112,7 +112,7 @@ License: You must have a valid license purchased only from above link or https:/
         </nav>
         <!-- partial -->
 
-        <div class="page-wrapper" @if(Session::get('them','1')) style="background:#ebebeb" @endif>
+        <div class="page-wrapper">
 
             <!-- partial:partials/_navbar.html -->
             @include('Admin.layout.sections._navbar')
@@ -127,18 +127,11 @@ License: You must have a valid license purchased only from above link or https:/
                     <div class="d-flex align-items-center flex-wrap text-nowrap">
                         <div class="input-group date datepicker dashboard-date mr-2 mb-2 mb-md-0 d-md-none d-xl-flex" id="dashboardDate">
                             <span class="input-group-addon bg-transparent"><i data-feather="calendar" class=" text-primary"></i></span>
-                            <input type="text" class="form-control @if(Session::get('them','1'))
-                            @else
-                         text-light
-                            @endif" style="height:36px;padding:2px;text-align:center">
+                            <input type="text" class="form-control text-secondary" style="height:36px;padding:2px;text-align:center">
                         </div>
                         <div class="input-group date datepicker dashboard-date mr-2 mb-2 mb-md-0 d-md-none d-xl-flex" id="">
                             <span class="input-group-addon bg-transparent"><i data-feather="clock" class="text-primary"></i></span>
-                            <div class="@if(Session::get('them','1'))
-                                  text-dark
-                                  @else
-                                  text-light
-                            @endif  " id="__time"></div>
+                            <div class="text-secondary" id="__time"></div>
                         </div>
                         {{-- <button type="button" class="btn btn-outline-info btn-icon-text mr-2 d-none d-md-block">
                             <i class="btn-icon-prepend" data-feather="download"></i>
