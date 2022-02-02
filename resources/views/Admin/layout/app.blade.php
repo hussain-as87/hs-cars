@@ -215,5 +215,7 @@ License: You must have a valid license purchased only from above link or https:/
         setInterval(showTime, 1000);
 
     </script>
+    <script src="{{ asset('assets/js/file-upload.js') }}"></script>
+
 </body>
 </html>

@@ -14,10 +14,11 @@ class CreateCarPricingTable extends Migration
     public function up()
     {
         Schema::create('car_pricing', function (Blueprint $table) {
-            $table->id();
+            $table->foreignId('car_id')->constrained('cars', 'id')->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('in_houre');
             $table->string('in_day');
             $table->string('in_month');
+            $table->primary('car_id');
             $table->timestamps();
         });
     }
