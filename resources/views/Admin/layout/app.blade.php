@@ -78,6 +78,11 @@ License: You must have a valid license purchased only from above link or https:/
             height: auto;
         }
 
+        .perfect-scrollbar-example {
+            position: relative;
+            max-height: 250px;
+        }
+
     </style>
 
 </head>
@@ -214,6 +219,10 @@ License: You must have a valid license purchased only from above link or https:/
 
         setInterval(showTime, 1000);
 
+    </script>
+    <script src="{{ asset('assets/js/file-upload.js') }}"></script>
+    <script type="text/javascript">
+        var scrollbarExample = new PerfectScrollbar('.perfect-scrollbar-example');
     </script>
 </body>
 </html>

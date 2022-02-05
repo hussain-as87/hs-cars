@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Http\ImageUpload;
+use Throwable;
 use App\Models\Car;
+use App\Http\ImageUpload;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 
 class CarsController extends Controller
 {
@@ -19,7 +21,7 @@ class CarsController extends Controller
      */
     function __construct()
     {
-      /*   $this->middleware('permission:car-list|car-create|car-edit|car-delete', ['only' => ['index', 'store']]);
+        /*   $this->middleware('permission:car-list|car-create|car-edit|car-delete', ['only' => ['index', 'store']]);
         $this->middleware('permission:car-create', ['only' => ['create', 'store']]);
         $this->middleware('permission:car-edit', ['only' => ['edit', 'update']]);
         $this->middleware('permission:car-delete', ['only' => ['destroy']]); */
@@ -52,26 +54,60 @@ class CarsController extends Controller
      */
     public function store(Request $request)
     {
-        $this->getValidation($request);
-        $data['name'] = $request->name;
-        $data['description'] = $request->description;
-        if ($request->hasFile('image')) {
-            $image = ImageUpload::upload_image($request->image, $this->path_image);
-            $data['image'] = $image;
-        }
-        $data['user_id'] = $request->user()->id;
-        $data['mileage'] = $request->mileage;
-        $data['transmission_type'] = $request->transmission_type;
-        $data['seats'] = $request->seats;
-        $data['luggage'] = $request->luggage;
-        $data['fuel'] = $request->fuel;
+        DB::beginTransaction();
+        try {
+            $this->getValidation($request);
+            $data['name'] = $request->name;
+            $data['description'] = $request->description;
+            if ($request->hasFile('image')) {
+                $image = ImageUpload::upload_image($request->image, $this->path_image);
+                $data['image'] = $image;
+            }
+            $data['user_id'] = $request->user()->id;
+            $data['mileage'] = $request->mileage;
+            $data['transmission_type'] = $request->transmission_type;
+            $data['seats'] = $request->seats;
+            $data['luggage'] = $request->luggage;
+            $data['fuel'] = $request->fuel;
+            $car = Car::create($data);
 
-        $car = Car::create($data);
+            //price data
+            $price_data['car_id'] = $car->id;
+            $price_data['in_houre'] = $request->in_houre;
+            $price_data['in_day'] = $request->in_day;
+            $price_data['in_month'] = $request->in_month;
+            DB::table('car_pricing')->insert($price_data);
 
-        if ($car) {
-            return redirect()->route('cars.index')->with('success', 'Car has been created !!!');
-        } else {
-            return redirect()->route('cars.index')->with('error', 'Car has not created !!!');
+            //feather data
+            $details_data['car_id'] = $car->id;
+            $details_data['air_conditions'] = $request->air_conditions;
+            $details_data['child_seat'] = $request->child_seat;
+            $details_data['gps'] = $request->gps;
+            $details_data['luggage'] = $request->luggage;
+            $details_data['music'] = $request->music;
+            $details_data['seat_beit'] = $request->seat_beit;
+            $details_data['sleeping_bed'] = $request->sleeping_bed;
+            $details_data['water'] = $request->water;
+            $details_data['bluetooth'] = $request->bluetooth;
+            $details_data['onboard_computer'] = $request->onboard_computer;
+            $details_data['audio_input'] = $request->audio_input;
+            $details_data['long_term_trips'] = $request->long_term_trips;
+            $details_data['car_kit'] = $request->car_kit;
+            $details_data['remote_central_locking'] = $request->remote_central_locking;
+            $details_data['climate_control'] = $request->climate_control;
+
+            DB::table('car_features')->insert($details_data);
+
+
+            if ($car) {
+                DB::commit();
+                return redirect()->route('cars.index')->with('success', 'Car has been created !!!');
+            } else {
+                return redirect()->route('cars.index')->with('error', 'Car has not created !!!');
+            }
+        } catch (Throwable $e) {
+            DB::rollBack();
+            throw $e;
         }
     }
 
@@ -98,10 +134,16 @@ class CarsController extends Controller
     public function show($id)
     {
         $car = Car::find($id);
+        $car_pricing = DB::table('car_pricing')->where('car_id',$id)->first();
+        $car_features = DB::table('car_features')->where('car_id',$id)->first();
+
+        // $car_pricing = DB::select('select * from car_pricing where car_id = :car_id', ['car_id' => $id]);
+        //$car_features = DB::select('select * from car_features where car_id = :car_id', ['car_id' => $id]);
+       // dd($car_features);
         if (!$car) {
             return redirect()->route('error-404')->with('direction', 'cars.index');
         }
-        return view('Admin.cars.show', compact('car'));
+        return view('Admin.cars.show', compact('car', 'car_pricing', 'car_features'));
     }
 
     /**
@@ -126,8 +168,32 @@ class CarsController extends Controller
         $data['seats'] = $request->seats;
         $data['luggage'] = $request->luggage;
         $data['fuel'] = $request->fuel;
-
         $car = Car::findOrFail($id);
+
+        //price data
+        $price_data['car_id'] = $car->id;
+        $price_data['in_houre'] = $request->in_houre;
+        $price_data['in_day'] = $request->in_day;
+        $price_data['in_month'] = $request->in_month;
+        DB::table('car_pricing')->insert($price_data);
+        //feather data
+        $details_data['car_id'] = $car->id;
+        $details_data['air_conditions'] = $request->air_conditions;
+        $details_data['child_seat'] = $request->child_seat;
+        $details_data['gps'] = $request->gps;
+        $details_data['luggage'] = $request->luggage;
+        $details_data['music'] = $request->music;
+        $details_data['seat_beit'] = $request->seat_beit;
+        $details_data['sleeping_bed'] = $request->sleeping_bed;
+        $details_data['water'] = $request->water;
+        $details_data['bluetooth'] = $request->bluetooth;
+        $details_data['onboard_computer'] = $request->onboard_computer;
+        $details_data['audio_input'] = $request->audio_input;
+        $details_data['long_term_trips'] = $request->long_term_trips;
+        $details_data['car_kit'] = $request->car_kit;
+        $details_data['remote_central_locking'] = $request->remote_central_locking;
+        $details_data['climate_control'] = $request->climate_control;
+        DB::table('car_features')->insert($details_data);
 
         if ($car) {
             $car->update($data);
@@ -165,6 +231,24 @@ class CarsController extends Controller
             'seats' => 'required',
             'luggage' => 'required',
             'fuel' => 'required',
+            'in_houre' => 'required|integer',
+            'in_day' => 'required|integer',
+            'in_month' => 'required|integer',
+            'air_conditions' => 'required|integer|max:1',
+            'child_seat' => 'required|integer|max:1',
+            'gps' => 'required|integer|max:1',
+            'luggage' => 'required|integer|max:1',
+            'music' => 'required|integer|max:1',
+            'seat_beit' => 'required|integer|max:1',
+            'sleeping_bed' => 'required|integer|max:1',
+            'water' => 'required|integer|max:1',
+            'bluetooth' => 'required|integer|max:1',
+            'onboard_computer' => 'required|integer|max:1',
+            'audio_input' => 'required|integer|max:1',
+            'long_term_trips' => 'required|integer|max:1',
+            'car_kit' => 'required|integer|max:1',
+            'remote_central_locking' => 'required|integer|max:1',
+            'climate_control' => 'required|integer|max:1',
         ]);
     }
 }
