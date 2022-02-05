@@ -1,14 +1,15 @@
 <?php
 
-use App\Http\Controllers\Admin\AboutController;
-use App\Http\Controllers\Admin\CarsController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CarController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LocaleController;
+use App\Http\Controllers\Admin\CarsController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\SettingController;
@@ -32,6 +33,9 @@ Route::get('/404', function () {
 Route::get('/500', function () {
     return view('500');
 })->name('error-500');
+
+Route::post('/dark', [HomeController::class, 'change_them_dark'])->name('change.them.dark');
+Route::post('/light', [HomeController::class, 'change_them_light'])->name('change.them.light');
 
 Auth::routes();
 
@@ -82,14 +86,14 @@ Route::group(['middleware' => 'auth', 'prefix' => 'AdminDashboard/'], function (
         Route::get('/{id}', [SettingController::class, 'edit'])->name('settings.edit');
         Route::put('/{id}', [SettingController::class, 'update'])->name('settings.update');
     });
-
 });
 
-Route::group(['middleware' => 'auth', 'prefix' => '/', 'name' => 'home.'], function () {
-    Route::get('/', [HomeController::class, 'index'])->name('index');
+Route::group(['middleware' => 'auth', 'prefix' => '/', 'as' => 'home.'], function () {
+    Route::get('/', [CarController::class, 'index'])->name('index');
+    Route::get('/about', [CarController::class, 'about'])->name('about');
+    Route::get('/services', [CarController::class, 'service'])->name('services');
+    Route::get('/pricing', [CarController::class, 'pricing'])->name('pricing');
+    Route::get('/cars', [CarController::class, 'cars'])->name('cars');
+    Route::get('/blog', [CarController::class, 'blog'])->name('blog');
+    Route::get('/contact', [CarController::class, 'contact'])->name('contact');
 });
-
-
-
-Route::post('/dark', [HomeController::class, 'change_them_dark'])->name('change.them.dark');
-Route::post('/light', [HomeController::class, 'change_them_light'])->name('change.them.light');
