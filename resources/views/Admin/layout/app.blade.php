@@ -29,7 +29,7 @@ License: You must have a valid license purchased only from above link or https:/
     @if(Session::get('them'))
     <link rel="stylesheet" href="{{ asset('assets/css/demo_'.Session::get('them').'/style.css') }}">
     @else
-    <link rel="stylesheet" href="{{ asset('assets/css/demo_2/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/demo_'.auth()->user()->profile->them.'/style.css') }}">
     @endisset
 
 
