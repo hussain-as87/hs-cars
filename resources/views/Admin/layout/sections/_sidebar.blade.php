@@ -1,7 +1,7 @@
 <nav class="sidebar">
     <div class="sidebar-header">
         <a href="{{ route('admin.home') }}" class="sidebar-brand">
-            {{ __(config('settings.website_name')) }}<span>   {{ __(env('APP_NAME')) }}  </span>
+            {{ __(config('settings.website_name')) }}<span> {{ __(env('APP_NAME')) }} </span>
         </a>
         <div class="sidebar-toggler not-active">
             <span></span>
@@ -105,10 +105,36 @@
 
             <li class="nav-item nav-category">{{ __('The Tables') }}</li>
 
+            @can('category-list')
 
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="collapse" href="#category" role="button" aria-expanded="false" aria-controls="category">
+                    <i class="mdi mdi-18px mdi-sitemap-outline link-icon"></i>
+                    <span class="link-title">{{__('categories')}}</span>
+                    <i class="link-arrow" data-feather="chevron-down"></i>
+                </a>
+                <div class="collapse" id="category">
+                    <ul class="nav sub-menu">
+                        @can('category-list')
 
-            {{-- @can('role-list')
-  --}}
+                        <li class="nav-item">
+                            <a href="{{route('categories.index')}}" class="nav-link">{{__('categories')}}</a>
+                        </li>
+                        @endcan
+                        @can('category-create')
+
+                        <li class="nav-item">
+                            <a href="{{route('categories.create')}}" class="nav-link">{{__('category-create')}}</a>
+                        </li>
+                        @endcan
+
+                    </ul>
+                </div>
+            </li>
+            @endcan
+
+            @can('car-list')
+
             <li class="nav-item">
                 <a class="nav-link" data-toggle="collapse" href="#cars" role="button" aria-expanded="false" aria-controls="cars">
                     <i class="mdi mdi-18px mdi-car-hatchback link-icon"></i>
@@ -117,24 +143,25 @@
                 </a>
                 <div class="collapse" id="cars">
                     <ul class="nav sub-menu">
-                        {{-- @can('role-list')
-  --}}
+                        @can('car-list')
+
                         <li class="nav-item">
                             <a href="{{route('cars.index')}}" class="nav-link">{{__('cars')}}</a>
                         </li>
-                        {{-- @endcan
-  --}}{{-- @can('role-create')
-  --}}
+                        @endcan
+                        @can('car-create')
+
                         <li class="nav-item">
                             <a href="{{route('cars.create')}}" class="nav-link">{{__('car-create')}}</a>
                         </li>
-                        {{-- @endcan
-  --}}
+                        @endcan
+
                     </ul>
                 </div>
             </li>
-            {{-- @endcan
-  --}}
+            @endcan
+
+
             {{-- <li class="nav-item nav-category">Docs</li>
             <li class="nav-item">
                 <a href="https://www.nobleui.com/html/documentation/docs.html" target="_blank" class="nav-link">

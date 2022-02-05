@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Admin\CategoriesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,6 +49,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'AdminDashboard/'], function (
     Route::resource('roles', RoleController::class);
     Route::resource('users', UserController::class);
     Route::resource('cars', CarsController::class);
+    Route::resource('categories', CategoriesController::class);
 
 
     Route::group(['prefix' => 'services', 'as' => 'services.'], function () {

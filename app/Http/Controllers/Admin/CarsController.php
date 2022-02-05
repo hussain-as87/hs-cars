@@ -6,6 +6,7 @@ use Throwable;
 use App\Models\Car;
 use App\Http\ImageUpload;
 use Illuminate\Http\Request;
+use App\Models\Admin\Category;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
@@ -21,10 +22,10 @@ class CarsController extends Controller
      */
     function __construct()
     {
-        /*   $this->middleware('permission:car-list|car-create|car-edit|car-delete', ['only' => ['index', 'store']]);
+        $this->middleware('permission:car-list|car-create|car-edit|car-delete', ['only' => ['index', 'store']]);
         $this->middleware('permission:car-create', ['only' => ['create', 'store']]);
         $this->middleware('permission:car-edit', ['only' => ['edit', 'update']]);
-        $this->middleware('permission:car-delete', ['only' => ['destroy']]); */
+        $this->middleware('permission:car-delete', ['only' => ['destroy']]);
     }
     /**
      * Display a listing of the resource.
@@ -43,7 +44,10 @@ class CarsController extends Controller
      */
     public function create(Car $car)
     {
-        return view('Admin.cars.create', compact('car'));
+        $categories = Category::all();
+        $car_pricing = DB::table('car_pricing')->where('car_id', $car->id)->first();
+        $car_features = DB::table('car_features')->where('car_id', $car->id)->first();
+        return view('Admin.cars.create', compact('car', 'categories', 'car_pricing', 'car_features'));
     }
 
     /**
@@ -69,6 +73,7 @@ class CarsController extends Controller
             $data['seats'] = $request->seats;
             $data['luggage'] = $request->luggage;
             $data['fuel'] = $request->fuel;
+            $data['category_id'] = $request->category_id;
             $car = Car::create($data);
 
             //price data
@@ -119,11 +124,14 @@ class CarsController extends Controller
      */
     public function edit($id)
     {
+        $categories = Category::all();
+        $car_pricing = DB::table('car_pricing')->where('car_id', $id)->first();
+        $car_features = DB::table('car_features')->where('car_id', $id)->first();
         $car = Car::find($id);
         if (!$car) {
             return redirect()->route('error-404')->with('direction', 'cars.index');
         }
-        return view('Admin.cars.edit', compact('car'));
+        return view('Admin.cars.edit', compact('car', 'categories', 'car_pricing', 'car_features'));
     }
     /**
      * Show the form for editing the specified resource.
@@ -134,12 +142,12 @@ class CarsController extends Controller
     public function show($id)
     {
         $car = Car::find($id);
-        $car_pricing = DB::table('car_pricing')->where('car_id',$id)->first();
-        $car_features = DB::table('car_features')->where('car_id',$id)->first();
+        $car_pricing = DB::table('car_pricing')->where('car_id', $id)->first();
+        $car_features = DB::table('car_features')->where('car_id', $id)->first();
 
         // $car_pricing = DB::select('select * from car_pricing where car_id = :car_id', ['car_id' => $id]);
         //$car_features = DB::select('select * from car_features where car_id = :car_id', ['car_id' => $id]);
-       // dd($car_features);
+        // dd($car_features);
         if (!$car) {
             return redirect()->route('error-404')->with('direction', 'cars.index');
         }
@@ -164,6 +172,8 @@ class CarsController extends Controller
             $data['image'] = $image;
         }
         $data['mileage'] = $request->mileage;
+        $data['user_id'] = auth()->id();
+        $data['category_id'] = $request->category_id;
         $data['transmission_type'] = $request->transmission_type;
         $data['seats'] = $request->seats;
         $data['luggage'] = $request->luggage;
@@ -175,7 +185,7 @@ class CarsController extends Controller
         $price_data['in_houre'] = $request->in_houre;
         $price_data['in_day'] = $request->in_day;
         $price_data['in_month'] = $request->in_month;
-        DB::table('car_pricing')->insert($price_data);
+        DB::table('car_pricing')->update($price_data);
         //feather data
         $details_data['car_id'] = $car->id;
         $details_data['air_conditions'] = $request->air_conditions;
@@ -193,7 +203,7 @@ class CarsController extends Controller
         $details_data['car_kit'] = $request->car_kit;
         $details_data['remote_central_locking'] = $request->remote_central_locking;
         $details_data['climate_control'] = $request->climate_control;
-        DB::table('car_features')->insert($details_data);
+        DB::table('car_features')->update($details_data);
 
         if ($car) {
             $car->update($data);
@@ -227,6 +237,7 @@ class CarsController extends Controller
             'description' => 'required|max:500',
             'image' => 'required_if:image,null|file|image|mimes:png,jpg,jepg',
             'mileage' => 'required',
+            'category_id' => 'required',
             'transmission_type' => 'required',
             'seats' => 'required',
             'luggage' => 'required',

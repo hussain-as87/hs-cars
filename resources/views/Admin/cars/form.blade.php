@@ -92,9 +92,17 @@
     <div class="form-group">
         <label for="fuel">{{__('fuel')}}</label>
         <select id="fuel" name="fuel" class="form-control @error('fuel') is-invalid alert-danger @enderror">
-            <option>{{ __('Petrol') }}</option>
-            <option>{{ __('Diesel') }}</option>
-            <option>{{ __('Alternative Fuels') }}</option>
+            <option value="Petrol">{{ __('Petrol') }}</option>
+            <option value="Diesel">{{ __('Diesel') }}</option>
+            <option value="Alternative Fuels">{{ __('Alternative Fuels') }}</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="category_id">{{__('category')}}</label>
+        <select id="category_id" name="category_id" class="form-control @error('category_id') is-invalid alert-danger @enderror">
+            @foreach($categories as $key => $category)
+            <option value="{{ $category->id }}" {{ $category->id == $car->category_id ? 'selected' : '' }}>{{ $category->name}}</option>
+            @endforeach
         </select>
     </div>
     <h6>{{ __('price')}}</h6><br />
@@ -102,13 +110,13 @@
     <div class="row">
         <div class="form-group col-4">
             <label for="in_houre">{{__('in the houre')}}</label>
-            <input type="text" name="in_houre" id="in_houre" class="form-control @error('in_houre') is-invalid alert-danger @enderror" /> </div>
+            <input type="text" name="in_houre" value="{{ $car_pricing->in_houre }}" id="in_houre" class="form-control @error('in_houre') is-invalid alert-danger @enderror" /> </div>
         <div class="form-group col-4">
             <label for="in_day">{{__('in the day')}}</label>
-            <input type="text" name="in_day" id="in_day" class="form-control @error('in_day') is-invalid alert-danger @enderror" /> </div>
+            <input type="text" name="in_day" value="{{ $car_pricing->in_day }}" id="in_day" class="form-control @error('in_day') is-invalid alert-danger @enderror" /> </div>
         <div class="form-group col-4">
             <label for="in_month">{{__('in the month')}}</label>
-            <input type="text" name="in_month" id="in_month" class="form-control @error('in_month') is-invalid alert-danger @enderror" /> </div>
+            <input type="text" name="in_month" value="{{ $car_pricing->in_month }}" id="in_month" class="form-control @error('in_month') is-invalid alert-danger @enderror" /> </div>
     </div>
 </div>
 <br />
@@ -123,21 +131,21 @@
             <label for="air_conditions">{{__('air_conditions')}}</label>
             <select id="air_conditions" name="air_conditions" class="form-control @error('air_conditions') is-invalid alert-danger @enderror">
                 <option value="0">{{ __('false') }}</option>
-                <option value="1">{{ __('true') }}</option>
+                <option value="1" {{ $car_features->air_conditions == '1'  ? 'selected':'' }}>{{ __('true') }}</option>
             </select>
         </div>
         <div class="form-group col-3">
             <label for="child_seat">{{__('child_seat')}}</label>
             <select id="child_seat" name="child_seat" class="form-control @error('child_seat') is-invalid alert-danger @enderror">
                 <option value="0">{{ __('false') }}</option>
-                <option value="1">{{ __('true') }}</option>
+                <option value="1" {{ $car_features->child_seat == '1'  ? 'selected':'' }}>{{ __('true') }}</option>
             </select>
         </div>
         <div class="form-group col-3">
             <label for="gps">{{__('gps')}}</label>
             <select id="gps" name="gps" class="form-control @error('gps') is-invalid alert-danger @enderror">
                 <option value="0">{{ __('false') }}</option>
-                <option value="1">{{ __('true') }}</option>
+                <option value="1" {{ $car_features->gps == '1'  ? 'selected':'' }}>{{ __('true') }}</option>
             </select>
         </div>
 
@@ -145,7 +153,7 @@
             <label for="luggage">{{__('luggage')}}</label>
             <select id="luggage" name="luggage" class="form-control @error('luggage') is-invalid alert-danger @enderror">
                 <option value="0">{{ __('false') }}</option>
-                <option value="1">{{ __('true') }}</option>
+                <option value="1" {{ $car_features->luggage == '1'  ? 'selected':'' }}>{{ __('true') }}</option>
             </select>
         </div>
 
@@ -153,7 +161,7 @@
             <label for="music">{{__('music')}}</label>
             <select id="music" name="music" class="form-control @error('music') is-invalid alert-danger @enderror">
                 <option value="0">{{ __('false') }}</option>
-                <option value="1">{{ __('true') }}</option>
+                <option value="1" {{ $car_features->music == '1'  ? 'selected':'' }}>{{ __('true') }}</option>
             </select>
         </div>
 
@@ -161,7 +169,7 @@
             <label for="seat_beit">{{__('seat_beit')}}</label>
             <select id="seat_beit" name="seat_beit" class="form-control @error('seat_beit') is-invalid alert-danger @enderror">
                 <option value="0">{{ __('false') }}</option>
-                <option value="1">{{ __('true') }}</option>
+                <option value="1" {{ $car_features->seat_beit == '1'  ? 'selected':'' }}>{{ __('true') }}</option>
             </select>
         </div>
 
@@ -169,7 +177,7 @@
             <label for="sleeping_bed">{{__('sleeping_bed')}}</label>
             <select id="sleeping_bed" name="sleeping_bed" class="form-control @error('sleeping_bed') is-invalid alert-danger @enderror">
                 <option value="0">{{ __('false') }}</option>
-                <option value="1">{{ __('true') }}</option>
+                <option value="1" {{ $car_features->sleeping_bed == '1'  ? 'selected':'' }}>{{ __('true') }}</option>
             </select>
         </div>
 
@@ -177,7 +185,7 @@
             <label for="water">{{__('water')}}</label>
             <select id="water" name="water" class="form-control @error('water') is-invalid alert-danger @enderror">
                 <option value="0">{{ __('false') }}</option>
-                <option value="1">{{ __('true') }}</option>
+                <option value="1" {{ $car_features->water == '1'  ? 'selected':'' }}>{{ __('true') }}</option>
             </select>
         </div>
 
@@ -185,7 +193,7 @@
             <label for="bluetooth">{{__('bluetooth')}}</label>
             <select id="bluetooth" name="bluetooth" class="form-control @error('bluetooth') is-invalid alert-danger @enderror">
                 <option value="0">{{ __('false') }}</option>
-                <option value="1">{{ __('true') }}</option>
+                <option value="1" {{ $car_features->bluetooth == '1'  ? 'selected':'' }}>{{ __('true') }}</option>
             </select>
         </div>
 
@@ -193,7 +201,7 @@
             <label for="onboard_computer">{{__('onboard_computer')}}</label>
             <select id="onboard_computer" name="onboard_computer" class="form-control @error('onboard_computer') is-invalid alert-danger @enderror">
                 <option value="0">{{ __('false') }}</option>
-                <option value="1">{{ __('true') }}</option>
+                <option value="1" {{ $car_features->onboard_computer == '1'  ? 'selected':'' }}>{{ __('true') }}</option>
             </select>
         </div>
 
@@ -201,7 +209,7 @@
             <label for="audio_input">{{__('audio_input')}}</label>
             <select id="audio_input" name="audio_input" class="form-control @error('audio_input') is-invalid alert-danger @enderror">
                 <option value="0">{{ __('false') }}</option>
-                <option value="1">{{ __('true') }}</option>
+                <option value="1" {{ $car_features->audio_input == '1'  ? 'selected':'' }}>{{ __('true') }}</option>
             </select>
         </div>
 
@@ -209,7 +217,7 @@
             <label for="long_term_trips">{{__('long_term_trips')}}</label>
             <select id="long_term_trips" name="long_term_trips" class="form-control @error('long_term_trips') is-invalid alert-danger @enderror">
                 <option value="0">{{ __('false') }}</option>
-                <option value="1">{{ __('true') }}</option>
+                <option value="1" {{ $car_features->long_term_trips == '1'  ? 'selected':'' }}>{{ __('true') }}</option>
             </select>
         </div>
 
@@ -217,7 +225,7 @@
             <label for="car_kit">{{__('car_kit')}}</label>
             <select id="car_kit" name="car_kit" class="form-control @error('car_kit') is-invalid alert-danger @enderror">
                 <option value="0">{{ __('false') }}</option>
-                <option value="1">{{ __('true') }}</option>
+                <option value="1" {{ $car_features->car_kit == '1'  ? 'selected':'' }}>{{ __('true') }}</option>
             </select>
         </div>
 
@@ -225,7 +233,7 @@
             <label for="remote_central_locking">{{__('remote_central_locking')}}</label>
             <select id="remote_central_locking" name="remote_central_locking" class="form-control @error('remote_central_locking') is-invalid alert-danger @enderror">
                 <option value="0">{{ __('false') }}</option>
-                <option value="1">{{ __('true') }}</option>
+                <option value="1" {{ $car_features->remote_central_locking == '1'  ? 'selected':'' }}>{{ __('true') }}</option>
             </select>
         </div>
 
@@ -233,7 +241,7 @@
             <label for="climate_control">{{__('climate_control')}}</label>
             <select id="climate_control" name="climate_control" class="form-control @error('climate_control') is-invalid alert-danger @enderror">
                 <option value="0">{{ __('false') }}</option>
-                <option value="1">{{ __('true') }}</option>
+                <option value="1" {{ $car_features->climate_control == '1'  ? 'selected':'' }}>{{ __('true') }}</option>
             </select>
         </div>
         <br />
