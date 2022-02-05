@@ -2,17 +2,23 @@
 
 namespace App\Models;
 
-use App\Models\Admin\Comment;
+use App\Models\Car;
+use App\Models\Rent;
 use App\Models\Admin\Like;
 use App\Models\Admin\Post;
+use App\Models\Admin\About;
+use App\Models\Admin\Advert;
+use App\Models\Admin\Comment;
 use App\Models\Admin\Profile;
+use App\Models\Admin\Service;
+use App\Models\Admin\Category;
+use Laravel\Sanctum\HasApiTokens;
+use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Notifications\Notifiable;
+use Nicolaslopezj\Searchable\SearchableTrait;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
-use Nicolaslopezj\Searchable\SearchableTrait;
-use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
@@ -88,5 +94,29 @@ class User extends Authenticatable
     public function comments()
     {
         return $this->hasMany(Comment::class);
+    }
+    public function categories()
+    {
+        return $this->hasMany(Category::class);
+    }
+    public function cars()
+    {
+        return $this->hasMany(Car::class);
+    }
+    public function services()
+    {
+        return $this->hasMany(Service::class);
+    }
+    public function rents()
+    {
+        return $this->hasMany(Rent::class);
+    }
+    public function about()
+    {
+        return $this->hasOne(About::class);
+    }
+    public function advert()
+    {
+        return $this->hasOne(Advert::class);
     }
 }

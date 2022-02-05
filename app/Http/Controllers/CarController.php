@@ -10,7 +10,7 @@ class CarController extends Controller
 {
     public function index()
     {
-        $cars = Car::all();
+        $cars = Car::orderBy('created_at','desc')->paginate(4);
         $advert = Advert::first();
         return view('home\index', compact('cars','advert'));
     }

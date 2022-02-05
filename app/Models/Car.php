@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Admin\Category;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
 use Nicolaslopezj\Searchable\SearchableTrait;
@@ -14,6 +15,7 @@ class Car extends Model
 
     public $fillable = [
         'user_id',
+        'category_id',
         'name',
         'description',
         'image',
@@ -53,4 +55,9 @@ class Car extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
 }
