@@ -134,10 +134,16 @@ class CarsController extends Controller
     public function show($id)
     {
         $car = Car::find($id);
+        $car_pricing = DB::table('car_pricing')->where('car_id',$id)->first();
+        $car_features = DB::table('car_features')->where('car_id',$id)->first();
+
+        // $car_pricing = DB::select('select * from car_pricing where car_id = :car_id', ['car_id' => $id]);
+        //$car_features = DB::select('select * from car_features where car_id = :car_id', ['car_id' => $id]);
+       // dd($car_features);
         if (!$car) {
             return redirect()->route('error-404')->with('direction', 'cars.index');
         }
-        return view('Admin.cars.show', compact('car'));
+        return view('Admin.cars.show', compact('car', 'car_pricing', 'car_features'));
     }
 
     /**

@@ -356,7 +356,11 @@
     "climate_control": "Climate Control",
     "true": "true",
     "false": "false",
-
+    "in the houre": "In The Houre",
+    "in the day": "In The Day",
+    "in the month": "In The Month",
+    "yes": "Yes",
+    "no": "No",
     "order by": "Order By",
     "paid": "Paid",
     "not paid": "Not Paid",

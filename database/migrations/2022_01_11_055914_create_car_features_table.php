@@ -30,7 +30,6 @@ class CreateCarFeaturesTable extends Migration
             $table->enum('car_kit',[0,1]);
             $table->enum('remote_central_locking',[0,1]);
             $table->enum('climate_control',[0,1]);
-            $table->timestamps();
         });
     }
 

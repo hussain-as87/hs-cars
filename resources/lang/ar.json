@@ -511,5 +511,10 @@
     "service-delete": "حذف خدمة",
     "about-list": "حول",
     "about-edit": "تعديل حول",
-    "Descending": "تنازليا"
+    "Descending": "تنازليا",
+    "in the houre": "في الساعة",
+    "in the day": "في اليوم",
+    "in the month": "في الشهر",
+    "yes": "نعم",
+    "no": "لا"
 }

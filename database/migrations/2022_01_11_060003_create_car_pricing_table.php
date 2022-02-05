@@ -19,7 +19,6 @@ class CreateCarPricingTable extends Migration
             $table->string('in_day');
             $table->string('in_month');
             $table->primary('car_id');
-            $table->timestamps();
         });
     }
 
