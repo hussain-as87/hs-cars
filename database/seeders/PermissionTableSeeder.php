@@ -37,7 +37,8 @@ class PermissionTableSeeder extends Seeder
             'category-delete',
             'about-list',
             'about-edit',
-            'about-delete',
+            'advert-list',
+            'advert-edit',
             'settings',
         ];
 

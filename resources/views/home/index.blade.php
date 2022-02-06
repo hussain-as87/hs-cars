@@ -1,6 +1,6 @@
 @extends('home.layout.app')
 @section('content')
-<div class="hero-wrap ftco-degree-bg" style="background-image: url({{ asset('images/'.$advert->image) }});" data-stellar-background-ratio="0.5">
+<div class="hero-wrap ftco-degree-bg" style="background-image: url({{ asset('storage/advert/'.$advert->image) }});" data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
     <div class="container">
         <div class="row no-gutters slider-text justify-content-start align-items-center justify-content-center">
@@ -114,7 +114,7 @@
                             <div class="text">
                                 <h2 class="mb-0"><a href="#">{{ $car->name }}</a></h2>
                                 <div class="d-flex mb-3">
-                                    <span class="cat">{{ Cheverolet }}</span>
+                                    <span class="cat">{{ $car->category->name }}</span>
                                     <p class="price ml-auto">$500 <span>/day</span></p>
                                 </div>
                                 <p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1">Book now</a> <a href="#" class="btn btn-secondary py-2 ml-1">Details</a></p>
