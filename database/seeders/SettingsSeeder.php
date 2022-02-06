@@ -23,6 +23,8 @@ class SettingsSeeder extends Seeder
      Setting::create(['name'=>'twitter_url','value'=>'#']);
      Setting::create(['name'=>'instagram_name','value'=>'#']);
      Setting::create(['name'=>'them','value'=>'dark']);
+     Setting::create(['name'=>'year_experienced','value'=>'60']);
+     Setting::create(['name'=>'total_branches','value'=>'67']);
      Setting::create(['name'=>'address','value'=>'203 Fake St. Mountain View, San Francisco, California, USA']);
     }
 }

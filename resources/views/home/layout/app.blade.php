@@ -59,7 +59,7 @@
                 <div class="col-md">
                     <div class="ftco-footer-widget mb-4">
                         <h2 class="ftco-heading-2"><a href="#" class="logo">{{ config('settings.website_name') }}<span></span></a></h2>
-                        <p>{{ config('settings.description') }}</p>
+                        <p>{{ __(config('settings.description')) }}</p>
                         <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
                             <li class="ftco-animate"><a href="{{ config('settings.twitter_url')  }}"><span class="icon-twitter"></span></a></li>
                             <li class="ftco-animate"><a href="{{ config('settings.facebook_url')  }}"><span class="icon-facebook"></span></a></li>
@@ -93,10 +93,10 @@
                 </div>
                 <div class="col-md">
                     <div class="ftco-footer-widget mb-4">
-                        <h2 class="ftco-heading-2">Have a Questions?</h2>
+                        <h2 class="ftco-heading-2">{{ __('Have a Questions?') }}</h2>
                         <div class="block-23 mb-3">
                             <ul>
-                                <li><span class="icon icon-map-marker"></span><span class="text">{{ config('settings.address') }}</span></li>
+                                <li><span class="icon icon-map-marker"></span><span class="text">{{ __(config('settings.address')) }}</span></li>
                                 <li><a href="#"><span class="icon icon-phone"></span><span class="text">{{ config('settings.webiste_phone') }}</span></a></li>
                                 <li><a href="#"><span class="icon icon-envelope"></span><span class="text">{{ config('settings.webiste_email') }}</span></a></li>
                             </ul>
@@ -112,7 +112,7 @@
                         {{ __('Copyright') }} &copy;<script>
                             document.write(new Date().getFullYear());
 
-                        </script> All rights reserved | This template is made with <i class="icon-heart text-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">hussein sim</a>
+                        </script> {{ __('All rights reserved | This template is made with') }} <i class="icon-heart text-danger" aria-hidden="true"></i> {{ __('by') }} <a href="https://colorlib.com" target="_blank">hussein sim</a>
                         <!-- Link back to Colorlib cant be removed. Template is licensed under CC BY 3.0. -->
                     </p>
                 </div>
