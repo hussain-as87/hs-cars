@@ -186,7 +186,7 @@ $user_count = App\Models\User::all()->count();
                                 </div>
                             </div>
                             <div class="col-6 col-md-12 col-xl-7">
-                                <i class="mdi mdi-36px  mdi-information-variant"></i>
+                                <i class="mdi mdi-36px  mdi-information-outline"></i>
                             </div>
                         </div>
                     </div>

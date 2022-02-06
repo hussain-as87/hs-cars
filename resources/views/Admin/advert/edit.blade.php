@@ -1,9 +1,9 @@
 @extends('Admin.layout.app')
 @section('title')
-{{ __('edit-about') }}
+{{ __('edit-advert') }}
 @endsection
 @section('title-page')
-{{ __('edit-about') }}
+{{ __('edit-advert') }}
 @endsection
 @section('content')
 <div class="card">
@@ -11,16 +11,16 @@
         <div class="row">
             <div class="col-lg-12 margin-tb">
                 <div class="pull-left">
-                    <h2>{{ __('edit-about') }}</h2>
+                    <h2>{{ __('edit-advert') }}</h2>
                 </div>
                 <div class="pull-right">
-                    <a class="btn btn-info" href="{{ route('about.index') }}"> {{ __('Go Back') }} <i data-feather="arrow-left" class="icon-sm mr-2"></i></a>
+                    <a class="btn btn-info" href="{{ route('advert.index') }}"> {{ __('Go Back') }} <i data-feather="arrow-left" class="icon-sm mr-2"></i></a>
                 </div>
             </div>
         </div>
 
         <br />
-        <form action="{{ route('about.update') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('advert.update') }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -35,24 +35,36 @@
                 @foreach(config('locales.languages') as $key => $val)
                 <div id="home{{$key}}" class="container tab-pane {{ $loop->index == 0 ? 'show active' : '' }}" aria-labelledby="{{ $key }}-tab"><br>
                     <div class="form-group">
+                        <label for="title">{{__('title')}}({{ __($val['name']) }})</label>
+                        <input type="text" name="title[{{$key}}]" class="form-control @error('title.'.$key) is-invalid alert-danger @enderror" id="title" value="{!! old('title.'.$key,$advert->getTranslation('title',$key)) ?? $advert->title !!}" aria-describedby="emailHelp" placeholder="@error('title.'.$key){{$message}} @enderror">
+                    </div>
+
+                    <div class="form-group">
                         <label>{{ __('description') }}({{ __($val['name']) }})</label>
                         <textarea placeholder="@error('description.' . $key){{ $message }} @enderror" name="description[{{ $key }}]" class="form-control" rows="5">
-                 {!! old('description.' . $key, $about->getTranslation('description', $key)) ?? $about->description !!}</textarea>
+                 {!! old('description.' . $key, $advert->getTranslation('description', $key)) ?? $advert->description !!}</textarea>
                     </div>
                 </div>
                 @endforeach
                 {{--tab end--}}
                 <div class="row">
                     <div class="form-group col-md-10">
-                        <label for="photo">{{ __('photo') }}</label>
-                        <input type="file" name="photo" class="form-control @error('photo') border-danger @enderror" id="photo" value="{{ old('photo') ?? $about->photo }}">
-                        @error('photo')
+                        <label for="video">{{ __('video') }}</label>
+                        <input type="url" name="video" class="form-control @error('video') border-danger @enderror" id="image" value="{{ old('video') ?? $advert->video }}">
+                        @error('video')
+                        <small class="alert-danger">{{ $message }}</small>
+                        @enderror
+                    </div>
+                    <div class="form-group col-md-10">
+                        <label for="photo">{{ __('image') }}</label>
+                        <input type="file" name="image" class="form-control @error('image') border-danger @enderror" id="image" value="{{ old('image') ?? $advert->image }}">
+                        @error('image')
                         <small class="alert-danger">{{ $message }}</small>
                         @enderror
                     </div>
                     <div class="col-2">
-                        @if($about->photo != null)
-                        <img class="w-100" src="{{ asset('storage/about/'.$about->photo) }}" />
+                        @if($advert->image != null)
+                        <img class="w-100" src="{{ asset('storage/advert/'.$advert->image) }}" />
                         @endif
                     </div>
                 </div>

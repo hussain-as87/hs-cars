@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\AboutController;
+use App\Http\Controllers\Admin\AdvertController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\SettingController;
@@ -51,6 +52,12 @@ Route::group(['middleware' => 'auth', 'prefix' => 'AdminDashboard/'], function (
     Route::resource('cars', CarsController::class);
     Route::resource('categories', CategoriesController::class);
 
+
+    Route::prefix('advert')->group(function () {
+        Route::get('/', [AdvertController::class, 'index'])->name('advert.index');
+        Route::get('/edit', [AdvertController::class, 'edit'])->name('advert.edit');
+        Route::put('/update', [AdvertController::class, 'update'])->name('advert.update');
+    });
 
     Route::group(['prefix' => 'services', 'as' => 'services.'], function () {
         Route::get('/', [ServiceController::class, 'index'])->name('index');

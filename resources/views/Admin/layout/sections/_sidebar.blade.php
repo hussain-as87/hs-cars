@@ -1,7 +1,7 @@
 <nav class="sidebar">
     <div class="sidebar-header">
         <a href="{{ route('admin.home') }}" class="sidebar-brand">
-            {{ __(config('settings.website_name')) }}<span> {{ __(env('APP_NAME')) }} </span>
+            {{ __(config('settings.website_name')) }}<span> {{-- {{ __(env('APP_NAME')) }} --}} </span>
         </a>
         <div class="sidebar-toggler not-active">
             <span></span>
@@ -22,25 +22,36 @@
             @can('settings')
             <li class="nav-item">
                 <a href="{{route('settings.index')}}" class="nav-link">
-                    <i class="mdi mdi-18px  mdi-cog-outline "></i><span class="link-title">{{__('settings')}}</span>
+                    <i class="link-icon" data-feather="settings"></i>
+                    <span class="link-title">{{ __('settings') }}</span>
                 </a>
             </li>
             @endcan
-            @can('settings')
+            @can('about-list')
             <li class="nav-item">
                 <a href="{{route('about.index')}}" class="nav-link">
-                    <i class="mdi mdi-18px mdi-information-variant"></i><span class="link-title">{{__('about')}}</span>
+                    <i class="link-icon" data-feather="info"></i>
+                    <span class="link-title">{{ __('About') }}</span>
                 </a>
             </li>
             @endcan
+            @can('advert-list')
+            <li class="nav-item">
+                <a href="{{route('advert.index')}}" class="nav-link">
+                    <i class="mdi mdi-18px mdi-advertisements link-icon"></i>
+                    <span class="link-title">{{ __('advert') }}</span>
+                </a>
+            </li>
+            @endcan
+
             @can('service-list')
             <li class="nav-item">
-                <a class="nav-link" data-toggle="collapse" href="#sercive" role="button" aria-expanded="false" aria-controls="sercive">
-                    <i class="mdi mdi-18px  mdi-briefcase-outline"></i>
+                <a class="nav-link" data-toggle="collapse" href="#service" role="button" aria-expanded="false" aria-controls="service">
+                    <i class="link-icon" data-feather="users"></i>
                     <span class="link-title">{{__('services')}}</span>
                     <i class="link-arrow" data-feather="chevron-down"></i>
                 </a>
-                <div class="collapse" id="sercive">
+                <div class="collapse" id="service">
                     <ul class="nav sub-menu">
                         @can('service-list')
                         <li class="nav-item">
@@ -55,8 +66,7 @@
                     </ul>
                 </div>
             </li>
-            @endcan
-            @can('user-list')
+            @endcan @can('user-list')
             <li class="nav-item">
                 <a class="nav-link" data-toggle="collapse" href="#users" role="button" aria-expanded="false" aria-controls="icons">
                     <i class="link-icon" data-feather="users"></i>
@@ -102,6 +112,7 @@
                 </div>
             </li>
             @endcan
+
 
             <li class="nav-item nav-category">{{ __('The Tables') }}</li>
 
