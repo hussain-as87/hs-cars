@@ -115,7 +115,7 @@
                                 <h2 class="mb-0"><a href="#">{{ $car->name }}</a></h2>
                                 <div class="d-flex mb-3">
                                     <span class="cat">{{ $car->category->name }}</span>
-                                    <p class="price ml-auto">$500 <span>/day</span></p>
+                                    <p class="price ml-auto">${{ $car->pricing->in_day }} <span>/day</span></p>
                                 </div>
                                 <p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1">Book now</a> <a href="#" class="btn btn-secondary py-2 ml-1">Details</a></p>
                             </div>
@@ -135,12 +135,11 @@
             </div>
             <div class="col-md-6 wrap-about ftco-animate">
                 <div class="heading-section heading-section-white pl-md-5">
-                    <span class="subheading">About us</span>
-                    <h2 class="mb-4">Welcome to Carbook</h2>
+                    <span class="subheading">{{ __('About us') }}</span>
+                    <h2 class="mb-4">{{ __('Welcome to Carbook') }}</h2>
 
-                    <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-                    <p>On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-                    <p><a href="#" class="btn btn-primary py-3 px-4">Search Vehicle</a></p>
+                    <p>{{ $about->description }}</p>
+                    <p><a href="{{ route('home.about') }}" class="btn btn-primary py-3 px-4">{{ __('Search Vehicle') }}</a></p>
                 </div>
             </div>
         </div>
@@ -151,64 +150,39 @@
     <div class="container">
         <div class="row justify-content-center mb-5">
             <div class="col-md-7 text-center heading-section ftco-animate">
-                <span class="subheading">Services</span>
-                <h2 class="mb-3">Our Latest Services</h2>
+                <span class="subheading">{{ __('services') }}</span>
+                <h2 class="mb-3">{{ __('Our Latest Services') }}</h2>
             </div>
         </div>
         <div class="row">
+            @foreach ($services as $service)
             <div class="col-md-3">
                 <div class="services services-2 w-100 text-center">
-                    <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-wedding-car"></span></div>
+                    <div class="icon d-flex align-items-center justify-content-center"><span class="{{ $service->logo }}"></span></div>
                     <div class="text w-100">
-                        <h3 class="heading mb-2">Wedding Ceremony</h3>
-                        <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+                        <h3 class="heading mb-2">{{ $service->name }}</h3>
+                        <p>{{ Str::limit($service->description,200) }}</p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
-                <div class="services services-2 w-100 text-center">
-                    <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-transportation"></span></div>
-                    <div class="text w-100">
-                        <h3 class="heading mb-2">City Transfer</h3>
-                        <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="services services-2 w-100 text-center">
-                    <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-car"></span></div>
-                    <div class="text w-100">
-                        <h3 class="heading mb-2">Airport Transfer</h3>
-                        <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="services services-2 w-100 text-center">
-                    <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-transportation"></span></div>
-                    <div class="text w-100">
-                        <h3 class="heading mb-2">Whole City Tour</h3>
-                        <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>
 
-<section class="ftco-section ftco-intro" style="background-image: url(images/bg_3.jpg);">
+{{--  <section class="ftco-section ftco-intro" style="background-image: url(images/bg_3.jpg);">
     <div class="overlay"></div>
     <div class="container">
         <div class="row justify-content-end">
             <div class="col-md-6 heading-section heading-section-white ftco-animate">
-                <h2 class="mb-3">Do You Want To Earn With Us? So Dont Be Late.</h2>
-                <a href="#" class="btn btn-primary btn-lg">Become A Driver</a>
+                <h2 class="mb-3">{{ __('Do You Want To Earn With Us? So Dont Be Late.') }}</h2>
+                <a href="#" class="btn btn-primary btn-lg">{{ __('Become A Driver') }}</a>
             </div>
         </div>
     </div>
 </section>
-
-
+  --}}
+{{--
 <section class="ftco-section testimony-section bg-light">
     <div class="container">
         <div class="row justify-content-center mb-5">
@@ -279,9 +253,9 @@
             </div>
         </div>
     </div>
-</section>
+</section>  --}}
 
-<section class="ftco-section">
+{{--  <section class="ftco-section">
     <div class="container">
         <div class="row justify-content-center mb-5">
             <div class="col-md-7 heading-section text-center ftco-animate">
@@ -337,7 +311,7 @@
             </div>
         </div>
     </div>
-</section>
+</section>  --}}
 <section class="ftco-counter ftco-section img" id="section-counter">
     <div class="overlay"></div>
     <div class="container">
@@ -345,7 +319,7 @@
             <div class="col-md-6 col-lg-3 justify-content-center counter-wrap ftco-animate">
                 <div class="block-18">
                     <div class="text text-border d-flex align-items-center">
-                        <strong class="number" data-number="60">0</strong>
+                        <strong class="number" data-number="{{ config('settings.total_branches','60') }}">0</strong>
                         <span>Year <br>Experienced</span>
                     </div>
                 </div>
@@ -353,7 +327,7 @@
             <div class="col-md-6 col-lg-3 justify-content-center counter-wrap ftco-animate">
                 <div class="block-18">
                     <div class="text text-border d-flex align-items-center">
-                        <strong class="number" data-number="1090">0</strong>
+                        <strong class="number" data-number="{{ $cars_count }}">0</strong>
                         <span>Total <br>Cars</span>
                     </div>
                 </div>
@@ -361,7 +335,7 @@
             <div class="col-md-6 col-lg-3 justify-content-center counter-wrap ftco-animate">
                 <div class="block-18">
                     <div class="text text-border d-flex align-items-center">
-                        <strong class="number" data-number="2590">0</strong>
+                        <strong class="number" data-number="{{ $users_count }}">0</strong>
                         <span>Happy <br>Customers</span>
                     </div>
                 </div>
@@ -369,7 +343,7 @@
             <div class="col-md-6 col-lg-3 justify-content-center counter-wrap ftco-animate">
                 <div class="block-18">
                     <div class="text d-flex align-items-center">
-                        <strong class="number" data-number="67">0</strong>
+                        <strong class="number" data-number="{{ config('settings.total_branches','67') }}">0</strong>
                         <span>Total <br>Branches</span>
                     </div>
                 </div>

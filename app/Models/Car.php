@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Car extends Model
 {
-    use HasFactory, HasTranslations ,SearchableTrait;
+    use HasFactory, HasTranslations, SearchableTrait;
     public $translatable = ['name', 'description'];
 
     public $fillable = [
@@ -43,12 +43,10 @@ class Car extends Model
             'cars.luggage' => 10,
             'cars.fuel' => 10,
             'cars.id' => 10,
-        ]
-
-          ,
-          'joins' => [
-              'users' => ['cars.user_id','users.id'],
-          ],
+        ],
+        'joins' => [
+            'users' => ['cars.user_id', 'users.id'],
+        ],
     ];
 
     public function user()
@@ -59,5 +57,12 @@ class Car extends Model
     {
         return $this->belongsTo(Category::class);
     }
-
+    public function feature()
+    {
+        return $this->hasOne(CarFeatuer::class);
+    }
+    public function pricing()
+    {
+        return $this->hasOne(CarPricing::class);
+    }
 }
