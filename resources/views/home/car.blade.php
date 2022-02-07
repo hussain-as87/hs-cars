@@ -23,12 +23,12 @@
                     <div class="img rounded d-flex align-items-end" style="background-image: url({{ asset('storage/cars/'.$car->image) }});">
                     </div>
                     <div class="text">
-                        <h2 class="mb-0"><a href="car-single.html">{{ $car->name }}</a></h2>
+                        <h2 class="mb-0"><a href="{{ route('home.single.car',$car->id) }}">{{ $car->name }}</a></h2>
                         <div class="d-flex mb-3">
                             <span class="cat">{{ $car->category->name }}</span>
                             <p class="price ml-auto">${{ $car->pricing->in_day }} <span>/{{ __('day') }}</span></p>
                         </div>
-                        <p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1">{{ __('Book now') }}</a> <a href="car-single.html" class="btn btn-secondary py-2 ml-1">{{ __('details') }}</a></p>
+                        <p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1">{{ __('Book now') }}</a> <a href="{{ route('home.single.car',$car->id) }}" class="btn btn-secondary py-2 ml-1">{{ __('details') }}</a></p>
                     </div>
                 </div>
             </div>

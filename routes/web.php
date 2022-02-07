@@ -105,6 +105,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'AdminDashboard/'], function (
 
 Route::group(['middleware' => 'auth', 'prefix' => '/', 'as' => 'home.'], function () {
     Route::get('/', [CarController::class, 'index'])->name('index');
+    Route::get('/{id}', [CarController::class, 'single_car'])->name('single.car');
     Route::get('/about', [CarController::class, 'about'])->name('about');
     Route::get('/services', [CarController::class, 'service'])->name('services');
     Route::get('/pricing', [CarController::class, 'pricing'])->name('pricing');

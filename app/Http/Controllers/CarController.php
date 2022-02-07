@@ -40,8 +40,14 @@ class CarController extends Controller
     }
     public function cars()
     {
-        $cars = Car::with('pricing','category')->orderByDesc('created_at')->paginate(10);
+        $cars = Car::with('pricing', 'category')->orderByDesc('created_at')->paginate(10);
         return view('home.car', compact('cars'));
+    }
+    public function single_car($id)
+    {
+        $car = Car::with('pricing', 'category', 'feature')->where('id', $id)->first();
+        $cars = Car::with('pricing', 'category')->where('id','!=', $id)->where('category_id', $car->category_id,'id')->orderByDesc('created_at')->paginate(10);
+        return view('home.car-single', compact('car', 'cars'));
     }
     public function blog()
     {
