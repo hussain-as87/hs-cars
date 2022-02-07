@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ config('settings.locale') }}||{{ str_replace('_', '-', app()->getLocale()) }}" {{--  dir="{{ config('locales.languages')[app()->getLocale()]['rtl_support'] }}" --}}>
 <head>
     <title>@yield('title')</title>
     <meta charset="utf-8">
@@ -104,7 +104,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row" @if (config('locales.languages')[app()->getLocale()]['rtl_support'] == 'rtl') style="direction: rtl;"@endif>
                 <div class="col-md-12 text-center">
 
                     <p>

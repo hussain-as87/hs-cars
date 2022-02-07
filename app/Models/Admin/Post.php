@@ -10,7 +10,12 @@ class Post extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    protected $fillable = [
+        'description',
+        'photo',
+        'video',
+        'user_id',
+    ];
 
     public function comments()
     {

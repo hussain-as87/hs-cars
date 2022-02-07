@@ -27,7 +27,7 @@ class CarsController extends Controller
         $this->middleware('permission:car-create', ['only' => ['create', 'store']]);
         $this->middleware('permission:car-edit', ['only' => ['edit', 'update']]);
         $this->middleware('permission:car-delete', ['only' => ['destroy']]);
-    }
+    }   
     /**
      * Display a listing of the resource.
      *

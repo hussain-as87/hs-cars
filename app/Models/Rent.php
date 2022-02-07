@@ -8,7 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Rent extends Model
 {
     use HasFactory;
-    protected $gaurded = [];
+    protected $fillable = [
+        'user_id',
+        'car_id',
+        'location',
+        'drop_off_location',
+        'pik_up_time',
+        'pik_up_date',
+        'pik_off_date',
+    ];
 
     public function user()
     {

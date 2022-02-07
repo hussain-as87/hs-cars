@@ -172,7 +172,14 @@
             </li>
             @endcan
 
-
+            @can('contacts')
+            <li class="nav-item">
+                <a href="{{route('contacts.index')}}" class="nav-link">
+                    <i class="link-icon" data-feather="mail"></i>
+                    <span class="link-title">{{ __('contacts') }}</span>
+                </a>
+            </li>
+            @endcan
             {{-- <li class="nav-item nav-category">Docs</li>
             <li class="nav-item">
                 <a href="https://www.nobleui.com/html/documentation/docs.html" target="_blank" class="nav-link">

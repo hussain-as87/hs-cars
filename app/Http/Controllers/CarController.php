@@ -13,32 +13,34 @@ class CarController extends Controller
 {
     public function index()
     {
-        $cars = Car::with('feature','pricing')->orderBy('created_at','desc')->paginate(4);
+        $cars = Car::with('feature', 'pricing')->orderBy('created_at', 'desc')->paginate(4);
         $cars_count = Car::all()->count();
         $users_count = User::all()->count();
         $advert = Advert::first();
         $about = About::first();
         $services = Service::orderBy('id', 'DESC')->paginate(4);
-        return view('home\index', compact('cars','advert','about','services','cars_count','users_count'));
+        return view('home\index', compact('cars', 'advert', 'about', 'services', 'cars_count', 'users_count'));
     }
     public function about()
     {
-        $cars = Car::all();
-        return view('home.about', compact('cars'));
+        $cars_count = Car::all()->count();
+        $users_count = User::all()->count();
+        $about = About::first();
+        return view('home.about', compact('cars_count', 'users_count', 'about'));
     }
     public function service()
     {
-        $cars = Car::all();
-        return view('home.services', compact('cars'));
+        $services = Service::orderByDesc('created_at')->paginate(4);
+        return view('home.services', compact('services'));
     }
     public function pricing()
     {
-        $cars = Car::all();
+        $cars = Car::with('pricing')->orderByDesc('created_at')->paginate(6);
         return view('home.pricing', compact('cars'));
     }
     public function cars()
     {
-        $cars = Car::all();
+        $cars = Car::with('pricing','category')->orderByDesc('created_at')->paginate(10);
         return view('home.car', compact('cars'));
     }
     public function blog()

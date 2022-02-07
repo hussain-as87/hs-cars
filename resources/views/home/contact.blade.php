@@ -6,8 +6,8 @@
     <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-start">
             <div class="col-md-9 ftco-animate pb-5">
-                <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Contact <i class="ion-ios-arrow-forward"></i></span></p>
-                <h1 class="mb-3 bread">Contact Us</h1>
+                <p class="breadcrumbs"><span class="mr-2"><a href="{{ route('home.index') }}">{{ __('Home') }} <i class="ion-ios-arrow-forward"></i></a></span> <span>{{ __('contact') }} <i class="ion-ios-arrow-forward"></i></span></p>
+                <h1 class="mb-3 bread">{{ __('contact us') }}</h1>
             </div>
         </div>
     </div>
@@ -23,7 +23,7 @@
                             <div class="icon mr-3">
                                 <span class="icon-map-o"></span>
                             </div>
-                            <p><span>Address:</span> 198 West 21th Street, Suite 721 New York NY 10016</p>
+                            <p><span>{{ __('Address') }}:</span> {{ config('settings.address') }}</p>
                         </div>
                     </div>
                     <div class="col-md-12">
@@ -31,7 +31,7 @@
                             <div class="icon mr-3">
                                 <span class="icon-mobile-phone"></span>
                             </div>
-                            <p><span>Phone:</span> <a href="tel://1234567920">+ 1235 2355 98</a></p>
+                            <p><span>{{ __('phone') }}:</span> <a href="tel://{{ config('settings.webiste_phone') }}">+ {{ config('settings.webiste_phone') }}</a></p>
                         </div>
                     </div>
                     <div class="col-md-12">
@@ -39,30 +39,31 @@
                             <div class="icon mr-3">
                                 <span class="icon-envelope-o"></span>
                             </div>
-                            <p><span>Email:</span> <a href="mailto:info@yoursite.com">info@yoursite.com</a></p>
+                            <p><span>{{ __('email') }}:</span> <a href="{{ config('settings.webiste_email') }}">{{ config('settings.webiste_email') }}</a></p>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-8 block-9 mb-md-5">
-                <form action="#" class="bg-light p-5 contact-form">
+                @include('home.layout.sections.__alert')
+                <form action="{{ route('home.contacts.store') }}" method="POST"class="bg-light p-5 contact-form">
+                @csrf
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Your Name">
+                        <input type="text" class="form-control" placeholder="{{ __('enter your name') }}" name="name" value="{{ old('name') }}">
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Your Email">
+                        <input type="text" class="form-control" placeholder="{{ __('enter your email') }}" name="email" value="{{ old('email') }}">
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Subject">
+                        <input type="text" class="form-control" placeholder="{{ __('Subject') }}" name="subject" value="{{ old('subject') }}">
                     </div>
                     <div class="form-group">
-                        <textarea name="" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
+                        <textarea cols="30" rows="7" class="form-control" placeholder="{{ __('Message') }}" name="message">{{ old('message') }}</textarea>
                     </div>
                     <div class="form-group">
                         <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
                     </div>
                 </form>
-
             </div>
         </div>
         <div class="row justify-content-center">

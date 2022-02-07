@@ -117,7 +117,7 @@
                                     <span class="cat">{{ $car->category->name }}</span>
                                     <p class="price ml-auto">${{ $car->pricing->in_day }} <span>/day</span></p>
                                 </div>
-                                <p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1">Book now</a> <a href="#" class="btn btn-secondary py-2 ml-1">Details</a></p>
+                                <p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1">{{ __('Book now') }}</a> <a href="#" class="btn btn-secondary py-2 ml-1">{{ __('details') }}</a></p>
                             </div>
                         </div>
                     </div>
@@ -135,11 +135,11 @@
             </div>
             <div class="col-md-6 wrap-about ftco-animate">
                 <div class="heading-section heading-section-white pl-md-5">
-                    <span class="subheading">{{ __('About us') }}</span>
-                    <h2 class="mb-4">{{ __('Welcome to Carbook') }}</h2>
+                    <span class="subheading">{{ __('About Us') }}</span>
+                    <h2 class="mb-4">{{ __('Welcome to ').config('settings.website_name') }}</h2>
 
                     <p>{{ $about->description }}</p>
-                    <p><a href="{{ route('home.about') }}" class="btn btn-primary py-3 px-4">{{ __('Search Vehicle') }}</a></p>
+                    <p><a href="{{ route('home.cars') }}" class="btn btn-primary py-3 px-4">{{ __('Search Vehicle') }}</a></p>
                 </div>
             </div>
         </div>

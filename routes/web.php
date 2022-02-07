@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\CategoriesController;
+use App\Http\Controllers\Admin\ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,6 +58,11 @@ Route::group(['middleware' => 'auth', 'prefix' => 'AdminDashboard/'], function (
         Route::get('/', [AdvertController::class, 'index'])->name('advert.index');
         Route::get('/edit', [AdvertController::class, 'edit'])->name('advert.edit');
         Route::put('/update', [AdvertController::class, 'update'])->name('advert.update');
+    });
+
+    Route::prefix('contacts')->group(function () {
+        Route::get('/', [ContactController::class, 'index'])->name('contacts.index');
+        Route::delete('/{id}', [ContactController::class, 'destroy'])->name('contacts.destroy');
     });
 
     Route::group(['prefix' => 'services', 'as' => 'services.'], function () {
@@ -105,4 +111,5 @@ Route::group(['middleware' => 'auth', 'prefix' => '/', 'as' => 'home.'], functio
     Route::get('/cars', [CarController::class, 'cars'])->name('cars');
     Route::get('/blog', [CarController::class, 'blog'])->name('blog');
     Route::get('/contact', [CarController::class, 'contact'])->name('contact');
+    Route::post('/', [ContactController::class, 'store'])->name('contacts.store');
 });
