@@ -109,7 +109,7 @@
 
                     <p>
                         <!-- Link back to Colorlib cant be removed. Template is licensed under CC BY 3.0. -->
-                        {{ __('Copyright') }} &copy;<script>
+                         &copy;<script>
                             document.write(new Date().getFullYear());
 
                         </script> {{ __('All rights reserved | This template is made with') }} <i class="icon-heart text-danger" aria-hidden="true"></i> {{ __('by') }} <a href="https://colorlib.com" target="_blank">hussein sim</a>

@@ -28,7 +28,7 @@
                             <span class="cat">{{ $car->category->name }}</span>
                             <p class="price ml-auto">${{ $car->pricing->in_day }} <span>/{{ __('day') }}</span></p>
                         </div>
-                        <p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1">{{ __('Book now') }}</a> <a href="{{ route('home.single.car',$car->id) }}" class="btn btn-secondary py-2 ml-1">{{ __('details') }}</a></p>
+                        <p class="d-flex mb-0 d-block"><a href="{{ route('home.rent',$car->id) }}" class="btn btn-primary py-2 mr-1">{{ __('Book now') }}</a> <a href="{{ route('home.single.car',$car->id) }}" class="btn btn-secondary py-2 ml-1">{{ __('details') }}</a></p>
                     </div>
                 </div>
             </div>

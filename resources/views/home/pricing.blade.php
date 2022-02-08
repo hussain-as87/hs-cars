@@ -47,7 +47,7 @@
                                 </td>
 
                                 <td class="price">
-                                    <p class="btn-custom"><a href="#">{{ __('Rent a car') }}</a></p>
+                                    <p class="btn-custom"><a href="{{ route('home.rent',$car->id) }}">{{ __('Rent a car') }}</a></p>
                                     <div class="price-rate">
                                         <h3>
                                             <span class="num"><small class="currency">$</small> {{ $car->pricing->in_houre }}</span>
@@ -58,7 +58,7 @@
                                 </td>
 
                                 <td class="price">
-                                    <p class="btn-custom"><a href="#">{{ __('Rent a car') }}</a></p>
+                                    <p class="btn-custom"><a href="{{ route('home.rent',$car->id) }}">{{ __('Rent a car') }}</a></p>
                                     <div class="price-rate">
                                         <h3>
                                             <span class="num"><small class="currency">$</small> {{ $car->pricing->in_day }}</span>
@@ -69,7 +69,7 @@
                                 </td>
 
                                 <td class="price">
-                                    <p class="btn-custom"><a href="#">{{ __('Rent a car') }}</a></p>
+                                    <p class="btn-custom"><a href="{{ route('home.rent',$car->id) }}">{{ __('Rent a car') }}</a></p>
                                     <div class="price-rate">
                                         <h3>
                                             <span class="num"><small class="currency">$</small> {{ $car->pricing->in_month }}</span>
@@ -79,9 +79,7 @@
                                     </div>
                                 </td>
                             </tr><!-- END TR-->
-
                             @endforeach
-
                         </tbody>
                     </table>
                 </div>

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Rent;
 use App\Models\Admin\Category;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
@@ -64,5 +65,9 @@ class Car extends Model
     public function pricing()
     {
         return $this->hasOne(CarPricing::class);
+    }
+    public function rents()
+    {
+        return $this->hasMany(Rent::class);
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
 use App\Models\Contact;
 use Illuminate\Http\Request;
@@ -52,7 +52,6 @@ class ContactController extends Controller
         if (!$contact) {
             return redirect()->back()->with('error', 'You Have An Error !!');
         } else {
-            $contact->delete();
             return redirect()->back()->with('success', __('Successfully Saved !!'));
         }
     }

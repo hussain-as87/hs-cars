@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Car;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Rent extends Model
 {
@@ -15,11 +16,15 @@ class Rent extends Model
         'drop_off_location',
         'pik_up_time',
         'pik_up_date',
-        'pik_off_date',
+        'drop_off_date',
     ];
 
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+    public function car()
+    {
+        return $this->belongsTo(Car::class);
     }
 }
