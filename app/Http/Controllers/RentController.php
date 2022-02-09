@@ -41,6 +41,14 @@ class RentController extends Controller
         $data['drop_off_date'] = $request->drop_off_date;
         $data['pik_up_time'] = $request->pik_up_time;
 
+        $datetime1 = date_create($request->pik_up_date);
+        $datetime2 = date_create($request->drop_off_date);
+        $interval = date_diff($datetime1, $datetime2);
+        $total_amount = $interval->format('%a');
+        $car = Car::find($request->car_id);
+        $amount = $car->pricing->in_day * $total_amount;
+        $data['total_amount'] = $amount;
+ 
         $rent = Rent::create($data);
         if (!$rent) {
             return redirect()->back()->with('error', 'You Have An Error !!');
