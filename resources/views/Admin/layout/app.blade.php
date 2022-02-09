@@ -83,6 +83,27 @@ License: You must have a valid license purchased only from above link or https:/
             max-height: 250px;
         }
 
+        /* (A) FULL SCREEN WRAPPER */
+        .sp {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 9999;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.7);
+            transition: opacity 0.2s;
+        }
+
+        /* (B) CENTER LOADING SPINNER */
+        .sp div {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+        }
+
+        /* (C) SHOW & HIDE */
+
     </style>
 
 </head>
@@ -154,9 +175,12 @@ License: You must have a valid license purchased only from above link or https:/
                 </div>
                 @include('Admin.layout.sections.__alert')
 
-
+                <div class="sp" id="spinner-wrapper">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </div>
                 @yield('content')
-
             </div>
 
             <!-- partial:partials/_footer.html -->
@@ -165,6 +189,8 @@ License: You must have a valid license purchased only from above link or https:/
 
         </div>
     </div>
+
+
     @livewireScripts
     {{-- <script type="text/javascript">
         window.onscroll = function (ev) {
@@ -185,6 +211,7 @@ License: You must have a valid license purchased only from above link or https:/
     @stack('scripts')
     <!-- core:js -->
     <script src="{{ asset('assets/vendors/core/core.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
     <!-- endinject -->
     <!-- plugin js for this page -->
     <script src="{{ asset('assets/vendors/chartjs/Chart.min.js') }}"></script>
@@ -223,6 +250,16 @@ License: You must have a valid license purchased only from above link or https:/
     <script src="{{ asset('assets/js/file-upload.js') }}"></script>
     <script type="text/javascript">
         var scrollbarExample = new PerfectScrollbar('.perfect-scrollbar-example');
+
+    </script>
+    <script type="text/javascript">
+        let spinnerWrapper = document.querySelector('#spinner-wrapper');
+
+        window.addEventListener('load', function() {
+            // spinnerWrapper.style.display = 'none';
+            spinnerWrapper.parentElement.removeChild(spinnerWrapper);
+        });
+
     </script>
 </body>
 </html>
