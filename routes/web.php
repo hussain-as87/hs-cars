@@ -98,9 +98,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'AdminDashboard/'], function (
         Route::delete('/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
     });
 
-    /*  Route::put('comments-{comment}', [PostController::class, 'commnetUpdate'])->name('comment.update');
-    Route::delete('comments-{comment}', [PostController::class, 'commnetDestroy'])->name('comment.destroy');
- */
+   
     Route::prefix('settings')->group(function () {
         Route::get('/', [SettingController::class, 'index'])->name('settings.index');
         Route::get('/{id}', [SettingController::class, 'edit'])->name('settings.edit');

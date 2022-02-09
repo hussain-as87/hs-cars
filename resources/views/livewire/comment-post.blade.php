@@ -49,7 +49,7 @@
     @foreach($comments as $key => $com)
     <div class="d-flex justify-content-between mb-2 pb-2 border-bottom" wire:poll id="comment-{{ $com->id }}-{{ $key }}">
         <div class="d-flex align-items-center hover-pointer">
-            <img class="img-xs rounded-circle" src="@if($com->user->profile->avatar){{ asset('storage/user/avatar'.$com->user->profile->avatar) }}@else https://ui-avatars.com/api/?name={{ auth()->user()->name }}@endif" alt="" style="width:37px ; height: 37px;">
+            <img class="img-xs rounded-circle" src="@if($com->user->profile->avatar){{ asset('storage/users/avatar/'.$com->user->profile->avatar) }}@else https://ui-avatars.com/api/?name={{ auth()->user()->name }}@endif" alt="" style="width:37px ; height: 37px;">
             <div class="ml-2">
                 <p>{{ $com->user->name }}</p>
                 <p class="tx-11 text-muted"> <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-stopwatch" viewBox="0 0 16 16">

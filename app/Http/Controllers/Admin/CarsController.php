@@ -27,7 +27,7 @@ class CarsController extends Controller
         $this->middleware('permission:car-create', ['only' => ['create', 'store']]);
         $this->middleware('permission:car-edit', ['only' => ['edit', 'update']]);
         $this->middleware('permission:car-delete', ['only' => ['destroy']]);
-    }   
+    }
     /**
      * Display a listing of the resource.
      *
@@ -107,9 +107,9 @@ class CarsController extends Controller
 
             if ($car) {
                 DB::commit();
-                return redirect()->route('cars.index')->with('success', 'Car has been created !!!');
+                return redirect()->route('cars.index')->with('success', __('Successfully Saved !!'));
             } else {
-                return redirect()->route('cars.index')->with('error', 'Car has not created !!!');
+                return redirect()->route('cars.index')->with('error', 'Have Error !!');
             }
         } catch (Throwable $e) {
             DB::rollBack();
@@ -210,7 +210,7 @@ class CarsController extends Controller
 
         if ($car) {
             $car->update($data);
-            return redirect()->route('cars.index')->with('success', 'Car Has Been Updated !!!');
+            return redirect()->route('cars.index')->with('success', __('Successfully Updated !!'));
         } else {
             return redirect()->route('error-404')->with('direction', 'cars.index');
         }
@@ -228,7 +228,7 @@ class CarsController extends Controller
 
         if ($car) {
             $car->delete();
-            return redirect()->route('cars.index')->with('delete', 'Car Has Been Deleted !!!');
+            return redirect()->route('cars.index')->with('delete', __('Successfully Deleted !!'));
         } else {
             return redirect()->route('error-404')->with('direction', 'cars.index');
         }
@@ -236,8 +236,8 @@ class CarsController extends Controller
     protected function getValidation($request)
     {
         return $request->validate([
-            'name' => 'required',
-            'description' => 'required|max:500',
+            'name.*' => 'required',
+            'description.*' => 'required|max:500',
             'image' => 'required_if:image,null|file|image|mimes:png,jpg,jepg',
             'mileage' => 'required',
             'category_id' => 'required',

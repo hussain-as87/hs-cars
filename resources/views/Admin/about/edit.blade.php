@@ -36,7 +36,7 @@
                 <div id="home{{$key}}" class="container tab-pane {{ $loop->index == 0 ? 'show active' : '' }}" aria-labelledby="{{ $key }}-tab"><br>
                     <div class="form-group">
                         <label>{{ __('description') }}({{ __($val['name']) }})</label>
-                        <textarea placeholder="@error('description.' . $key){{ $message }} @enderror" name="description[{{ $key }}]" class="form-control" rows="5">
+                        <textarea placeholder="@error('description.' . $key){{ $message }} @enderror" name="description[{{ $key }}]" class="form-control @error('description.' . $key) is-invalid alert-danger @enderror" rows="5">
                  {!! old('description.' . $key, $about->getTranslation('description', $key)) ?? $about->description !!}</textarea>
                     </div>
                 </div>
@@ -45,10 +45,13 @@
                 <div class="row">
                     <div class="form-group col-md-10">
                         <label for="photo">{{ __('photo') }}</label>
-                        <input type="file" name="photo" class="form-control @error('photo') border-danger @enderror" id="photo" value="{{ old('photo') ?? $about->photo }}">
-                        @error('photo')
-                        <small class="alert-danger">{{ $message }}</small>
-                        @enderror
+                        <input type="file" name="photo" class="file-upload-default">
+                        <div class="input-group col-xs-12">
+                            <input type="text" class="form-control file-upload-info  @error('photo') is-invalid alert-danger @enderror" disabled="" placeholder="{{ __('Upload photo') }}">
+                            <span class="input-group-append">
+                                <button class="file-upload-browse btn btn-primary" type="button">{{ __('upload') }}</button>
+                            </span>
+                        </div>
                     </div>
                     <div class="col-2">
                         @if($about->photo != null)

@@ -41,7 +41,7 @@
 
                     <div class="form-group">
                         <label>{{ __('description') }}({{ __($val['name']) }})</label>
-                        <textarea placeholder="@error('description.' . $key){{ $message }} @enderror" name="description[{{ $key }}]" class="form-control" rows="5">
+                        <textarea placeholder="@error('description.' . $key){{ $message }} @enderror" name="description[{{ $key }}]" class="form-control @error('description.' . $key) is-invalid alert-danger @enderror" rows="5">
                  {!! old('description.' . $key, $advert->getTranslation('description', $key)) ?? $advert->description !!}</textarea>
                     </div>
                 </div>
@@ -50,17 +50,20 @@
                 <div class="row">
                     <div class="form-group col-md-10">
                         <label for="video">{{ __('video') }}</label>
-                        <input type="url" name="video" class="form-control @error('video') border-danger @enderror" id="image" value="{{ old('video') ?? $advert->video }}">
+                        <input type="url" name="video" class="form-control @error('video') is-invalid alert-danger @enderror" id="image" value="{{ old('video') ?? $advert->video }}">
                         @error('video')
                         <small class="alert-danger">{{ $message }}</small>
                         @enderror
                     </div>
                     <div class="form-group col-md-10">
                         <label for="photo">{{ __('image') }}</label>
-                        <input type="file" name="image" class="form-control @error('image') border-danger @enderror" id="image" value="{{ old('image') ?? $advert->image }}">
-                        @error('image')
-                        <small class="alert-danger">{{ $message }}</small>
-                        @enderror
+                         <input type="file" name="image" class="file-upload-default">
+                        <div class="input-group col-xs-12">
+                            <input type="text" class="form-control file-upload-info  @error('image') is-invalid alert-danger @enderror" disabled="" placeholder="{{ __('Upload image') }}">
+                            <span class="input-group-append">
+                                <button class="file-upload-browse btn btn-primary" type="button">{{ __('upload') }}</button>
+                            </span>
+                        </div>
                     </div>
                     <div class="col-2">
                         @if($advert->image != null)

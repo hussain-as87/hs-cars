@@ -25,7 +25,7 @@
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>{{ __('value') }}:</strong>
-                        <input type="text" name="value" id="" placeholder="{{ __('value') }}" class="form-control" value="{{ $setting->value }}">
+                        <input type="text" name="value" id="" placeholder="{{ __('value') }}" class="form-control @error('value') is-invalid alert-danger @enderror" value="{{ $setting->value }}">
                     </div>
                 </div>
 

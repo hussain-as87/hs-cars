@@ -63,7 +63,7 @@ class RoleController extends Controller
         $role->syncPermissions($request->input('permission'));
 
         return redirect()->route('roles.index')
-            ->with('success', 'Role created successfully');
+            ->with('success', __('Successfully Saved !!'));
     }
     /**
      * Display the specified resource.
@@ -130,7 +130,7 @@ class RoleController extends Controller
             $role->syncPermissions($request->input('permission'));
 
             return redirect()->route('roles.index')
-                ->with('success', 'Role updated successfully');
+                ->with('success', __('Successfully updated !!'));
         }
     }
     /**
@@ -147,7 +147,7 @@ class RoleController extends Controller
         } else {
             $role->delete();
             return redirect()->route('roles.index')
-                ->with('delete', 'Role deleted successfully');
+                ->with('delete', __('Successfully Deleted !!'));
         }
     }
 }

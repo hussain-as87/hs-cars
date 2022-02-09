@@ -34,8 +34,8 @@ class AdvertController extends Controller
     public function update(Request $request)
     {
         $request->validate([
-            'title' => 'required|max:200',
-            'description' => 'required|max:500',
+            'title.*' => 'required|max:200',
+            'description.*' => 'required|max:500',
             'photo' => 'required_if:photo,null|file|image|mimes:png,jpg,jepg',
             'video' => 'required|active_url',
         ]);
@@ -49,6 +49,6 @@ class AdvertController extends Controller
             $data['image'] = $image;
         }
         $advert->update($data);
-        return redirect()->route('advert.index')->with('success', 'advert is updated successfully');
+        return redirect()->route('advert.index')->with('success', __('Successfully Updated !!'));
     }
 }

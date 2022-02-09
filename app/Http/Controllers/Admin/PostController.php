@@ -11,10 +11,7 @@ use App\Http\Controllers\Controller;
 
 class PostController extends Controller
 {
-    protected $photo_path = "public/post/photos";
-    protected $video_path = "public/post/videos";
-    public $photo_name;
-    public $video_name;
+
 
     /**
      * Display a listing of the resource.
@@ -49,20 +46,16 @@ class PostController extends Controller
         $data['user_id'] = auth()->id();
 
         if ($request->hasFile('photo')) {
-            $this->photo_name = md5($request->photo . microtime()) . '.' . $request->photo->extension();
-            $request->photo->storeAs('posts\\photos', $this->photo_name, 'public');
-            $data['photo'] = $this->photo_name;
+            $image = ImageUpload::upload_image($request->photo, 'post/photos');
+            $data['photo'] = $image;
         }
         if ($request->hasFile('video')) {
-            $this->video_name = md5($request->video . microtime()) . '.' . $request->video->extension();
-            $request->video->storeAs('posts\\videos', $this->video_name, 'public');
-            $data['video'] = $this->video_name;
+            $video = ImageUpload::uploade_video($request->video, 'post/videos');
+            $data['video'] = $video;
         }
         $post = Post::create($data);
         if ($post) {
-            return redirect()->back()->with('success', __('Successfully Save !'));
-        } else {
-            return redirect()->back()->with('error', __('Failed To Save!'));
+            return redirect()->back()->with('success', __('Successfully Saved !!'));
         }
     }
 
@@ -107,23 +100,19 @@ class PostController extends Controller
         $data['user_id'] = auth()->id();
 
         if ($request->hasFile('photo')) {
-            $this->photo_name = md5($request->photo . microtime()) . '.' . $request->photo->extension();
-            $request->photo->storeAs('posts\\photos', $this->photo_name, 'public');
-            $data['photo'] = $this->photo_name;
+            $image = ImageUpload::upload_image($request->photo, 'post/photos');
+            $data['photo'] = $image;
         }
         if ($request->hasFile('video')) {
-            $this->video_name = md5($request->video . microtime()) . '.' . $request->video->extension();
-            $request->video->storeAs('posts\\videos', $this->video_name, 'public');
-            $data['video'] = $this->video_name;
+            $video = ImageUpload::uploade_video($request->video, 'post/videos');
+            $data['video'] = $video;
         }
         if (!$post) {
             return redirect()->route('error-404')->with('direction', 'profile.index');
         } else {
             $excec = $post->update($data);
             if ($excec) {
-                return redirect()->back()->with('success', __('Successfully Save !'));
-            } else {
-                return redirect()->back()->with('error', __('Failed To Save!'));
+                return redirect()->back()->with('success', __('Successfully Updated !!'));
             }
         }
     }
@@ -141,9 +130,7 @@ class PostController extends Controller
         } else {
             $excec = $post->delete();
             if ($excec) {
-                return redirect()->back()->with('delte', __('Successfully Delete !'));
-            } else {
-                return redirect()->back()->with('error', __('Failed To Delete!'));
+                return redirect()->back()->with('delete', __('Successfully Deleted !!'));
             }
         }
     }
@@ -151,35 +138,9 @@ class PostController extends Controller
     {
         return request()->validate([
             'description' => 'required|max:500',
-            'photo' => 'sometimes|image|mimes:jpg,jepg,png,gif|max:200000',
-            'video' => 'sometimes|mimes:mp4,mov,ogg,mkv|max:2000000'
+            'photo' => 'sometimes|file|image|mimes:jpg,jepg,png,gif',
+            'video' => 'sometimes|mimetypes:video/avi,video/mpeg,video/quicktime|max:102400'
         ]);
     }
-    public function commnetUpdate(Comment $comment, Request $request)
-    {
-        $request->validate(['description', 'required|max:300|string']);
-        if (!$comment) {
-            return redirect()->route('error-404')->with('direction', 'profile.index');
-        } else {
-            $excec = $comment->update(['description' =>$request->description]);
-            if ($excec) {
-                return redirect()->back()->with('alert-success', __('Successfully Save !'));
-            } else {
-                return redirect()->back()->with('alert-error', __('Failed To Save!'));
-            }
-        }
-    }
-    public function commnetDestroy(Comment $comment)
-    {
-        if (!$comment) {
-            return redirect()->route('error-404')->with('direction', 'profile.index');
-        } else {
-            $excec = $comment->delete();
-            if ($excec) {
-                return redirect()->back()->with('alert-success', __('Successfully Delete !'));
-            } else {
-                return redirect()->back()->with('alert-error', __('Failed To Delete!'));
-            }
-        }
-    }
+
 }

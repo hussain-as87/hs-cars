@@ -59,7 +59,7 @@ class ServiceController extends Controller
         $service = Service::create($data);
 
         return redirect()->route('services.index')
-            ->with('success', 'Service created successfully');
+            ->with('success', __('Successfully Saved !!'));
     }
 
     /**
@@ -101,7 +101,7 @@ class ServiceController extends Controller
         } else {
             $service->update($data);
             return redirect()->route('services.index')
-                ->with('success', 'Services updated successfully');
+                ->with('success', __('Successfully Updated !!'));
         }
     }
     /**
@@ -118,14 +118,14 @@ class ServiceController extends Controller
         } else {
             $service->delete();
             return redirect()->route('services.index')
-                ->with('delete', 'Service deleted successfully');
+                ->with('delete', __('Successfully Deleted !!'));
         }
     }
     protected function getValidation($request)
     {
         $request->validate([
-            'name' => 'required|unique:services,name',
-            'description' => 'required|unique:services,description',
+            'name.*' => 'required|unique:services,name',
+            'description.*' => 'required|unique:services,description',
             'logo' => 'required',
         ]);
     }

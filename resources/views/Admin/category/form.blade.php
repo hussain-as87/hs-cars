@@ -26,7 +26,7 @@
 
         <div class="form-group">
             <label>{{ __('description') }}({{ __($val['name']) }})</label>
-            <textarea placeholder="@error('description.' . $key){{ $message }} @enderror" name="description[{{ $key }}]" class="form-control" rows="5">
+            <textarea placeholder="@error('description.' . $key){{ $message }} @enderror" name="description[{{ $key }}]" class="form-control @error('description.' . $key) is-invalid alert-danger @enderror" rows="5">
                  {!! old('description.' . $key, $category->getTranslation('description', $key)) ?? $category->description !!}</textarea>
         </div>
     </div>
