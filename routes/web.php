@@ -98,7 +98,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'AdminDashboard/'], function (
         Route::delete('/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
     });
 
-   
+
     Route::prefix('settings')->group(function () {
         Route::get('/', [SettingController::class, 'index'])->name('settings.index');
         Route::get('/{id}', [SettingController::class, 'edit'])->name('settings.edit');
@@ -119,3 +119,4 @@ Route::group(['prefix' => '/', 'as' => 'home.'], function () {
     Route::get('/rent-{id}', [RentController::class, 'rent_home'])->name('rent');
     Route::post('/rent', [RentController::class, 'store'])->name('rent.store');
 });
+

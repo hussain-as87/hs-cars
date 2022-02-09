@@ -17,6 +17,7 @@ class Rent extends Model
         'pik_up_time',
         'pik_up_date',
         'drop_off_date',
+        'total_amount',
     ];
 
     public function user()
