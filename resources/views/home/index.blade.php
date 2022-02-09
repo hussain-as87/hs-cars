@@ -22,77 +22,6 @@
     </div>
 </div>
 
-<section class="ftco-section ftco-no-pt bg-light">
-    <div class="container">
-        <div class="row no-gutters">
-            <div class="col-md-12	featured-top">
-                <div class="row no-gutters">
-                    <div class="col-md-4 d-flex align-items-center">
-                        <form action="#" class="request-form ftco-animate bg-primary">
-                            <h2>Make your trip</h2>
-                            <div class="form-group">
-                                <label for="" class="label">Pick-up location</label>
-                                <input type="text" class="form-control" placeholder="City, Airport, Station, etc">
-                            </div>
-                            <div class="form-group">
-                                <label for="" class="label">Drop-off location</label>
-                                <input type="text" class="form-control" placeholder="City, Airport, Station, etc">
-                            </div>
-                            <div class="d-flex">
-                                <div class="form-group mr-2">
-                                    <label for="" class="label">Pick-up date</label>
-                                    <input type="text" class="form-control" id="book_pick_date" placeholder="Date">
-                                </div>
-                                <div class="form-group ml-2">
-                                    <label for="" class="label">Drop-off date</label>
-                                    <input type="text" class="form-control" id="book_off_date" placeholder="Date">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="" class="label">Pick-up time</label>
-                                <input type="text" class="form-control" id="time_pick" placeholder="Time">
-                            </div>
-                            <div class="form-group">
-                                <input type="submit" value="Rent A Car Now" class="btn btn-secondary py-3 px-4">
-                            </div>
-                        </form>
-                    </div>
-                    <div class="col-md-8 d-flex align-items-center">
-                        <div class="services-wrap rounded-right w-100">
-                            <h3 class="heading-section mb-4">Better Way to Rent Your Perfect Cars</h3>
-                            <div class="row d-flex mb-4">
-                                <div class="col-md-4 d-flex align-self-stretch ftco-animate">
-                                    <div class="services w-100 text-center">
-                                        <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-route"></span></div>
-                                        <div class="text w-100">
-                                            <h3 class="heading mb-2">Choose Your Pickup Location</h3>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 d-flex align-self-stretch ftco-animate">
-                                    <div class="services w-100 text-center">
-                                        <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-handshake"></span></div>
-                                        <div class="text w-100">
-                                            <h3 class="heading mb-2">Select the Best Deal</h3>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 d-flex align-self-stretch ftco-animate">
-                                    <div class="services w-100 text-center">
-                                        <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-rent"></span></div>
-                                        <div class="text w-100">
-                                            <h3 class="heading mb-2">Reserve Your Rental Car</h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <p><a href="#" class="btn btn-primary py-3 px-4">Reserve Your Perfect Car</a></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-</section>
 
 
 <section class="ftco-section ftco-no-pt bg-light">
@@ -112,12 +41,12 @@
                             <div class="img rounded d-flex align-items-end" style="background-image: url({{ asset('storage/cars/'.$car->image) }});">
                             </div>
                             <div class="text">
-                                <h2 class="mb-0"><a href="#">{{ $car->name }}</a></h2>
+                                <h2 class="mb-0"><a href="{{ route('home.single.car',$car->id) }}">{{ $car->name }}</a></h2>
                                 <div class="d-flex mb-3">
                                     <span class="cat">{{ $car->category->name }}</span>
                                     <p class="price ml-auto">${{ $car->pricing->in_day }} <span>/day</span></p>
                                 </div>
-                                <p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1">Book now</a> <a href="#" class="btn btn-secondary py-2 ml-1">Details</a></p>
+                                <p class="d-flex mb-0 d-block"><a href="{{ route('home.rent',$car->id) }}" class="btn btn-primary py-2 mr-1">{{ __('Book now') }}</a> <a href="{{ route('home.single.car',$car->id) }}" class="btn btn-secondary py-2 ml-1">{{ __('details') }}</a></p>
                             </div>
                         </div>
                     </div>
@@ -135,11 +64,11 @@
             </div>
             <div class="col-md-6 wrap-about ftco-animate">
                 <div class="heading-section heading-section-white pl-md-5">
-                    <span class="subheading">{{ __('About us') }}</span>
-                    <h2 class="mb-4">{{ __('Welcome to Carbook') }}</h2>
+                    <span class="subheading">{{ __('About Us') }}</span>
+                    <h2 class="mb-4">{{ __('Welcome to ').config('settings.website_name') }}</h2>
 
                     <p>{{ $about->description }}</p>
-                    <p><a href="{{ route('home.about') }}" class="btn btn-primary py-3 px-4">{{ __('Search Vehicle') }}</a></p>
+                    <p><a href="{{ route('home.cars') }}" class="btn btn-primary py-3 px-4">{{ __('Search Vehicle') }}</a></p>
                 </div>
             </div>
         </div>

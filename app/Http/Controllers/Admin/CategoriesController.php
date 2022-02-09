@@ -53,7 +53,7 @@ class CategoriesController extends Controller
         $category = Category::create($data);
 
         if ($category) {
-            return redirect()->route('categories.index')->with('success', 'Category Saved !!!');
+            return redirect()->route('categories.index')->with('success', __('Successfully Saved !!'));
         } else {
             return redirect()->route('error-404')->with('direction', 'categories.index');
         }
@@ -80,7 +80,7 @@ class CategoriesController extends Controller
         $cate = $category->update($data);
 
         if ($cate) {
-            return redirect()->route('categories.index')->with('success', 'Category Has Been Updated !!!');
+            return redirect()->route('categories.index')->with('success', __('Successfully Updated !!'));
         } else {
             return redirect()->route('error-404')->with('direction', 'categories.index');
         }
@@ -92,15 +92,15 @@ class CategoriesController extends Controller
             return redirect()->route('error-404')->with('direction', 'categories.index');
         } else {
             $category->delete();
-            return redirect()->route('categories.index')->with('delete', 'Category Has Been Deleted !!!');
+            return redirect()->route('categories.index')->with('delete', __('Successfully Deleted !!'));
         }
     }
 
     protected function getValidate(Request $request)
     {
         return  $request->validate([
-            'name' => 'required',
-            'description' => 'required',
+            'name.*' => 'required',
+            'description.*' => 'required',
             'logo' => 'sometimes|file|image|mimes:png,jpg,jepg'
         ]);
     }

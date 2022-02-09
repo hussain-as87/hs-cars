@@ -7,6 +7,7 @@ use App\Models\Admin\Post;
 use Illuminate\Http\Request;
 use App\Models\Admin\Profile;
 use App\Http\Controllers\Controller;
+use App\Http\ImageUpload;
 
 class ProfileController extends Controller
 {
@@ -23,7 +24,7 @@ class ProfileController extends Controller
     {
         $posts = Post::with('user.profile')->where('user_id', auth()->id())->orderBy('created_at', 'Desc')->get();
         $user = User::with('profile')->where('id', auth()->id())->first();
-        return view('Admin.profile.index',compact('posts','user'));
+        return view('Admin.profile.index', compact('posts', 'user'));
     }
 
 
@@ -53,14 +54,12 @@ class ProfileController extends Controller
         $user_data['email'] = $request->email;
         $user_data['username'] = $request->username;
         if ($request->hasFile('avatar')) {
-            $this->avatar_name = md5($request->avatar . microtime()) . '.' . $request->avatar->extension();
-            $request->avatar->storeAs('user\\avatar', $this->avatar_name, 'public');
-            $prof_data['avatar'] = $this->avatar_name;
+            $image =  ImageUpload::upload_image($request->avatar, 'users/avatar');
+            $prof_data['avatar'] = $image;
         }
         if ($request->hasFile('background_image')) {
-            $this->background_image_name = md5($request->background_image . microtime()) . '.' . $request->background_image->extension();
-            $request->background_image->storeAs('user\\background_image', $this->background_image_name, 'public');
-            $prof_data['background_image'] = $this->background_image_name;
+            $image =  ImageUpload::upload_image($request->background_image, 'users/background_image');
+            $prof_data['background_image'] = $image;
         }
         $prof_data['f_name'] = $request->f_name;
         $prof_data['l_name'] = $request->l_name;
@@ -71,35 +70,32 @@ class ProfileController extends Controller
         $prof_data['date_of_birth'] = $request->date_of_birth;
         $prof_data['about_me'] = $request->about_me;
 
-        $pro = Profile::where('user_id',\auth()->id())->first();
         $user = User::findOrFail(\auth()->id());
 
+        $pro = Profile::where('user_id', \auth()->id())->first();
+
+        $user->update($user_data);
+        $pro->update($prof_data);
         if (!$pro || !$user) {
-            return redirect()->route('error-404')->with('direction', 'profile.index');
-        } else {
-            $pro->update($prof_data);
-            $user->update($user_data);
-            if (!$pro || !$user) {
-                return redirect()->route('error-500')->with('direction', 'profile.edit');
-            }
-            return redirect()->route('profile.index');
+            return redirect()->route('error-500')->with('direction', 'profile.edit');
         }
+        return redirect()->route('profile.index')->with('success', __('Successfully Updated !!'));
     }
     protected function getValidation($request)
     {
         return $request->validate([
-            'username' => 'required|string',
+            'username' => 'required',
             'email' => 'required|email',
-            'f_name' => 'sometimes|string',
-            'l_name' => 'sometimes|string',
+            'f_name' => 'sometimes',
+            'l_name' => 'sometimes',
             'address' => 'sometimes|max:2000',
             'city' => 'sometimes',
             'country' => 'sometimes',
             'postal_code' => 'sometimes|max:20',
             'date_of_birth' => 'sometimes',
             'about_me' => 'sometimes|max:200000',
-            'avatar' => 'sometimes|file|mimes::jpg,png,jepg|max:200000',
-            'background_image' => 'sometimes|file|mimes:jpg,png,jepg|max:200000',
+            'avatar' => 'sometimes|file|mimes:jpg,png,jepg',
+            'background_image' => 'sometimes|file|mimes:jpg,png,jepg',
         ]);
     }
 }

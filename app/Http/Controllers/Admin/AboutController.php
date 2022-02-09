@@ -34,7 +34,7 @@ class AboutController extends Controller
     public function update(Request $request)
     {
         $request->validate([
-            'description' => 'required',
+            'description.*' => 'required',
             'photo' => 'required_if:photo,null|file|image|mimes:png,jpg,jepg'
         ]);
         $about = About::first();
@@ -44,6 +44,6 @@ class AboutController extends Controller
             $data['photo'] = $image;
         }
         $about->update($data);
-        return redirect()->route('about.index')->with('success', 'About is updated successfully');
+        return redirect()->route('about.index')->with('success', __('Successfully Updated !!'));
     }
 }

@@ -17,13 +17,13 @@
                             <div class="gray-shade"></div>
 
                             <figure>
-                                <img src="@if(auth()->user()->profile->background_image){{asset('storage/user/background_image/'.auth()->user()->profile->background_image)}}@else
+                                <img src="@if(auth()->user()->profile->background_image){{asset('storage/users/background_image/'.auth()->user()->profile->background_image)}}@else
                                     https://via.placeholder.com/1148x272 @endif" class="img-fluid" alt="profile cover" style="height: 250px">
                             </figure>
 
                             <div class="cover-body d-flex justify-content-between align-items-center">
                                 <div>
-                                    <button class="nobu" onclick="showSwal('custom-html')"><img class="profile-pic" src="@if( auth()->user()->profile->avatar){{asset('storage/users/avatar/'.$post->user->profile->avatar)}}
+                                    <button class="nobu" onclick="showSwal('custom-html')"><img class="profile-pic" src="@if(auth()->user()->profile->avatar){{asset('storage/users/avatar/'.auth()->user()->profile->avatar)}}
                                                                                             @else https://ui-avatars.com/api/?name={{ auth()->user()->name }}@endif" alt="profile"></button>
                                     <span class="profile-name">{{auth()->user()->name}}</span>
                                 </div>
@@ -176,10 +176,10 @@
                                 <div class="card-body">
                                     <p class="mb-3 tx-14">{{$post->description}}</p>
 
-                                    @if($post->photo != null) <img class="img-fluid" src="{{asset('storage/posts/photos/'.$post->photo)}}" alt="">@endif
+                                    @if($post->photo != null) <img class="img-fluid" src="{{asset('storage/post/photos/'.$post->photo)}}" alt="">@endif
                                     @if($post->video != null)
                                     <video class="video-fluid z-depth-1" autoplay loop controls muted>
-                                        <source src="{{ asset('storage/posts/videos/'.$post->video) }}" type="video/mp4" />
+                                        <source src="{{ asset('storage/post/videos/'.$post->video) }}" type="video/mp4" />
                                     </video>
                                     @endif
                                 </div>
@@ -221,7 +221,7 @@
                         <div class="col-md-12 grid-margin">
                             <div class="card rounded">
                                 <div class="card-body">
-                                    <h6 class="card-title">suggestions for you</h6>
+                                    <h6 class="card-title">{{ __('suggestions for you') }}</h6>
                                     <div class="d-flex justify-content-between mb-2 pb-2 border-bottom">
                                         <div class="d-flex align-items-center hover-pointer">
                                             <img class="img-xs rounded-circle" src="https://via.placeholder.com/37x37" alt="">

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ config('settings.locale') }}||{{ str_replace('_', '-', app()->getLocale()) }}" {{--  dir="{{ config('locales.languages')[app()->getLocale()]['rtl_support'] }}" --}}>
 <head>
     <title>@yield('title')</title>
     <meta charset="utf-8">
@@ -104,12 +104,12 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row" @if (config('locales.languages')[app()->getLocale()]['rtl_support'] == 'rtl') style="direction: rtl;"@endif>
                 <div class="col-md-12 text-center">
 
                     <p>
                         <!-- Link back to Colorlib cant be removed. Template is licensed under CC BY 3.0. -->
-                        {{ __('Copyright') }} &copy;<script>
+                         &copy;<script>
                             document.write(new Date().getFullYear());
 
                         </script> {{ __('All rights reserved | This template is made with') }} <i class="icon-heart text-danger" aria-hidden="true"></i> {{ __('by') }} <a href="https://colorlib.com" target="_blank">hussein sim</a>

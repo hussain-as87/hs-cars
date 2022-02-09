@@ -9,7 +9,11 @@ use Illuminate\Database\Eloquent\Model;
 class Comment extends Model
 {
     use HasFactory;
-    protected $guarded = [];
+    protected $fillable = [
+        'user_id',
+        'post_id',
+        'description',
+    ];
 
     public function post()
     {

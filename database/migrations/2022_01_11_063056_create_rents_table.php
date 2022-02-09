@@ -21,7 +21,7 @@ class CreateRentsTable extends Migration
             $table->text('drop_off_location');
             $table->text('pik_up_time');
             $table->text('pik_up_date');
-            $table->text('pik_off_date');
+            $table->text('drop_off_date');
             $table->timestamps();
         });
     }

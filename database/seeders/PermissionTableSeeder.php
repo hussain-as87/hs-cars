@@ -39,6 +39,8 @@ class PermissionTableSeeder extends Seeder
             'about-edit',
             'advert-list',
             'advert-edit',
+            'rents',
+            'contacts',
             'settings',
         ];
 

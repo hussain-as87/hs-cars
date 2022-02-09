@@ -148,7 +148,7 @@
 
             <li class="nav-item">
                 <a class="nav-link" data-toggle="collapse" href="#cars" role="button" aria-expanded="false" aria-controls="cars">
-                    <i class="mdi mdi-18px mdi-car-hatchback link-icon"></i>
+                    <i class="link-icon" data-feather="truck"></i>
                     <span class="link-title">{{__('cars')}}</span>
                     <i class="link-arrow" data-feather="chevron-down"></i>
                 </a>
@@ -172,7 +172,22 @@
             </li>
             @endcan
 
-
+            @can('contacts')
+            <li class="nav-item">
+                <a href="{{route('contacts.index')}}" class="nav-link">
+                    <i class="link-icon" data-feather="mail"></i>
+                    <span class="link-title">{{ __('contacts') }}</span>
+                </a>
+            </li>
+            @endcan
+             @can('rents')
+            <li class="nav-item">
+                <a href="{{route('rent.index')}}" class="nav-link">
+                    <i class="link-icon" data-feather="inbox"></i>
+                    <span class="link-title">{{ __('Rents') }}</span>
+                </a>
+            </li>
+            @endcan
             {{-- <li class="nav-item nav-category">Docs</li>
             <li class="nav-item">
                 <a href="https://www.nobleui.com/html/documentation/docs.html" target="_blank" class="nav-link">

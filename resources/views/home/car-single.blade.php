@@ -6,8 +6,8 @@
     <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-start">
             <div class="col-md-9 ftco-animate pb-5">
-                <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Car details <i class="ion-ios-arrow-forward"></i></span></p>
-                <h1 class="mb-3 bread">Car Details</h1>
+                <p class="breadcrumbs"><span class="mr-2"><a href="{{ route('home.index') }}">{{ __('Home') }} <i class="ion-ios-arrow-forward"></i></a></span> <span>{{ __('car details') }} <i class="ion-ios-arrow-forward"></i></span></p>
+                <h1 class="mb-3 bread">{{ __('car details') }}</h1>
             </div>
         </div>
     </div>
@@ -19,10 +19,10 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="car-details">
-                    <div class="img rounded" style="background-image: url(images/bg_1.jpg);"></div>
+                    <div class="img rounded" style="background-image: url({{ asset('storage/cars/'.$car->image) }});"></div>
                     <div class="text text-center">
-                        <span class="subheading">Cheverolet</span>
-                        <h2>Mercedes Grand Sedan</h2>
+                        <span class="subheading">{{ $car->category->name }}</span>
+                        <h2>{{ $car->name }}</h2>
                     </div>
                 </div>
             </div>
@@ -35,8 +35,8 @@
                             <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-dashboard"></span></div>
                             <div class="text">
                                 <h3 class="heading mb-0 pl-3">
-                                    Mileage
-                                    <span>40,000</span>
+                                    {{ __('mileage') }}
+                                    <span>{{ $car->mileage }}</span>
                                 </h3>
                             </div>
                         </div>
@@ -50,8 +50,8 @@
                             <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-pistons"></span></div>
                             <div class="text">
                                 <h3 class="heading mb-0 pl-3">
-                                    Transmission
-                                    <span>Manual</span>
+                                    {{ __('transmission') }}
+                                    <span>{{ $car->transmission_type }}</span>
                                 </h3>
                             </div>
                         </div>
@@ -65,8 +65,8 @@
                             <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-car-seat"></span></div>
                             <div class="text">
                                 <h3 class="heading mb-0 pl-3">
-                                    Seats
-                                    <span>5 Adults</span>
+                                    {{ __('seats') }}
+                                    <span>{{ $car->seats }}</span>
                                 </h3>
                             </div>
                         </div>
@@ -80,8 +80,8 @@
                             <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-backpack"></span></div>
                             <div class="text">
                                 <h3 class="heading mb-0 pl-3">
-                                    Luggage
-                                    <span>4 Bags</span>
+                                    {{ __('luggage') }}
+                                    <span>{{ $car->luggage }}</span>
                                 </h3>
                             </div>
                         </div>
@@ -95,8 +95,8 @@
                             <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-diesel"></span></div>
                             <div class="text">
                                 <h3 class="heading mb-0 pl-3">
-                                    Fuel
-                                    <span>Petrol</span>
+                                    {{ __('fuel') }}
+                                    <span>{{ $car->fuel }}</span>
                                 </h3>
                             </div>
                         </div>
@@ -111,13 +111,13 @@
                         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
 
                             <li class="nav-item">
-                                <a class="nav-link active" id="pills-description-tab" data-toggle="pill" href="#pills-description" role="tab" aria-controls="pills-description" aria-expanded="true">Features</a>
+                                <a class="nav-link active" id="pills-description-tab" data-toggle="pill" href="#pills-description" role="tab" aria-controls="pills-description" aria-expanded="true">{{ __('Features') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="pills-manufacturer-tab" data-toggle="pill" href="#pills-manufacturer" role="tab" aria-controls="pills-manufacturer" aria-expanded="true">Description</a>
+                                <a class="nav-link" id="pills-manufacturer-tab" data-toggle="pill" href="#pills-manufacturer" role="tab" aria-controls="pills-manufacturer" aria-expanded="true">{{ __('description') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="pills-review-tab" data-toggle="pill" href="#pills-review" role="tab" aria-controls="pills-review" aria-expanded="true">Review</a>
+                                <a class="nav-link" id="pills-review-tab" data-toggle="pill" href="#pills-review" role="tab" aria-controls="pills-review" aria-expanded="true">{{ __('Reviews') }}</a>
                             </li>
                         </ul>
                     </div>
@@ -127,37 +127,36 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <ul class="features">
-                                        <li class="check"><span class="ion-ios-checkmark"></span>Airconditions</li>
-                                        <li class="check"><span class="ion-ios-checkmark"></span>Child Seat</li>
-                                        <li class="check"><span class="ion-ios-checkmark"></span>GPS</li>
-                                        <li class="check"><span class="ion-ios-checkmark"></span>Luggage</li>
-                                        <li class="check"><span class="ion-ios-checkmark"></span>Music</li>
+                                        <li class="@if($car->feature->air_conditions == true) check @else remove @endif"><span class="ion-ios-checkmark"></span>{{ __('air_conditions') }}</li>
+                                        <li class="@if($car->feature->child_seat == true) check @else remove @endif"><span class="ion-ios-checkmark"></span>{{ __('child_seat') }}</li>
+                                        <li class="@if($car->feature->gps == true) check @else remove @endif"><span class="ion-ios-checkmark"></span>{{ __('gps') }}</li>
+                                        <li class="@if($car->feature->luggage == true) check @else remove @endif"><span class="ion-ios-checkmark"></span>{{ __('luggage') }}</li>
+                                        <li class="@if($car->feature->music == true) check @else remove @endif"><span class="ion-ios-checkmark"></span>{{ __('music') }}</li>
                                     </ul>
                                 </div>
                                 <div class="col-md-4">
                                     <ul class="features">
-                                        <li class="check"><span class="ion-ios-checkmark"></span>Seat Belt</li>
-                                        <li class="remove"><span class="ion-ios-close"></span>Sleeping Bed</li>
-                                        <li class="check"><span class="ion-ios-checkmark"></span>Water</li>
-                                        <li class="check"><span class="ion-ios-checkmark"></span>Bluetooth</li>
-                                        <li class="remove"><span class="ion-ios-close"></span>Onboard computer</li>
+                                        <li class="@if($car->feature->seat_beit == true) check @else remove @endif"><span class="ion-ios-checkmark"></span>{{ __('seat_beit') }}</li>
+                                        <li class="@if($car->feature->sleeping_bed == true) check @else remove @endif"><span class="ion-ios-close"></span>{{ __('sleeping_bed') }}</li>
+                                        <li class="@if($car->feature->water == true) check @else remove @endif"><span class="ion-ios-checkmark"></span>{{ __('water') }}</li>
+                                        <li class="@if($car->feature->bluetooth == true) check @else remove @endif"><span class="ion-ios-checkmark"></span>{{ __('bluetooth') }}</li>
+                                        <li class="@if($car->feature->onboard_computer == true) check @else remove @endif"><span class="ion-ios-close"></span>{{ __('onboard_computer') }}</li>
                                     </ul>
                                 </div>
                                 <div class="col-md-4">
                                     <ul class="features">
-                                        <li class="check"><span class="ion-ios-checkmark"></span>Audio input</li>
-                                        <li class="check"><span class="ion-ios-checkmark"></span>Long Term Trips</li>
-                                        <li class="check"><span class="ion-ios-checkmark"></span>Car Kit</li>
-                                        <li class="check"><span class="ion-ios-checkmark"></span>Remote central locking</li>
-                                        <li class="check"><span class="ion-ios-checkmark"></span>Climate control</li>
+                                        <li class="@if($car->feature->audio_input == true) check @else remove @endif"><span class="ion-ios-checkmark"></span>{{ __('audio_input') }}</li>
+                                        <li class="@if($car->feature->long_term_trips == true) check @else remove @endif"><span class="ion-ios-checkmark"></span>{{ __('long_term_trips') }}</li>
+                                        <li class="@if($car->feature->car_kit == true) check @else remove @endif"><span class="ion-ios-checkmark"></span>{{ __('car_kit') }}</li>
+                                        <li class="@if($car->feature->remote_central_locking == true) check @else remove @endif"><span class="ion-ios-checkmark"></span>{{ __('remote_central_locking') }}</li>
+                                        <li class="@if($car->feature->climate_control == true) check @else remove @endif"><span class="ion-ios-checkmark"></span>{{ __('climate_control') }}</li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
 
                         <div class="tab-pane fade" id="pills-manufacturer" role="tabpanel" aria-labelledby="pills-manufacturer-tab">
-                            <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
-                            <p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then she continued her way.</p>
+                            <p>{{ $car->description }}</p>
                         </div>
 
                         <div class="tab-pane fade" id="pills-review" role="tabpanel" aria-labelledby="pills-review-tab">
@@ -300,53 +299,28 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12 heading-section text-center ftco-animate mb-5">
-                <span class="subheading">Choose Car</span>
-                <h2 class="mb-2">Related Cars</h2>
+                <span class="subheading">{{ __('Choose Car') }}</span>
+                <h2 class="mb-2">{{ __('Related Cars') }}</h2>
             </div>
         </div>
         <div class="row">
+            @foreach($cars as $key => $car)
             <div class="col-md-4">
                 <div class="car-wrap rounded ftco-animate">
-                    <div class="img rounded d-flex align-items-end" style="background-image: url(images/car-1.jpg);">
+                    <div class="img rounded d-flex align-items-end" style="background-image: url({{ asset('storage/cars/'.$car->image) }});">
                     </div>
                     <div class="text">
-                        <h2 class="mb-0"><a href="car-single.html">Mercedes Grand Sedan</a></h2>
+                        <h2 class="mb-0"><a href="{{ route('home.single.car',$car->id) }}">{{ $car->name }}</a></h2>
                         <div class="d-flex mb-3">
-                            <span class="cat">Cheverolet</span>
-                            <p class="price ml-auto">$500 <span>/day</span></p>
+                            <span class="cat">{{ $car->category->name }}</span>
+                            <p class="price ml-auto">${{ $car->pricing->in_day }} <span>/day</span></p>
                         </div>
-                        <p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1">Book now</a> <a href="car-single.html" class="btn btn-secondary py-2 ml-1">Details</a></p>
+                        <p class="d-flex mb-0 d-block"><a href="{{ route('home.rent',$car->id) }}" class="btn btn-primary py-2 mr-1">{{ __('Book now') }}</a> <a href="{{ route('home.single.car',$car->id) }}" class="btn btn-secondary py-2 ml-1">{{ __('details') }}</a></p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="car-wrap rounded ftco-animate">
-                    <div class="img rounded d-flex align-items-end" style="background-image: url(images/car-2.jpg);">
-                    </div>
-                    <div class="text">
-                        <h2 class="mb-0"><a href="car-single.html">Range Rover</a></h2>
-                        <div class="d-flex mb-3">
-                            <span class="cat">Subaru</span>
-                            <p class="price ml-auto">$500 <span>/day</span></p>
-                        </div>
-                        <p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1">Book now</a> <a href="car-single.html" class="btn btn-secondary py-2 ml-1">Details</a></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="car-wrap rounded ftco-animate">
-                    <div class="img rounded d-flex align-items-end" style="background-image: url(images/car-3.jpg);">
-                    </div>
-                    <div class="text">
-                        <h2 class="mb-0"><a href="car-single.html">Mercedes Grand Sedan</a></h2>
-                        <div class="d-flex mb-3">
-                            <span class="cat">Cheverolet</span>
-                            <p class="price ml-auto">$500 <span>/day</span></p>
-                        </div>
-                        <p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1">Book now</a> <a href="car-single.html" class="btn btn-secondary py-2 ml-1">Details</a></p>
-                    </div>
-                </div>
-            </div>
+            @endforeach
+
         </div>
     </div>
 </section>

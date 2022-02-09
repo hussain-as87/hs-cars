@@ -208,13 +208,13 @@
             <li class="nav-item dropdown nav-profile">
                 <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-toggle="dropdown"
                    aria-haspopup="true" aria-expanded="false">
-                    <img src="@if(auth()->user()->profile->avatar){{asset('storage/user/avatar/'.auth()->user()->profile->avatar)}}
+                    <img src="@if(auth()->user()->profile->avatar){{asset('storage/users/avatar/'.auth()->user()->profile->avatar)}}
                     @else https://ui-avatars.com/api/?name={{ auth()->user()->name }}@endif" alt="profile">
                 </a>
                 <div class="dropdown-menu" aria-labelledby="profileDropdown">
                     <div class="dropdown-header d-flex flex-column align-items-center">
                         <div class="figure mb-3">
-                            <img src="@if(auth()->user()->profile->avatar){{asset('storage/user/avatar/'.auth()->user()->profile->avatar)}}
+                            <img src="@if(auth()->user()->profile->avatar){{asset('storage/users/avatar/'.auth()->user()->profile->avatar)}}
                             @else https://ui-avatars.com/api/?name={{ auth()->user()->name }}@endif" alt="">
                         </div>
                         <div class="info text-center">

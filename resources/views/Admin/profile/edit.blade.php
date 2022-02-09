@@ -9,10 +9,10 @@
 <div class="card">
     <div class="card-body">
         <div class="card text-white">
-            <img style="height: 300px" src="@if(auth()->user()->profile->background_image){{asset('storage/user/background_image/'.auth()->user()->profile->background_image)}}@else
+            <img style="height: 300px" src="@if(auth()->user()->profile->background_image){{asset('storage/users/background_image/'.auth()->user()->profile->background_image)}}@else
             https://via.placeholder.com/1148x272 @endif" class="card-img" alt="...">
             <div class="card-img-overlay">
-                <h5 class="card-title "><img style="width: 150px" src="@if(auth()->user()->profile->avatar){{asset('storage/user/avatar/'.auth()->user()->profile->avatar)}}
+                <h5 class="card-title "><img style="width: 150px" src="@if(auth()->user()->profile->avatar){{asset('storage/users/avatar/'.auth()->user()->profile->avatar)}}
                 @else https://ui-avatars.com/api/?name={{ auth()->user()->name }}@endif" class="card-img" alt="...">
                 </h5>
                 <p class="card-text"></p>
@@ -30,7 +30,13 @@
                         <div class="col-lg-4">
                             <div class="form-group">
                                 <label class="form-control-label" for="input-city">{{__('avatar')}}</label>
-                                <input type="file" name="avatar" id="input-avatar" class="form-control" placeholder="avatar" value="{{ $user->profile->avatar }}">
+                                <input type="file" name="avatar" class="file-upload-default">
+                                <div class="input-group col-xs-12">
+                                    <input type="text" class="form-control file-upload-info  @error('avatar') is-invalid alert-danger @enderror" disabled="" placeholder="{{ __('Upload avatar') }}">
+                                    <span class="input-group-append">
+                                        <button class="file-upload-browse btn btn-primary" type="button">{{ __('upload') }}</button>
+                                    </span>
+                                </div>
                             </div>
                         </div>
 
@@ -48,7 +54,13 @@
                         <div class="col-lg-8">
                             <div class="form-group">
                                 <label class="form-control-label" for="input-city">{{__('background image')}}</label>
-                                <input type="file" name="background_image" id="input-city" class="form-control" placeholder="background_image" value="{{ $user->profile->background_image }}">
+                                <input type="file" name="background_image" class="file-upload-default">
+                                <div class="input-group col-xs-12">
+                                    <input type="text" class="form-control file-upload-info  @error('background_image') is-invalid alert-danger @enderror" disabled="" placeholder="{{ __('Upload background image') }}">
+                                    <span class="input-group-append">
+                                        <button class="file-upload-browse btn btn-primary" type="button">{{ __('upload') }}</button>
+                                    </span>
+                                </div>
                             </div>
                         </div>
                     </div>

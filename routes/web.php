@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LocaleController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\RentController;
 use App\Http\Controllers\Admin\CarsController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\RoleController;
@@ -15,7 +17,6 @@ use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\CategoriesController;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -59,6 +60,16 @@ Route::group(['middleware' => 'auth', 'prefix' => 'AdminDashboard/'], function (
         Route::put('/update', [AdvertController::class, 'update'])->name('advert.update');
     });
 
+    Route::prefix('contacts')->group(function () {
+        Route::get('/', [ContactController::class, 'index'])->name('contacts.index');
+        Route::delete('/{id}', [ContactController::class, 'destroy'])->name('contacts.destroy');
+    });
+
+    Route::prefix('rent')->group(function () {
+        Route::get('/', [RentController::class, 'index'])->name('rent.index');
+        Route::delete('/{id}', [RentController::class, 'destroy'])->name('rent.destroy');
+    });
+
     Route::group(['prefix' => 'services', 'as' => 'services.'], function () {
         Route::get('/', [ServiceController::class, 'index'])->name('index');
         Route::get('/create', [ServiceController::class, 'create'])->name('create');
@@ -87,9 +98,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'AdminDashboard/'], function (
         Route::delete('/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
     });
 
-    /*  Route::put('comments-{comment}', [PostController::class, 'commnetUpdate'])->name('comment.update');
-    Route::delete('comments-{comment}', [PostController::class, 'commnetDestroy'])->name('comment.destroy');
- */
+   
     Route::prefix('settings')->group(function () {
         Route::get('/', [SettingController::class, 'index'])->name('settings.index');
         Route::get('/{id}', [SettingController::class, 'edit'])->name('settings.edit');
@@ -97,12 +106,16 @@ Route::group(['middleware' => 'auth', 'prefix' => 'AdminDashboard/'], function (
     });
 });
 
-Route::group(['middleware' => 'auth', 'prefix' => '/', 'as' => 'home.'], function () {
+Route::group(['prefix' => '/', 'as' => 'home.'], function () {
     Route::get('/', [CarController::class, 'index'])->name('index');
+    Route::get('/car-{id}', [CarController::class, 'single_car'])->name('single.car');
     Route::get('/about', [CarController::class, 'about'])->name('about');
     Route::get('/services', [CarController::class, 'service'])->name('services');
     Route::get('/pricing', [CarController::class, 'pricing'])->name('pricing');
     Route::get('/cars', [CarController::class, 'cars'])->name('cars');
     Route::get('/blog', [CarController::class, 'blog'])->name('blog');
     Route::get('/contact', [CarController::class, 'contact'])->name('contact');
+    Route::post('/contact', [ContactController::class, 'store'])->name('contacts.store');
+    Route::get('/rent-{id}', [RentController::class, 'rent_home'])->name('rent');
+    Route::post('/rent', [RentController::class, 'store'])->name('rent.store');
 });

@@ -18,21 +18,22 @@
 
         <div class="form-group">
             <label>{{ __('description') }}({{ __($val['name']) }})</label>
-            <textarea placeholder="@error('description.' . $key){{ $message }} @enderror" name="description[{{ $key }}]" class="form-control" rows="5">
+            <textarea placeholder="@error('description.' . $key){{ $message }} @enderror" name="description[{{ $key }}]" class="form-control @error('description.' . $key) is-invalid alert-danger @enderror" rows="5">
                  {!! old('description.' . $key, $service->getTranslation('description', $key)) ?? $service->description !!}</textarea>
         </div>
     </div>
     @endforeach
     {{--tab end--}}
     <div class="form-group">
-        <span class="flaticon-wedding-car"> wedding</span><br />
-        <span class="flaticon-transportation"> City</span><br />
-        <span class="flaticon-car"> Airport Transfer</span><br />
+        <span class="flaticon-wedding-car"> {{ __('wedding') }}</span><br />
+        <span class="flaticon-transportation"> {{ __('City') }}</span><br />
+        <span class="flaticon-car"> {{ __('Airport Transfer') }}</span><br />
         <label for="logo">{{ __('logo') }}</label>
-        <select id="logo" class="form-control" name="logo">
-            <option value="flaticon-wedding-car" {{ $service->logo = 'flaticon-wedding-car'?'selected':'' }}>wedding</option>
-            <option value="flaticon-car" {{ $service->logo = 'flaticon-car' ?'selected':'' }}>City</option>
-            <option value="flaticon-transportation" {{ $service->logo = 'flaticon-transportation'?'selected':'' }}>Airport Transfer</option>
+        <select id="logo" class="form-control @error('logo') is-invalid alert-danger @enderror" name="logo">
+            <option></option>
+            <option value="flaticon-wedding-car" {{ $service->logo = 'flaticon-wedding-car'?'selected':'' }}>{{ __('wedding') }}</option>
+            <option value="flaticon-car" {{ $service->logo = 'flaticon-car' ?'selected':'' }}>{{ __('City') }}</option>
+            <option value="flaticon-transportation" {{ $service->logo = 'flaticon-transportation'?'selected':'' }}>{{ __('Airport Transfer') }}</option>
         </select>
     </div>
     <br />
