@@ -30,8 +30,11 @@ License: You must have a valid license purchased only from above link or https:/
     <link rel="stylesheet" href="{{ asset('assets/css/demo_'.Session::get('them').'/style.css') }}">
     @else
     <link rel="stylesheet" href="{{ asset('assets/css/demo_'.auth()->user()->profile->them.'/style.css') }}">
-    @endisset
+    @endif
 
+    @if (config('locales.languages')[app()->getLocale()]['rtl_support'] == 'rtl')
+    <link rel="stylesheet" href="{{ asset('css/bootstrap-rtl.css') }}">
+    @endif
 
     <link rel="stylesheet" href="{{ asset('assets/vendors/sweetalert2/sweetalert2.min.css') }}">
 
