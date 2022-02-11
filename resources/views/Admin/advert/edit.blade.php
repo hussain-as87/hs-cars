@@ -48,27 +48,34 @@
                 @endforeach
                 {{--tab end--}}
                 <div class="row">
-                    <div class="form-group col-md-10">
-                        <label for="video">{{ __('video') }}</label>
+                    <label for="video">{{ __('Video') }}</label>
+                    <div class="col-md-12">
+                        @if($advert->video != null)
+                        {!! $advert->video_html !!}
+                        @endif
+                    </div>
+                    <div class="form-group col-md-12">
                         <input type="url" name="video" class="form-control @error('video') is-invalid alert-danger @enderror" id="image" value="{{ old('video') ?? $advert->video }}">
                         @error('video')
                         <small class="alert-danger">{{ $message }}</small>
                         @enderror
                     </div>
-                    <div class="form-group col-md-10">
-                        <label for="photo">{{ __('image') }}</label>
-                         <input type="file" name="image" class="file-upload-default">
+                </div>
+                <div class="row">
+                    <label for="photo">{{ __('image') }}</label>
+                    <div class="col-md-12">
+                        @if($advert->image != null)
+                        <img style="width:50%" src="{{ asset('storage/advert/'.$advert->image) }}" />
+                        @endif
+                    </div>
+                    <div class="form-group col-md-12">
+                        <input type="file" name="image" class="file-upload-default @error('image') is-invalid alert-danger @enderror">
                         <div class="input-group col-xs-12">
-                            <input type="text" class="form-control file-upload-info  @error('image') is-invalid alert-danger @enderror" disabled="" placeholder="{{ __('Upload image') }}">
+                            <input type="text" class="form-control file-upload-info  " disabled="" placeholder="{{ __('Upload image') }}">
                             <span class="input-group-append">
                                 <button class="file-upload-browse btn btn-primary" type="button">{{ __('upload') }}</button>
                             </span>
                         </div>
-                    </div>
-                    <div class="col-2">
-                        @if($advert->image != null)
-                        <img class="w-100" src="{{ asset('storage/advert/'.$advert->image) }}" />
-                        @endif
                     </div>
                 </div>
 

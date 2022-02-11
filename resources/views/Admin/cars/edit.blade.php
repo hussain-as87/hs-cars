@@ -49,7 +49,7 @@
 
                     <div class="form-group">
                         <label>{{ __('description') }}({{ __($val['name']) }})</label>
-                        <textarea placeholder="@error('description.' . $key){{ $message }} @enderror" name="description[{{ $key }}]" class="form-control" rows="5">
+                        <textarea placeholder="@error('description.' . $key){{ $message }} @enderror" name="description[{{ $key }}]" class="form-control @error('description.'.$key) is-invalid alert-danger @enderror" rows="5">
                  {!! old('description.' . $key, $car->getTranslation('description', $key)) ?? $car->description !!}</textarea>
                     </div>
                 </div>
@@ -58,66 +58,66 @@
 
                 <div class="form-group">
                     <label>{{__('image')}}</label>
-                    <input type="file" name="image" class="file-upload-default">
+                    <input type="file" name="image" class="file-upload-default @error('image') is-invalid alert-danger @enderror">
                     <div class="input-group col-xs-12">
-                        <input type="text" class="form-control file-upload-info  @error('image') is-invalid alert-danger @enderror" disabled="" placeholder="Upload Image">
+                        <input type="text" class="form-control file-upload-info" disabled="" placeholder="{{ __('Upload image') }}">
                         <span class="input-group-append">
-                            <button class="file-upload-browse btn btn-primary" type="button">{{ __('Upload') }}</button>
+                            <button class="file-upload-browse btn btn-primary" type="button">{{ __('upload') }}</button>
                         </span>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="mileage">{{__('mileage')}}</label>
                     <select id="mileage" name="mileage" class="form-control @error('mileage') is-invalid alert-danger @enderror">
-                        <option value="10.000">10.000</option>
-                        <option value="20.000">20.000</option>
-                        <option value="30.000">30.000</option>
-                        <option value="40.000">40.000</option>
-                        <option value="50.000">50.000</option>
+                        <option value="10.000" {{ $car->mileage == '10.000' ? 'selected' : '' }}>10.000</option>
+                        <option value="20.000" {{ $car->mileage == '20.000' ? 'selected' : '' }}>20.000</option>
+                        <option value="30.000" {{ $car->mileage == '30.000' ? 'selected' : '' }}>30.000</option>
+                        <option value="40.000" {{ $car->mileage == '40.000' ? 'selected' : '' }}>40.000</option>
+                        <option value="50.000" {{ $car->mileage == '50.000' ? 'selected' : '' }}>50.000</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="transmission_type">{{__('transmission_type')}}</label>
                     <select id="transmission_type" name="transmission_type" class="form-control @error('transmission_type') is-invalid alert-danger @enderror">
-                        <option>{{ __('Manual transmission') }}</option>
-                        <option>{{ __('Automatic transmission') }}</option>
-                        <option>{{ __('Continuously variable transmission (CVT)') }}</option>
-                        <option>{{ __('Semi-automatic and dual-clutch transmissions') }}</option>
+                        <option value="Manual transmission" {{ $car->transmission_type == 'Manual transmission' ? 'selected' : ''}}>{{ __('Manual transmission') }}</option>
+                        <option value="Automatic transmission" {{ $car->transmission_type == 'Automatic transmission' ? 'selected' : ''}}>{{ __('Automatic transmission') }}</option>
+                        <option value="Continuously variable transmission(CVT)" {{ $car->transmission_type == 'Continuously variable transmission (CVT)' ? 'selected' : ''}}>{{ __('Continuously variable transmission (CVT)') }}</option>
+                        <option value="Semi-automatic and dual-clutch transmissions" {{ $car->transmission_type == 'Semi-automatic and dual-clutch transmissions' ? 'selected' : ''}}>{{ __('Semi-automatic and dual-clutch transmissions') }}</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="seats">{{__('seats')}}</label>
                     <select id="seats" name="seats" class="form-control @error('seats') is-invalid alert-danger @enderror">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
+                        <option value="1" {{ $car->seats == '1'? 'selected' : '' }}>1</option>
+                        <option value="2" {{ $car->seats == '2'? 'selected' : '' }}>2</option>
+                        <option value="3" {{ $car->seats == '3'? 'selected' : '' }}>3</option>
+                        <option value="4" {{ $car->seats == '4'? 'selected' : '' }}>4</option>
+                        <option value="5" {{ $car->seats == '5'? 'selected' : '' }}>5</option>
+                        <option value="6" {{ $car->seats == '6'? 'selected' : '' }}>6</option>
+                        <option value="7" {{ $car->seats == '7'? 'selected' : '' }}>7</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="luggage">{{__('luggage')}}</label>
                     <select id="luggage" name="luggage" class="form-control @error('luggage') is-invalid alert-danger @enderror">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
+                        <option value="1" {{ $car->luggage == '1' ? 'selectd' : '' }}>1</option>
+                        <option value="2" {{ $car->luggage == '2' ? 'selectd' : '' }}>2</option>
+                        <option value="3" {{ $car->luggage == '3' ? 'selectd' : '' }}>3</option>
+                        <option value="4" {{ $car->luggage == '4' ? 'selectd' : '' }}>4</option>
+                        <option value="5" {{ $car->luggage == '5' ? 'selectd' : '' }}>5</option>
+                        <option value="6" {{ $car->luggage == '6' ? 'selectd' : '' }}>6</option>
+                        <option value="7" {{ $car->luggage == '7' ? 'selectd' : '' }}>7</option>
+                        <option value="8" {{ $car->luggage == '8' ? 'selectd' : '' }}>8</option>
+                        <option value="9" {{ $car->luggage == '9' ? 'selectd' : '' }}>9</option>
+                        <option value="10" {{ $car->luggage == '10' ? 'selectd' : '' }}>10</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="fuel">{{__('fuel')}}</label>
                     <select id="fuel" name="fuel" class="form-control @error('fuel') is-invalid alert-danger @enderror">
-                        <option value="Petrol">{{ __('Petrol') }}</option>
-                        <option value="Diesel">{{ __('Diesel') }}</option>
-                        <option value="Alternative Fuels">{{ __('Alternative Fuels') }}</option>
+                        <option value="Petrol" {{ $car->fuel == 'Petrol' ? 'selectd' : '' }}>{{ __('Petrol') }}</option>
+                        <option value="Diesel" {{ $car->fuel == 'Diesel' ? 'selectd' : '' }}>{{ __('Diesel') }}</option>
+                        <option value="Alternative Fuels" {{ $car->fuel == 'Alternative Fuels' ? 'selectd' : '' }}>{{ __('Alternative Fuels') }}</option>
                     </select>
                 </div>
                 <div class="form-group">

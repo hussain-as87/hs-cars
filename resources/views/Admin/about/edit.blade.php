@@ -44,10 +44,10 @@
                 {{--tab end--}}
                 <div class="row">
                     <div class="form-group col-md-10">
-                        <label for="photo">{{ __('photo') }}</label>
-                        <input type="file" name="photo" class="file-upload-default">
+                        <label for="photo">{{ __('image') }}</label>
+                        <input type="file" name="photo" class="file-upload-default @error('photo') is-invalid alert-danger @enderror">
                         <div class="input-group col-xs-12">
-                            <input type="text" class="form-control file-upload-info  @error('photo') is-invalid alert-danger @enderror" disabled="" placeholder="{{ __('Upload photo') }}">
+                            <input type="text" class="form-control file-upload-info  " disabled="" placeholder="{{ __('Upload image') }}">
                             <span class="input-group-append">
                                 <button class="file-upload-browse btn btn-primary" type="button">{{ __('upload') }}</button>
                             </span>

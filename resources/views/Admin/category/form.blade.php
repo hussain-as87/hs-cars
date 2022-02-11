@@ -35,9 +35,9 @@
 
     <div class="form-group">
         <label>{{__('logo')}}</label>
-        <input type="file" name="logo" class="file-upload-default">
+        <input type="file" name="logo" class="file-upload-default @error('logo') is-invalid alert-danger @enderror">
         <div class="input-group col-xs-12">
-            <input type="text" class="form-control file-upload-info  @error('logo') is-invalid alert-danger @enderror" disabled="" placeholder="{{ __('Upload logo') }}">
+            <input type="text" class="form-control file-upload-info" disabled="" placeholder="{{ __('Upload logo') }}">
             <span class="input-group-append">
                 <button class="file-upload-browse btn btn-primary" type="button">{{ __('upload') }}</button>
             </span>

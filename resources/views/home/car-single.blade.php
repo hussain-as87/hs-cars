@@ -50,8 +50,8 @@
                             <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-pistons"></span></div>
                             <div class="text">
                                 <h3 class="heading mb-0 pl-3">
-                                    {{ __('transmission') }}
-                                    <span>{{ $car->transmission_type }}</span>
+                                    {{ __('transmission_type') }}
+                                    <span>{{ __($car->transmission_type) }}</span>
                                 </h3>
                             </div>
                         </div>
@@ -96,7 +96,7 @@
                             <div class="text">
                                 <h3 class="heading mb-0 pl-3">
                                     {{ __('fuel') }}
-                                    <span>{{ $car->fuel }}</span>
+                                    <span>{{ __($car->fuel) }}</span>
                                 </h3>
                             </div>
                         </div>

@@ -2,7 +2,16 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Database\Seeder;
+use Database\Seeders\AboutSeeder;
+use Database\Seeders\AdvertSeeder;
+use Database\Seeders\ServicesSeeder;
+use Database\Seeders\SettingsSeeder;
+use Database\Seeders\CreateCarSeeder;
+use Database\Seeders\CreateCategorySeeder;
+use Database\Seeders\CreateAdminUserSeeder;
+use Database\Seeders\PermissionTableSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -20,5 +29,7 @@ class DatabaseSeeder extends Seeder
         $this->call(AdvertSeeder::class);
         $this->call(ServicesSeeder::class);
         $this->call(SettingsSeeder::class);
+        $this->call(CreateCategorySeeder::class);
+        $this->call(CreateCarSeeder::class);
     }
 }

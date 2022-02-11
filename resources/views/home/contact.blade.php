@@ -45,9 +45,8 @@
                 </div>
             </div>
             <div class="col-md-8 block-9 mb-md-5">
-                @include('home.layout.sections.__alert')
-                <form action="{{ route('home.contacts.store') }}" method="POST"class="bg-light p-5 contact-form">
-                @csrf
+                <form action="{{ route('home.contacts.store') }}" method="POST" class="bg-light p-5 contact-form">
+                    @csrf
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="{{ __('enter your name') }}" name="name" value="{{ old('name') }}">
                     </div>
@@ -73,5 +72,4 @@
         </div>
     </div>
 </section>
-
 @endsection

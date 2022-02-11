@@ -19,7 +19,7 @@
             <br />
             <div class="row col-12">
                 <div class="embed-responsive embed-responsive-16by9">
-                    <iframe class="embed-responsive-item" src="{{ $advert->video }}" allowfullscreen></iframe>
+                    {!! $advert->video_html !!}
                 </div>
             </div>
         </div>

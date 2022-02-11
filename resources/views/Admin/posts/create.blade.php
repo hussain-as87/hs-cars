@@ -22,12 +22,12 @@
                     </div>
                     <div class="form-group mb-0 row">
                         <div class="col-lg-3">
-                            <label for="photo" class="col-form-label">{{__('photos')}}</label>
+                            <label for="photo" class="col-form-label">{{__('image')}}</label>
                         </div>
                         <div class="col-lg-8">
-                            <input type="file" name="photo" class="file-upload-default">
+                            <input type="file" name="photo" class="file-upload-default @error('photo') is-invalid alert-danger @enderror">
                             <div class="input-group col-xs-12">
-                                <input type="text" class="form-control file-upload-info  @error('photo') is-invalid alert-danger @enderror" disabled="" placeholder="{{ __('Upload photo') }}">
+                                <input type="text" class="form-control file-upload-info  " disabled="" placeholder="{{ __('Upload image') }}">
                                 <span class="input-group-append">
                                     <button class="file-upload-browse btn btn-primary" type="button">{{ __('upload') }}</button>
                                 </span>
@@ -40,9 +40,9 @@
                             <label for="video" class="col-form-label">{{__('VIDEO')}}</label>
                         </div>
                         <div class="col-lg-8">
-                            <input type="file" name="video" class="file-upload-default">
+                            <input type="file" name="video" class="file-upload-default @error('video') is-invalid alert-danger @enderror">
                             <div class="input-group col-xs-12">
-                                <input type="text" class="form-control file-upload-info  @error('video') is-invalid alert-danger @enderror" disabled="" placeholder="{{ __('Upload video') }}">
+                                <input type="text" class="form-control file-upload-info" disabled="" placeholder="{{ __('Upload video') }}">
                                 <span class="input-group-append">
                                     <button class="file-upload-browse btn btn-primary" type="button">{{ __('upload') }}</button>
                                 </span>

@@ -206,7 +206,7 @@ class CarsController extends Controller
         $details_data['car_kit'] = $request->car_kit;
         $details_data['remote_central_locking'] = $request->remote_central_locking;
         $details_data['climate_control'] = $request->climate_control;
-        $car->features()->update($details_data);
+        $car->feature()->update($details_data);
 
         if ($car) {
             $car->update($data);
