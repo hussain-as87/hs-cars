@@ -22,26 +22,41 @@
                             <h2>{{ __('Make your trip') }}</h2>
                             <div class="form-group">
                                 <label for="" class="label">{{ __('Pick-up location') }}</label>
-                                <input type="text" name="location" class="form-control" placeholder="{{ __('City, Airport, Station, etc') }}">
+                                <input type="text" name="location" value="{{ old('location') }}" class="form-control" placeholder="{{ __('City, Airport, Station, etc') }}">
+                                @error('location')
+                                <small style="color:red">{{ $message }}</small>
+                                @enderror
                             </div>
                             <input type="hidden" name="car_id" value="{{$car->id}}" />
                             <div class="form-group">
                                 <label for="" class="label">{{ __('Drop-off location') }}</label>
-                                <input type="text" name="drop_off_location" class="form-control" placeholder="{{ __('City, Airport, Station, etc') }}">
+                                <input type="text" name="drop_off_location" value="{{ old('drop_off_location') }}" class="form-control" placeholder="{{ __('City, Airport, Station, etc') }}">
+                                @error('drop_off_location')
+                                <small style="color:red">{{ $message }}</small>
+                                @enderror
                             </div>
                             <div class="d-flex">
                                 <div class="form-group mr-2">
                                     <label for="" class="label">{{ __('Pick-up date') }}</label>
-                                    <input type="text" name="pik_up_date" class="form-control" id="book_pick_date" placeholder="{{ __('Date') }}">
+                                    <input type="text" name="pik_up_date" value="{{ old('pik_up_date') }}" class="form-control" id="book_pick_date" placeholder="{{ __('Date') }}">
+                                    @error('pik_up_date')
+                                    <small style="color:red">{{ $message }}</small>
+                                    @enderror
                                 </div>
                                 <div class="form-group ml-2">
                                     <label for="" class="label">{{ __('Drop-off date') }}</label>
-                                    <input type="text" name="drop_off_date" class="form-control" id="book_off_date" placeholder="{{ __('Date') }}">
+                                    <input type="text" name="drop_off_date" value="{{ old('drop_off_date') }}" class="form-control" id="book_off_date" placeholder="{{ __('Date') }}">
+                                    @error('drop_off_date')
+                                    <small style="color:red">{{ $message }}</small>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="" class="label">{{ __('Pick-up time') }}</label>
-                                <input type="text" name="pik_up_time" class="form-control" id="time_pick" placeholder="{{ __('Time') }}">
+                                <input type="text" name="pik_up_time" value="{{ old('pik_up_time') }}" class="form-control" id="time_pick" placeholder="{{ __('Time') }}">
+                                @error('pik_up_time')
+                                <small style="color:red">{{ $message }}</small>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <input type="submit" value="{{ __('Rent A Car Now') }}" class="btn btn-secondary py-3 px-4">
