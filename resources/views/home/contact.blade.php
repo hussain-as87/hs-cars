@@ -49,15 +49,27 @@
                     @csrf
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="{{ __('enter your name') }}" name="name" value="{{ old('name') }}">
+                        @error('name')
+                        <small style="color:red">{{ $message }}</small>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="{{ __('enter your email') }}" name="email" value="{{ old('email') }}">
+                        @error('email')
+                        <small style="color:red">{{ $message }}</small>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="{{ __('Subject') }}" name="subject" value="{{ old('subject') }}">
+                        @error('subject')
+                        <small style="color:red">{{ $message }}</small>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <textarea cols="30" rows="7" class="form-control" placeholder="{{ __('Message') }}" name="message">{{ old('message') }}</textarea>
+                        @error('message')
+                        <small style="color:red">{{ $message }}</small>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
