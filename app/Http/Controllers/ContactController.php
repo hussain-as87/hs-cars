@@ -25,7 +25,7 @@ class ContactController extends Controller
     public function index()
     {
         $contacts = Contact::orderBy('created_at', 'desc')->paginate(15);
-        return view('admin.contact.index', compact('contacts'));
+        return view('admin.contacts.index', compact('contacts'));
     }
 
     /**
@@ -48,12 +48,8 @@ class ContactController extends Controller
         $data['message'] = $request->message;
 
         $contact = Contact::create($data);
-
-        if (!$contact) {
-            return redirect()->back()->with('error', 'You Have An Error !!');
-        } else {
-            return redirect()->back()->with('success', __('Successfully Saved !!'));
-        }
+        toastr()->success(__('Successfully Saved !!'));
+        return redirect()->back();
     }
 
 

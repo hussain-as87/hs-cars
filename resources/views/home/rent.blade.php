@@ -13,7 +13,6 @@
 </section>
 <section class="ftco-section ftco-no-pt bg-light">
     <div class="container">
-        @include('home.layout.sections.__alert')
         <div class="row no-gutters">
             <div class="col-md-12	featured-top">
                 <div class="row no-gutters">

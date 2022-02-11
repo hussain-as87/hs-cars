@@ -176,6 +176,8 @@ return [
         App\Providers\RouteServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         App\Providers\SettingServiceProvider::class,
+        Yoeunes\Toastr\ToastrServiceProvider::class,
+        Cohensive\Embed\EmbedServiceProvider::class,
 
     ],
 
@@ -230,6 +232,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Embed' => Cohensive\Embed\Facades\Embed::class,
 
     ],
 

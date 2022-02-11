@@ -6,6 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
+        "cohensive/embed": "^5.5",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.75",
@@ -17,7 +18,8 @@
         "nicolaslopezj/searchable": "^1.13",
         "rappasoft/laravel-livewire-tables": "^1.20",
         "spatie/laravel-permission": "^5.1",
-        "spatie/laravel-translatable": "^5.0"
+        "spatie/laravel-translatable": "^5.0",
+        "yoeunes/toastr": "^1.2"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

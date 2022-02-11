@@ -15,8 +15,8 @@
                         <th>{{ __('id') }}</th>
                         <th>{{ __('name') }}</th>
                         <th>{{ __('email') }}</th>
-                        <th>{{ __('subject') }}</th>
-                        <th>{{ __('message') }}</th>
+                        <th>{{ __('Subject') }}</th>
+                        <th>{{ __('Message') }}</th>
                         <th>{{ __('created at') }}</th>
                         <th>{{ __('actions') }}</th>
                     </tr>
@@ -26,11 +26,12 @@
                     <tr class="">
                         <td>{{ $contact->id }}</td>
                         <td>{{ $contact->name }}</td>
+                        <td>{{ $contact->email }}</td>
                         <td>{{ $contact->subject }}</td>
                         <td>{{ Str::limit($contact->message , 250) }}</td>
                         <td>{{ $contact->created_at->diffForHumans() }}</td>
                         <td>
-                            @can('contact-delete')
+                            @can('contacts')
                             <a href="" class="btn btn-danger">
                                 <form action="{{ route('contacts.destroy',$contact->id) }}" method="post">
                                     @csrf
@@ -44,10 +45,8 @@
                     </tr>
                     @endforeach
                 </tbody>
-            </table>{!! $roles->render() !!}
+            </table>{{ $contacts->links() }}
         </div>
     </div>
 </div>
-
-
 @endsection

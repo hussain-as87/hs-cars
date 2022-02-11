@@ -25,12 +25,16 @@
     <link rel="stylesheet" href="{{ asset('css/flaticon.css') }}">
     <link rel="stylesheet" href="{{ asset('css/icomoon.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    @toastr_css
+
+{{--      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  --}}
 </head>
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
         <div class="container">
-            <a class="navbar-brand" href="index.html">{{ config('settings.website_name') }}<span></span></a>
+            <a class="navbar-brand" href="{{ route('home.index') }}">{{ config('settings.website_name') }}<span></span></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="oi oi-menu"></span> {{ __('Menu') }}
             </button>
@@ -49,7 +53,6 @@
         </div>
     </nav>
     <!-- END nav -->
-
 
     @yield('content')
 
@@ -109,7 +112,7 @@
 
                     <p>
                         <!-- Link back to Colorlib cant be removed. Template is licensed under CC BY 3.0. -->
-                         &copy;<script>
+                        &copy;<script>
                             document.write(new Date().getFullYear());
 
                         </script> {{ __('All rights reserved | This template is made with') }} <i class="icon-heart text-danger" aria-hidden="true"></i> {{ __('by') }} <a href="https://colorlib.com" target="_blank">hussein sim</a>
@@ -127,7 +130,9 @@
             <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
             <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg></div>
 
-
+    @jquery
+    @toastr_js
+    @toastr_render
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/jquery-migrate-3.0.1.min.js') }}"></script>
     <script src="{{ asset('js/popper.min.js') }}"></script>

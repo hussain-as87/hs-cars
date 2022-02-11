@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use toastr;
 use App\Models\Car;
 use App\Models\Rent;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class RentController extends Controller
 {
@@ -21,7 +23,8 @@ class RentController extends Controller
     }
     public function index()
     {
-        return view('Admin.rents.index');
+        $rents= Rent::orderByDesc('created_at')->paginate(10);
+        return view('Admin.rents.index',compact('rents'));
     }
     public function store(Request $request)
     {
@@ -30,7 +33,7 @@ class RentController extends Controller
             'car_id' => 'required',
             'drop_off_location' => 'required',
             'pik_up_date' => 'required|date',
-            'drop_off_date' => 'required|date',
+            'drop_off_date' => 'required|date|after:pik_up_date',
             'pik_up_time' => 'required'
         ]);
         $data['location'] = $request->location;
@@ -48,13 +51,10 @@ class RentController extends Controller
         $car = Car::find($request->car_id);
         $amount = $car->pricing->in_day * $total_amount;
         $data['total_amount'] = $amount;
- 
+
         $rent = Rent::create($data);
-        if (!$rent) {
-            return redirect()->back()->with('error', 'You Have An Error !!');
-        } else {
-            return redirect()->back()->with('success', __('Successfully Saved !!'));
-        }
+        toastr()->success(__('Successfully Saved !!'));
+        return redirect()->back();
     }
     public function destroy($id)
     {
