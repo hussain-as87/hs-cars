@@ -17,8 +17,10 @@
     <!-- Layout styles -->
     @if(Session::get('them'))
     <link rel="stylesheet" href="{{ asset('assets/css/demo_'.Session::get('them').'/style.css') }}">
-    @else
+    @elseif(config('settings.them') == 'dark')
     <link rel="stylesheet" href="{{ asset('assets/css/demo_2/style.css') }}">
+    @elseif(config('settings.them') == 'light')
+    <link rel="stylesheet" href="{{ asset('assets/css/demo_1/style.css') }}">
     @endif
     <!-- End layout styles -->
     <link rel="shortcut icon" href="{{asset('assets/images/favicon.png')}}" />
