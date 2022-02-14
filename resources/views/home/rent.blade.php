@@ -59,6 +59,21 @@
                                 @enderror
                             </div>
                             <div class="form-group">
+                                <label style="color:white">{{ __('payment type') }}</label>
+                                <div class="form-check">
+                                    <input class="form-check-input @error('pay_type') is-invalid alert-danger @enderror" type="radio" name="pay_type" id="exampleRadios1" value="1" {{ old('pay_type') ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="exampleRadios1">
+                                        <img src="{{ asset('images/paypal (2).png') }}"/></span>
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input @error('pay_type') is-invalid alert-danger @enderror" type="radio" name="pay_type" id="exampleRadios2" value="0" {{ old('pay_type') ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="exampleRadios2" style="color:white">
+                                        {{ __('Pay Later') }}
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
                                 <input type="submit" value="{{ __('Rent A Car Now') }}" class="btn btn-secondary py-3 px-4">
                             </div>
                         </form>

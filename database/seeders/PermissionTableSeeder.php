@@ -40,6 +40,7 @@ class PermissionTableSeeder extends Seeder
             'advert-list',
             'advert-edit',
             'rents',
+            'rents-delete',
             'contacts',
             'settings',
         ];

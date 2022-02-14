@@ -20,7 +20,7 @@ class CreateCategorySeeder extends Seeder
           The Jeep hit the scene in November 1940, just before the USA entered WWII.  They were widely used throughout the war and subsequent wars due to their ability to travel on all kinds of terrain.', 'ar' => 'جيب مثل كلينيكس.
            إنه نموذج منتج أصبح مرادفًا لخط إنتاج كامل. تم تصميم وبناء جيب ، كنموذج ، بواسطة شركة فيات كرايسلر للسيارات.
            ظهرت السيارة الجيب في المشهد في نوفمبر 1940 ، قبل دخول الولايات المتحدة الحرب العالمية الثانية مباشرة. تم استخدامها على نطاق واسع طوال الحرب والحروب اللاحقة بسبب قدرتها على السفر في جميع أنواع التضاريس.'];
-        $data['logo'] = '#';
+        $data['logo'] = '1644562339.jpg';
         $data['user_id'] = 1;
         Category::create($data);
 
@@ -30,7 +30,7 @@ class CreateCategorySeeder extends Seeder
           The Jeep hit the scene in November 1940, just before the USA entered WWII.  They were widely used throughout the war and subsequent wars due to their ability to travel on all kinds of terrain.', 'ar' => 'جيب مثل كلينيكس.
            إنه نموذج منتج أصبح مرادفًا لخط إنتاج كامل. تم تصميم وبناء جيب ، كنموذج ، بواسطة شركة فيات كرايسلر للسيارات.
            ظهرت السيارة الجيب في المشهد في نوفمبر 1940 ، قبل دخول الولايات المتحدة الحرب العالمية الثانية مباشرة. تم استخدامها على نطاق واسع طوال الحرب والحروب اللاحقة بسبب قدرتها على السفر في جميع أنواع التضاريس.'];
-        $data1['logo'] = '#';
+        $data1['logo'] = '1644562339.jpg';
         $data1['user_id'] = 1;
         Category::create($data1);
 
@@ -40,7 +40,7 @@ class CreateCategorySeeder extends Seeder
           The Jeep hit the scene in November 1940, just before the USA entered WWII.  They were widely used throughout the war and subsequent wars due to their ability to travel on all kinds of terrain.', 'ar' => 'جيب مثل كلينيكس.
            إنه نموذج منتج أصبح مرادفًا لخط إنتاج كامل. تم تصميم وبناء جيب ، كنموذج ، بواسطة شركة فيات كرايسلر للسيارات.
            ظهرت السيارة الجيب في المشهد في نوفمبر 1940 ، قبل دخول الولايات المتحدة الحرب العالمية الثانية مباشرة. تم استخدامها على نطاق واسع طوال الحرب والحروب اللاحقة بسبب قدرتها على السفر في جميع أنواع التضاريس.'];
-        $data2['logo'] = '#';
+        $data2['logo'] = '1644562339.jpg';
         $data2['user_id'] = 1;
         Category::create($data2);
 
@@ -50,7 +50,7 @@ class CreateCategorySeeder extends Seeder
           The automakers first electric car debuted in 2020 ', 'ar' => 'تشتعل بورش في عام 2022
           ، مع مجموعة ضخمة من السيارات الرياضية المثيرة ، وسيارات الدفع الرباعي ، والسيارات الكهربائية (EVs).
            ظهرت أول سيارة كهربائية لصانع السيارات في عام 2020'];
-        $data3['logo'] = '#';
+        $data3['logo'] = '1644562339.jpg';
         $data3['user_id'] = 1;
         Category::create($data3);
 
@@ -58,7 +58,7 @@ class CreateCategorySeeder extends Seeder
         $data4['description'] = ['en' => 'The most significant change to the 2022 Mazda model line is the addition of the brands first electric vehicle (EV), the MX-30 crossover.
          Mazdas maiden voyage into electrification should open doors to future EVs across the model line.', 'ar' => 'كان التغيير الأكثر أهمية في خط طراز 2022 Mazda هو إضافة أول سيارة كهربائية (EV) للعلامة التجارية ،
           MX-30 كروس. يجب أن تفتح رحلة Mazda الأولى في مجال الكهرباء الأبواب أمام السيارات الكهربائية المستقبلية عبر خط الطراز.'];
-        $data4['logo'] = '#';
+        $data4['logo'] = '1644562339.jpg';
         $data4['user_id'] = 1;
         Category::create($data4);
 
@@ -66,7 +66,7 @@ class CreateCategorySeeder extends Seeder
         $data5['description'] = ['en' => 'The most significant change to the 2022 Mazda model line is the addition of the brands first electric vehicle (EV), the MX-30 crossover.
          Mazdas maiden voyage into electrification should open doors to future EVs across the model line.', 'ar' => 'كان التغيير الأكثر أهمية في خط طراز 2022 Mazda هو إضافة أول سيارة كهربائية (EV) للعلامة التجارية ،
           MX-30 كروس. يجب أن تفتح رحلة Mazda الأولى في مجال الكهرباء الأبواب أمام السيارات الكهربائية المستقبلية عبر خط الطراز.'];
-        $data5['logo'] = '#';
+        $data5['logo'] = '1644562339.jpg';
         $data5['user_id'] = 1;
         Category::create($data5);
 
@@ -74,7 +74,7 @@ class CreateCategorySeeder extends Seeder
         $data6['description'] = ['en' => 'The most significant change to the 2022 Mazda model line is the addition of the brands first electric vehicle (EV), the MX-30 crossover.
          Mazdas maiden voyage into electrification should open doors to future EVs across the model line.', 'ar' => 'كان التغيير الأكثر أهمية في خط طراز 2022 Mazda هو إضافة أول سيارة كهربائية (EV) للعلامة التجارية ،
           MX-30 كروس. يجب أن تفتح رحلة Mazda الأولى في مجال الكهرباء الأبواب أمام السيارات الكهربائية المستقبلية عبر خط الطراز.'];
-        $data6['logo'] = '#';
+        $data6['logo'] = '1644562339.jpg';
         $data6['user_id'] = 1;
         Category::create($data6);
     }

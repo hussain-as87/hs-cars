@@ -119,4 +119,3 @@ Route::group(['prefix' => '/', 'as' => 'home.'], function () {
     Route::get('/rent-{id}', [RentController::class, 'rent_home'])->name('rent');
     Route::post('/rent', [RentController::class, 'store'])->name('rent.store');
 });
-

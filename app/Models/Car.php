@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Rent;
+use App\Models\RentCar;
 use App\Models\Admin\Category;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
@@ -69,5 +70,12 @@ class Car extends Model
     public function rents()
     {
         return $this->hasMany(Rent::class);
+    }
+    public function orders()
+    {
+        return $this->belongsToMany(Rent::class, 'rent_cars')
+        ->using(RentCar::class)
+        ->withPivot(['amount'])
+        ->as('details');
     }
 }

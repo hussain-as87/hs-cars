@@ -1,9 +1,9 @@
 @extends('Admin.layout.app')
 @section('title')
-{{ __('cars') }}
+{{ __('categories') }}
 @endsection
 @section('title-page')
-{{ __('cars') }}
+{{ __('categories') }}
 @endsection
 @section('content')
 <div class="card">
