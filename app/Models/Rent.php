@@ -24,8 +24,11 @@ class Rent extends Model
     {
         return $this->belongsTo(User::class);
     }
-    public function car()
+
+    public function cars()
     {
-        return $this->belongsTo(Car::class);
+        return $this->belongsToMany(Car::class, 'rent_cars')
+            ->using(RentCar::class)/*model of relation between orders & products */
+            ->withPivot(['amount'])->as('details');
     }
 }

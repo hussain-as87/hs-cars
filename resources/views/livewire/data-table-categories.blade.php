@@ -44,6 +44,7 @@
                             <th>{{ __('logo') }}</th>
                             <th>{{ __('name') }}</th>
                             <th>{{ __('user') }}</th>
+                            <th>{{ __('cars') }}</th>
                             <th>{{ __('description') }}</th>
                             <th>{{ __('created at') }}</th>
                             <th width="280px">{{ __('actions') }}</th>
@@ -51,10 +52,14 @@
                     </thead>
                     <tbody>
                         @foreach ($data as $key => $category)
+                        @php
+                            $car_count = App\Models\Car::whereBelongsTo($category)->count();
+                        @endphp
                         <tr class="">
                             <td><img src="{{ asset('storage/categories/'.$category->logo)}}" /> </td>
                             <td>{{ $category->name }}</td>
                             <td>{{ $category->user->name }}</td>
+                            <td>{{ $car_count == 0 ? __('not yet!'): $car_count }}</td>
                             <td>{{ Str::limit($category->description,20) }}</td>
                             <td>{{ $category->created_at->diffForHumans() }}</td>
                             <td><a class="btn btn-info" href="{{ route('categories.show',$category->id) }}">{{ __('show') }} <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">

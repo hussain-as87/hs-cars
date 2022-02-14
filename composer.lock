@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "17c0b45255f1e2d7eea2c0ab65c74d59",
+    "content-hash": "5cb0137d6b6ced1fc8a26b9a2d5acc36",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1596,10 +1596,6 @@
                     "type": "custom"
                 },
                 {
-                    "url": "https://www.paypal.me/colinpodell/10.00",
-                    "type": "custom"
-                },
-                {
                     "url": "https://github.com/colinodell",
                     "type": "github"
                 },
@@ -1679,10 +1675,6 @@
             "funding": [
                 {
                     "url": "https://www.colinodell.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://www.paypal.me/colinpodell/10.00",
                     "type": "custom"
                 },
                 {
@@ -5904,10 +5896,6 @@
             },
             "funding": [
                 {
-                    "url": "https://www.paypal.me/moelleken",
-                    "type": "custom"
-                },
-                {
                     "url": "https://github.com/voku",
                     "type": "github"
                 },
@@ -6781,10 +6769,6 @@
                 "source": "https://github.com/nunomaduro/collision"
             },
             "funding": [
-                {
-                    "url": "https://www.paypal.com/paypalme/enunomaduro",
-                    "type": "custom"
-                },
                 {
                     "url": "https://github.com/nunomaduro",
                     "type": "github"

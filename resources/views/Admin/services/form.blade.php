@@ -25,15 +25,24 @@
     @endforeach
     {{--tab end--}}
     <div class="form-group">
-        <span class="flaticon-wedding-car"> {{ __('wedding') }}</span><br />
-        <span class="flaticon-transportation"> {{ __('City') }}</span><br />
-        <span class="flaticon-car"> {{ __('Airport Transfer') }}</span><br />
         <label for="logo">{{ __('logo') }}</label>
-        <select id="logo" class="form-control @error('logo') is-invalid alert-danger @enderror" name="logo">
-            <option></option>
-            <option value="flaticon-wedding-car" {{ $service->logo = 'flaticon-wedding-car'?'selected':'' }}>{{ __('wedding') }}</option>
-            <option value="flaticon-car" {{ $service->logo = 'flaticon-car' ?'selected':'' }}>{{ __('City') }}</option>
-            <option value="flaticon-transportation" {{ $service->logo = 'flaticon-transportation'?'selected':'' }}>{{ __('Airport Transfer') }}</option>
-        </select>
+        <div class="form-check">
+            <input class="form-check-input @error('logo') is-invalid alert-danger @enderror" type="radio" name="logo" id="exampleRadios1" value="flaticon-wedding-car" {{ $service->logo == 'flaticon-wedding-car' ? 'checked' : '' }}>
+            <label class="form-check-label" for="exampleRadios1">
+                <span class="flaticon-wedding-car"> {{ __('wedding') }}</span>
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input @error('logo') is-invalid alert-danger @enderror" type="radio" name="logo" id="exampleRadios2" value="flaticon-car" {{ $service->logo == 'flaticon-car' ? 'checked' : '' }}>
+            <label class="form-check-label" for="exampleRadios2">
+                <span class="flaticon-transportation"> {{ __('City') }}</span>
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input @error('logo') is-invalid alert-danger @enderror" type="radio" name="logo" id="exampleRadios3" value="flaticon-transportation" {{ $service->logo == 'flaticon-transportation' ? 'checked' : '' }}>
+            <label class="form-check-label" for="exampleRadios3">
+                <span class="flaticon-car"> {{ __('Airport Transfer') }}</span>
+            </label>
+        </div>
     </div>
     <br />

@@ -5,15 +5,18 @@ namespace App\Http\Controllers;
 use toastr;
 use App\Models\Car;
 use App\Models\Rent;
+use App\Models\Order;
 use Illuminate\Http\Request;
-use RealRashid\SweetAlert\Facades\Alert;
+use App\Http\Controllers\Controller;
+use App\Models\RentCar;
 
 class RentController extends Controller
 {
 
     public function __construct()
     {
-        $this->middleware('permission:rents', ['only' => ['index', 'destroy']]);
+        $this->middleware('permission:rents', ['only' => 'index']);
+        $this->middleware('permission:rents-delete', ['only' => 'destroy']);
         $this->middleware('auth');
     }
     public function rent_home($id)
@@ -23,8 +26,8 @@ class RentController extends Controller
     }
     public function index()
     {
-        $rents= Rent::orderByDesc('created_at')->paginate(10);
-        return view('Admin.rents.index',compact('rents'));
+        $rents = Rent::orderByDesc('created_at')->paginate(10);
+        return view('Admin.rents.index', compact('rents'));
     }
     public function store(Request $request)
     {
@@ -38,7 +41,6 @@ class RentController extends Controller
         ]);
         $data['location'] = $request->location;
         $data['user_id'] = $request->user()->id;
-        $data['car_id'] = $request->car_id;
         $data['drop_off_location'] = $request->drop_off_location;
         $data['pik_up_date'] = $request->pik_up_date;
         $data['drop_off_date'] = $request->drop_off_date;
@@ -50,12 +52,18 @@ class RentController extends Controller
         $total_amount = $interval->format('%a');
         $car = Car::find($request->car_id);
         $amount = $car->pricing->in_day * $total_amount;
-        $data['total_amount'] = $amount;
 
         $rent = Rent::create($data);
+
+        RentCar::create([
+            'rent_id' => $rent->id,
+            'car_id' => $request->car_id,
+            'amount' => $amount,
+        ]);
         toastr()->success(__('Successfully Saved !!'));
-        return redirect()->back();
+        return  redirect()->back();
     }
+
     public function destroy($id)
     {
         $rent = Rent::find($id);

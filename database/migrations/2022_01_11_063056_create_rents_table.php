@@ -16,12 +16,12 @@ class CreateRentsTable extends Migration
         Schema::create('rents', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users', 'id')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignId('car_id')->constrained('cars', 'id')->cascadeOnDelete()->cascadeOnUpdate();
             $table->text('location');
             $table->text('drop_off_location');
             $table->text('pik_up_time');
             $table->text('pik_up_date');
             $table->text('drop_off_date');
+            $table->enum('status', ['pending', 'complete', 'cancelled'])->default('pending');
             $table->timestamps();
         });
     }

@@ -23,7 +23,7 @@ class CreateCarSeeder extends Seeder
            ظهرت السيارة الجيب في المشهد في نوفمبر 1940 ، قبل دخول الولايات المتحدة الحرب العالمية الثانية مباشرة. تم استخدامها على نطاق واسع طوال الحرب والحروب اللاحقة بسبب قدرتها على السفر في جميع أنواع التضاريس.'];
             $data['category_id'] = 5;
             $data['user_id'] = 1;
-            $data['image'] = '#';
+            $data['image'] = '1643194416.jpg';
             $data['mileage'] = '4.000';
             $data['transmission_type'] = 'Manual transmission';
             $data['seats'] = '4';

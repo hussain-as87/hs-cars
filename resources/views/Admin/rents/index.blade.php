@@ -35,7 +35,7 @@
                             <td>{{ $rent->pik_up_time }}</td>
                             <td>{{ $rent->created_at->diffForHumans() }}</td>
                             <td>
-                                @can('rents')
+                                @can('rents-delete')
                                 <a href="" class="btn btn-danger">
                                     <form action="{{ route('rent.destroy',$rent->id) }}" method="post">
                                         @csrf
