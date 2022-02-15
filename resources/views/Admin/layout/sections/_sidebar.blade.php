@@ -183,7 +183,7 @@
              @can('rents')
             <li class="nav-item">
                 <a href="{{route('rent.index')}}" class="nav-link">
-                    <i class="link-icon" data-feather="inbox"></i>
+                    <i class="link-icon" data-feather="archive"></i>
                     <span class="link-title">{{ __('Rents') }}</span>
                 </a>
             </li>

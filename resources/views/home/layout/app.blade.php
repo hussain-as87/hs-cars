@@ -99,9 +99,21 @@
                         <h2 class="ftco-heading-2">{{ __('Have a Questions?') }}</h2>
                         <div class="block-23 mb-3">
                             <ul>
-                                <li><span class="icon icon-map-marker"></span><span class="text">{{ __(config('settings.address')) }}</span></li>
-                                <li><a href="#"><span class="icon icon-phone"></span><span class="text">{{ config('settings.webiste_phone') }}</span></a></li>
-                                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">{{ config('settings.webiste_email') }}</span></a></li>
+                                <li><span class="icon icon-map-marker"></span> <span class="text"> {{ __(config('settings.address')) }}</span></li>
+                                <li><a href="#"><span class="icon icon-phone"></span> <span class="text"> {{ config('settings.webiste_phone') }}</span></a></li>
+                                <li><a href="#"><span class="icon icon-envelope"></span> <span class="text"> {{ config('settings.webiste_email') }}</span></a></li>
+                                <li>
+                                    <a href="#"  id="languagesDropdown" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+                                        <span class="icon icon-globe"></span>{{ __(config('locales.languages')[app()->getLocale()]['name']) }} <span class="caret"></span><i class="flag-icon flag-icon-{{__(config('locales.languages')[app()->getLocale()]['icon'])}} mt-1" title="us"></i>
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="languagesDropdown">
+                                        @foreach(config('locales.languages') as $key => $val)
+                                        @if ($key != app()->getLocale())
+                                        <a style="color:black" href="{{ route('change.language', __($key)) }}" class="dropdown-item">{{ __($val['name'] )}} <i class="flag-icon flag-icon-{{__($val['icon'])}}" title="{{$key}}" id="{{$key}}"></i></a>
+                                        @endif
+                                        @endforeach
+                                    </div>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -109,22 +121,18 @@
             </div>
             <div class="row" @if (config('locales.languages')[app()->getLocale()]['rtl_support'] == 'rtl') style="direction: rtl;"@endif>
                 <div class="col-md-12 text-center">
-
                     <p>
                         <!-- Link back to Colorlib cant be removed. Template is licensed under CC BY 3.0. -->
                         &copy;<script>
                             document.write(new Date().getFullYear());
 
-                        </script> {{ __('All rights reserved | This template is made with') }} <i class="icon-heart text-danger" aria-hidden="true"></i> {{ __('by') }} <a href="https://colorlib.com" target="_blank">hussein sim</a>
+                        </script> {{ __('All rights reserved | This template is made with') }} <i class="icon-heart text-danger" aria-hidden="true"></i> {{ __('by') }} <a href="https://github.com/hussein819" target="_blank"><span class="icon icon-github"></span> hussein sim</a>
                         <!-- Link back to Colorlib cant be removed. Template is licensed under CC BY 3.0. -->
                     </p>
                 </div>
             </div>
         </div>
     </footer>
-
-
-
     <!-- loader -->
     <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
             <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
