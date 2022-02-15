@@ -126,7 +126,7 @@
                         &copy;<script>
                             document.write(new Date().getFullYear());
 
-                        </script> {{ __('All rights reserved | This template is made with') }} <i class="icon-heart text-danger" aria-hidden="true"></i> {{ __('by') }} <a href="https://colorlib.com" target="_blank">hussein sim</a>
+                        </script> {{ __('All rights reserved | This template is made with') }} <i class="icon-heart text-danger" aria-hidden="true"></i> {{ __('by') }} <a href="https://github.com/hussein819" target="_blank"><span class="icon icon-github"></span> hussein sim</a>
                         <!-- Link back to Colorlib cant be removed. Template is licensed under CC BY 3.0. -->
                     </p>
                 </div>
