@@ -145,8 +145,6 @@
                     <button class="btn btn-primary " type="submit">{{ __('edit') }} <i data-feather="edit" class="icon-sm mr-2"></i></button>
 
                 </div>
-
-
             </fieldset>
         </form>
     </div>
