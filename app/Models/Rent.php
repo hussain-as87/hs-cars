@@ -11,7 +11,6 @@ class Rent extends Model
     use HasFactory;
     protected $fillable = [
         'user_id',
-        'car_id',
         'location',
         'drop_off_location',
         'pik_up_time',
