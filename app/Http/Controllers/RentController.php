@@ -26,7 +26,7 @@ class RentController extends Controller
     }
     public function index()
     {
-        $rents = Rent::orderByDesc('created_at')->paginate(10);
+        $rents = RentCar::with('car','rent.user')->orderByDesc('created_at')->paginate(10);
         return view('Admin.rents.index', compact('rents'));
     }
     public function store(Request $request)
