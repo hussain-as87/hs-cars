@@ -231,4 +231,105 @@ $user_count = App\Models\User::all()->count();
         </div>
     </div>
 </div> <!-- row -->
+<div class="row">
+    <div class="col-xl-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h6 class="card-title">Area chart</h6>
+                {{-- <div id="myAreaChart"></div>  --}}
+                <div id="apexBar"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
 @endsection
+{{--  @push('scripts')
+<script type="text/javascript">
+     // Apex Mixed chart start
+  var options = {
+    chart: {
+      height: 300,
+      type: 'line',
+      stacked: false,
+      parentHeightOffset: 0
+    },
+    grid: {
+      borderColor: "rgba(77, 100, 240, .1)",
+      padding: {
+        bottom: -6
+      }
+    },
+    stroke: {
+      width: [0, 2, 5],
+      curve: 'smooth'
+    },
+    plotOptions: {
+      bar: {
+        columnWidth: '50%'
+      }
+    },
+    series: [{
+      name: 'TEAM A',
+      type: 'column',
+      data: ["{!! implode('", "', $total) !!}"]
+    }, {
+      name: 'TEAM B',
+      type: 'area',
+      data: ["{!! implode('", "', $total) !!}"]
+    }],
+    legend: {
+      position: 'top',
+      horizontalAlign: 'left'
+    },
+    fill: {
+      opacity: [0.85,0.25,1],
+      gradient: {
+        inverseColors: false,
+        shade: 'light',
+        type: "vertical",
+        opacityFrom: 0.85,
+        opacityTo: 0.55,
+        stops: [0, 100, 100, 100]
+      }
+    },
+    labels: ["{!! implode('", "', $month) !!}"],
+    markers: {
+      size: 0
+    },
+    xaxis: {
+      type:'datetime'
+    },
+    yaxis: {
+      title: {
+        text: 'Points',
+      },
+    },
+    tooltip: {
+      shared: true,
+      intersect: false,
+      y: [{
+        formatter: function (y) {
+          if(typeof y !== "undefined") {
+            return  y.toFixed(0) + " points";
+          }
+          return y;
+        }
+      }, {
+        formatter: function (y) {
+          if(typeof y !== "undefined") {
+            return  y.toFixed(2) + " $";
+          }
+          return y;
+        }
+      }]
+    }
+  }
+  var chart = new ApexCharts(
+    document.querySelector("#apexMixed"),
+    options
+  );
+  chart.render();
+  // Apex Mixed chart end
+</script>
+@endpush  --}}

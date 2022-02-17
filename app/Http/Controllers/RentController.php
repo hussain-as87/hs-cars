@@ -33,6 +33,7 @@ class RentController extends Controller
     {
         $request->validate([
             'location' => 'required',
+            'quantity' => 'required',
             'car_id' => 'required',
             'drop_off_location' => 'required',
             'pik_up_date' => 'required|date',
@@ -55,9 +56,12 @@ class RentController extends Controller
 
         $rent = Rent::create($data);
 
+        $price = Car::find($request->car_id)->pricing->in_day;
         RentCar::create([
             'rent_id' => $rent->id,
             'car_id' => $request->car_id,
+            'quantity' => $request->quantity,
+            'price' => $price,
             'amount' => $amount,
         ]);
         toastr()->success(__('Successfully Saved !!'));

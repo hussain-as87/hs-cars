@@ -34,6 +34,12 @@
                                 @error('drop_off_location')
                                 <small style="color:red">{{ $message }}</small>
                                 @enderror
+                            </div> <div class="form-group">
+                                <label for="" class="label">{{ __('quantity') }}</label>
+                                <input type="number" name="quantity" value="{{ old('quantity') ?? 1 }}" class="form-control" placeholder="{{ __('how much need?') }}">
+                                @error('quantity')
+                                <small style="color:red">{{ $message }}</small>
+                                @enderror
                             </div>
                             <div class="d-flex">
                                 <div class="form-group mr-2">
