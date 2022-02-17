@@ -1,6 +1,6 @@
 @extends('home.layout.app')
 @section('content')
-<section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('images/bg_3.jpg');" data-stellar-background-ratio="0.5">
+<section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('images/bg_2.jpg');" data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
     <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-start">
@@ -32,6 +32,12 @@
                                 <label for="" class="label">{{ __('Drop-off location') }}</label>
                                 <input type="text" name="drop_off_location" value="{{ old('drop_off_location') }}" class="form-control" placeholder="{{ __('City, Airport, Station, etc') }}">
                                 @error('drop_off_location')
+                                <small style="color:red">{{ $message }}</small>
+                                @enderror
+                            </div> <div class="form-group">
+                                <label for="" class="label">{{ __('quantity') }}</label>
+                                <input type="number" name="quantity" value="{{ old('quantity') ?? 1 }}" class="form-control" placeholder="{{ __('how much need?') }}">
+                                @error('quantity')
                                 <small style="color:red">{{ $message }}</small>
                                 @enderror
                             </div>

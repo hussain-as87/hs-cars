@@ -26,13 +26,14 @@ class RentController extends Controller
     }
     public function index()
     {
-        $rents = RentCar::with('car','rent.user')->orderByDesc('created_at')->paginate(10);
+        $rents = RentCar::with('car', 'rent.user')->orderByDesc('created_at')->paginate(10);
         return view('Admin.rents.index', compact('rents'));
     }
     public function store(Request $request)
     {
         $request->validate([
             'location' => 'required',
+            'quantity' => 'required',
             'car_id' => 'required',
             'drop_off_location' => 'required',
             'pik_up_date' => 'required|date',
@@ -55,9 +56,12 @@ class RentController extends Controller
 
         $rent = Rent::create($data);
 
+        $price = Car::find($request->car_id)->pricing->in_day;
         RentCar::create([
             'rent_id' => $rent->id,
             'car_id' => $request->car_id,
+            'quantity' => $request->quantity,
+            'price' => $price,
             'amount' => $amount,
         ]);
         toastr()->success(__('Successfully Saved !!'));
@@ -68,10 +72,11 @@ class RentController extends Controller
     {
         $rent = Rent::find($id);
         if (!$rent) {
-            return redirect()->route('error-404')->with('direction', 'home.rent');
+            return redirect()->route('error-404')->with('direction', 'rent.index');
         } else {
+            RentCar::where('rent_id', $id)->delete();
             $rent->delete();
-            return redirect()->route('contacts.index')->with('delete', 'Successfully deleted !!');
+            return redirect()->route('rent.index')->with('delete', 'Successfully deleted !!');
         }
     }
 }

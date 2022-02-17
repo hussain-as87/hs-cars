@@ -44,9 +44,7 @@ Auth::routes();
 
 
 Route::group(['middleware' => 'auth', 'prefix' => 'AdminDashboard/'], function () {
-    Route::get('/home', function () {
-        return view('Admin.home');
-    })->name('admin.home');
+    Route::get('/home', [\App\Http\Controllers\Admin\HomeController::class,'index'])->name('admin.home');
 
     Route::resource('roles', RoleController::class);
     Route::resource('users', UserController::class);

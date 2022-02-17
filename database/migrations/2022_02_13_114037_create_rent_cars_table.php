@@ -17,6 +17,8 @@ class CreateRentCarsTable extends Migration
             $table->foreignId('rent_id')->constrained('rents','id')->cascadeOnUpdate();
             $table->foreignId('car_id')->constrained('cars','id')->cascadeOnUpdate();
             $table->float('amount');
+            $table->unsignedSmallInteger('quantity');
+            $table->float('price');
             $table->primary(['rent_id','car_id']);
             $table->timestamps();
         });

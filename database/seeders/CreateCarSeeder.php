@@ -14,7 +14,7 @@ class CreateCarSeeder extends Seeder
      */
     public function run()
     {
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 30; $i++) {
             $data['name'] = ['en' => 'Jeep', 'ar' => 'جيب'];
             $data['description'] = ['en' => 'Jeep is like Kleenex.  It’s a product model that’s become synonymous with an entire product line.
           Jeep, as a model, is designed and built by Fiat Chrysler Automobiles.
