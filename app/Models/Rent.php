@@ -33,13 +33,14 @@ class Rent extends Model
     }
     public static function SaleInMonth()
     {
-        return DB::select("SELECT monthname(r.created_at) AS month,
-                                 year(r.created_at) AS year,
-                                 COUNT( DISTINCT r.id ) AS count,
-                                 SUM(rc.quantity * rc.price) AS total,
-                                 SUM(rc.car_id) AS cars
+        return DB::select("SELECT month(r.created_at) AS month,
+                                  year(r.created_at) AS year,
+                                  day(r.created_at) AS day,
+                                  COUNT( DISTINCT r.id ) AS count,
+                                  SUM(rc.quantity * rc.price) AS total,
+                                  SUM(rc.car_id) AS cars
                                     from rents as r INNER JOIN rent_cars as rc ON rc.rent_id = r.id
-                                    GROUP BY month , year
+                                    GROUP BY month , year , day
                                     HAVING SUM(rc.quantity * rc.price) > 200
                                     ORDER BY total ASC");
     }

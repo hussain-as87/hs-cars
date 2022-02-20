@@ -273,104 +273,20 @@ License: You must have a valid license purchased only from above link or https:/
     $count[] = $res->count;
     $cars[] = $res->cars;
     $year[] = $res->year;
-    $month[] = $res->month . $res->year . '(' . $res->count . ')';}
+    $day[] = $res->day;
+    $month[] = $res->month;
+    $date[] = $res->day.'/'.$res->month.'/'.$res->year;}
+
     @endphp
     <script type="text/javascript">
-        // Apex Mixed chart start
-       /* var options = {
-            chart: {
-                height: 300
-                , type: 'line'
-                , stacked: false
-                , parentHeightOffset: 0
-            }
-            , grid: {
-                borderColor: "rgba(77, 100, 240, .1)"
-                , padding: {
-                    bottom: -6
-                }
-            }
-            , stroke: {
-                width: [0, 2, 5]
-                , curve: 'smooth'
-            }
-            , plotOptions: {
-                bar: {
-                    columnWidth: '50%'
-                }
-            }
-            , series: [{
-                name: 'total'
-                , type: 'column'
-                , data: ["{!! implode('", "', $total) !!}"]
-            }, {
-                name: 'cars'
-                , type: 'area'
-                , data: ["{!! implode('", "', $cars) !!}"]
-            }]
-            , legend: {
-                position: 'top'
-                , horizontalAlign: 'left'
-            }
-            , fill: {
-                opacity: [0.85, 0.25, 1]
-                , gradient: {
-                    inverseColors: false
-                    , shade: 'light'
-                    , type: "vertical"
-                    , opacityFrom: 0.85
-                    , opacityTo: 0.55
-                    , stops: [0, 100, 100, 100]
-                }
-            }
-            , labels: ["{!! implode('", "', $month) !!}"]
-            , markers: {
-                size: 0
-            }
-            , xaxis: {
-                type: 'datetime'
-            }
-            , yaxis: {
-                title: {
-                    text: 'Points'
-                , }
-            , }
-            , tooltip: {
-                shared: true
-                , intersect: false
-                , y: [{
-                    formatter: function(y) {
-                        if (typeof y !== "undefined") {
-                            return y.toFixed(0) + " points";
-                        }
-                        return y;
-                    }
-                }, {
-                    formatter: function(y) {
-                        if (typeof y !== "undefined") {
-                            return y.toFixed(2) + " $";
-                        }
-                        return y;
-                    }
-                }]
-            }
-        }
-        var chart = new ApexCharts(
-            document.querySelector("#apexMixed")
-            , options
-        );
-        chart.render();*/
-        // Apex Mixed chart end
-
-
-        // Apex Bar chart start
+        // Apex Line chart start
         var options = {
             chart: {
-                type: 'bar'
-                , height: '320'
+                height: 400
+                , type: "line"
                 , parentHeightOffset: 0
             }
-            , colors: ["#f77eb9"]
+            , colors: ["#4d8af0"]
             , grid: {
                 borderColor: "rgba(77, 138, 240, .1)"
                 , padding: {
@@ -378,21 +294,44 @@ License: You must have a valid license purchased only from above link or https:/
                 }
             }
             , series: [{
-                name: 'sales'
-                , data: ["{!! implode('", "',$count) !!}"]
-            }]
+                    name: "Data a"
+                    , data: [{!!implode(',', $total) !!}]
+                }
+
+            ]
             , xaxis: {
-                type: 'datetime'
-                , categories: ["{!! implode('", "',$month) !!}"]
+                type: "datetime"
+                , categories: ["{!! implode('", "',$year) !!}"]
             }
-        }
-
-        var apexBarChart = new ApexCharts(document.querySelector("#apexBar"), options);
-
-        apexBarChart.render();
-        // Apex Bar chart end
+            , markers: {
+                size: 0
+            }
+            , stroke: {
+                width: 6
+                , curve: "smooth"
+                , lineCap: "round"
+            }
+            , legend: {
+                show: true
+                , position: "top"
+                , horizontalAlign: 'left'
+                , containerMargin: {
+                    top: 30
+                }
+            }
+            , responsive: [{
+                breakpoint: 1000
+                , options: {
+                    legend: {
+                        fontSize: "11px"
+                    }
+                }
+            }]
+        };
+        var apexLineChart = new ApexCharts(document.querySelector("#apexLine"), options);
+        apexLineChart.render();
+        // Apex Line chart end
 
     </script>
-
 </body>
 </html>
