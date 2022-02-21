@@ -22,7 +22,9 @@ class CommentPost extends Component
     }
     public function loadLess()
     {
-        $this->limitPerPage = $this->limitPerPage - 5;
+        if ($this->limitPerPage != 5) {
+            $this->limitPerPage = $this->limitPerPage - 5;
+        }
     }
     public function mount(Post $post)
     {
@@ -50,21 +52,22 @@ class CommentPost extends Component
     {
         $this->validate(['description_up' => 'required|max:500']);
         $comment = Comment::find($id);
-        if (!$comment) {
+        $comment->description = $this->description_up;
+        //dd($this->description_up);
+        if ($comment == null) {
             return redirect()->route('error-404')->with('direction', 'profile.index');
-        } else {
-            $comment->update(['description' => $this->description_up]);
         }
+        $comment->update();
         $this->description_up = '';
     }
     public function destroy($id)
     {
         $comment = Comment::where('id', $id)->first();
-        if (!$comment) {
+        if ($comment == null) {
             return redirect()->route('error-404')->with('direction', 'profile.index');
-        } else {
-            $comment->delete();
-            return redirect()->to(url('AdminDashboard/profile#post-' . $this->post->id));
         }
+        $comment->delete();
+        return redirect()->back();
+      //  return  redirect(url()->previous() . '#post-' . $this->post->id);
     }
 }
