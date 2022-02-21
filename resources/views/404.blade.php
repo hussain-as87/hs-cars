@@ -14,9 +14,13 @@
     <link rel="stylesheet" href="{{ asset('assets/fonts/feather-font/css/iconfont.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendors/flag-icon-css/css/flag-icon.min.css') }}">
     <!-- endinject -->
-    <!-- Layout styles -->
+    @if(Session::get('them'))
+    <link rel="stylesheet" href="{{ asset('assets/css/demo_'.Session::get('them').'/style.css') }}">
+    @elseif(config('settings.them') == 'dark')
     <link rel="stylesheet" href="{{ asset('assets/css/demo_2/style.css') }}">
-    <!-- End layout styles -->
+    @elseif(config('settings.them') == 'light')
+    <link rel="stylesheet" href="{{ asset('assets/css/demo_1/style.css') }}">
+    @endif
     <link rel="shortcut icon" href="{{ asset('assets/images/favicon.png') }}" />
 </head>
 <body>

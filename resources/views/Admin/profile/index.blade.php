@@ -185,7 +185,7 @@
                                 </div>
 
 
-                                <livewire:comment-post :post="$post" />
+                                 <livewire:comment-post :post="$post" />
 
                             </div>
                         </div>
