@@ -111,7 +111,6 @@ Route::group(['prefix' => '/', 'as' => 'home.'], function () {
     Route::get('/services', [CarController::class, 'service'])->name('services');
     Route::get('/pricing', [CarController::class, 'pricing'])->name('pricing');
     Route::get('/cars', [CarController::class, 'cars'])->name('cars');
-    Route::get('/blog', [CarController::class, 'blog'])->name('blog');
     Route::get('/contact', [CarController::class, 'contact'])->name('contact');
     Route::post('/contact', [ContactController::class, 'store'])->name('contacts.store');
     Route::get('/rent-{id}', [RentController::class, 'rent_home'])->name('rent');

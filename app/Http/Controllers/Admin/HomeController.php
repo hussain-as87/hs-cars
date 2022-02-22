@@ -25,7 +25,9 @@ class HomeController extends Controller
         $user_count = User::all()->count();
         $car_count = Car::all()->count();
         $contact_count = Contact::whereDate('created_at', Carbon::today())->count();
+        $contact_count_all = Contact::all()->count();
         $rent_count = Rent::whereDate('created_at', Carbon::today())->count();
+        $rent_count_all = Rent::all()->count();
         $category_count = Category::all()->count();
         $service_count = Service::all()->count();
 
@@ -34,6 +36,8 @@ class HomeController extends Controller
             'car_count',
             'contact_count',
             'rent_count',
+            'contact_count_all',
+            'rent_count_all',
             'category_count',
             'service_count'
         ));
