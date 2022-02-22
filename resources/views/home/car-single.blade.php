@@ -122,32 +122,62 @@
 
                     <div class="tab-content" id="pills-tabContent">
                         <div class="tab-pane fade show active" id="pills-description" role="tabpanel" aria-labelledby="pills-description-tab">
+                            {{-- <div class="row">
+						    		<div class="col-md-4">
+						    			<ul class="features">
+						    				<li class="check"><span class="ion-ios-checkmark"></span>Airconditions</li>
+						    				<li class="check"><span class="ion-ios-checkmark"></span>Child Seat</li>
+						    				<li class="check"><span class="ion-ios-checkmark"></span>GPS</li>
+						    				<li class="check"><span class="ion-ios-checkmark"></span>Luggage</li>
+						    				<li class="check"><span class="ion-ios-checkmark"></span>Music</li>
+						    			</ul>
+						    		</div>
+						    		<div class="col-md-4">
+						    			<ul class="features">
+						    				<li class="check"><span class="ion-ios-checkmark"></span>Seat Belt</li>
+						    				<li class="remove"><span class="ion-ios-close"></span>Sleeping Bed</li>
+						    				<li class="check"><span class="ion-ios-checkmark"></span>Water</li>
+						    				<li class="check"><span class="ion-ios-checkmark"></span>Bluetooth</li>
+						    				<li class="remove"><span class="ion-ios-close"></span>Onboard computer</li>
+						    			</ul>
+						    		</div>
+						    		<div class="col-md-4">
+						    			<ul class="features">
+						    				<li class="check"><span class="ion-ios-checkmark"></span>Audio input</li>
+						    				<li class="check"><span class="ion-ios-checkmark"></span>Long Term Trips</li>
+						    				<li class="check"><span class="ion-ios-checkmark"></span>Car Kit</li>
+						    				<li class="check"><span class="ion-ios-checkmark"></span>Remote central locking</li>
+						    				<li class="check"><span class="ion-ios-checkmark"></span>Climate control</li>
+						    			</ul>
+						    		</div>
+						    	</div>  --}}
+
                             <div class="row">
                                 <div class="col-md-4">
                                     <ul class="features">
-                                        <li class="@if($car->feature->air_conditions == true) check @else remove @endif"><span class="ion-ios-checkmark"></span>{{ __('air_conditions') }}</li>
-                                        <li class="@if($car->feature->child_seat == true) check @else remove @endif"><span class="ion-ios-checkmark"></span>{{ __('child_seat') }}</li>
-                                        <li class="@if($car->feature->gps == true) check @else remove @endif"><span class="ion-ios-checkmark"></span>{{ __('gps') }}</li>
-                                        <li class="@if($car->feature->luggage == true) check @else remove @endif"><span class="ion-ios-checkmark"></span>{{ __('luggage') }}</li>
-                                        <li class="@if($car->feature->music == true) check @else remove @endif"><span class="ion-ios-checkmark"></span>{{ __('music') }}</li>
+                                        <li class="@if($car->feature->air_conditions == true) check @else remove @endif"><span class="@if($car->feature->air_conditions == true) ion-ios-checkmark @else ion-ios-close @endif"></span>{{ __('air_conditions') }}</li>
+                                        <li class="@if($car->feature->seat_beit == true) check @else remove @endif"><span class="@if($car->feature->seat_beit == true) ion-ios-checkmark @else ion-ios-close @endif"></span>{{ __('seat_beit') }}</li>
+                                        <li class="@if($car->feature->gps == true) check @else remove @endif"><span class="@if($car->feature->gps == true) ion-ios-checkmark @else ion-ios-close @endif"></span>{{ __('gps') }}</li>
+                                        <li class="@if($car->feature->luggage == true) check @else remove @endif"><span class="@if($car->feature->luggage == true) ion-ios-checkmark @else ion-ios-close @endif"></span>{{ __('luggage') }}</li>
+                                        <li class="@if($car->feature->music == true) check @else remove @endif"><span class="@if($car->feature->music == true) ion-ios-checkmark @else ion-ios-close @endif"></span>{{ __('music') }}</li>
                                     </ul>
                                 </div>
                                 <div class="col-md-4">
                                     <ul class="features">
-                                        <li class="@if($car->feature->seat_beit == true) check @else remove @endif"><span class="ion-ios-checkmark"></span>{{ __('seat_beit') }}</li>
-                                        <li class="@if($car->feature->sleeping_bed == true) check @else remove @endif"><span class="ion-ios-close"></span>{{ __('sleeping_bed') }}</li>
-                                        <li class="@if($car->feature->water == true) check @else remove @endif"><span class="ion-ios-checkmark"></span>{{ __('water') }}</li>
-                                        <li class="@if($car->feature->bluetooth == true) check @else remove @endif"><span class="ion-ios-checkmark"></span>{{ __('bluetooth') }}</li>
-                                        <li class="@if($car->feature->onboard_computer == true) check @else remove @endif"><span class="ion-ios-close"></span>{{ __('onboard_computer') }}</li>
+                                        <li class="@if($car->feature->child_seat == true) check @else remove @endif"><span class="@if($car->feature->child_seat == true) ion-ios-checkmark @else ion-ios-close @endif"></span>{{ __('child_seat') }}</li>
+                                        <li class="@if($car->feature->sleeping_bed == true) check @else remove @endif"><span class="@if($car->feature->sleeping_bed == true) ion-ios-checkmark @else ion-ios-close @endif"></span>{{ __('sleeping_bed') }}</li>
+                                        <li class="@if($car->feature->water == true) check @else remove @endif"><span class="@if($car->feature->water == true) ion-ios-checkmark @else ion-ios-close @endif"></span>{{ __('water') }}</li>
+                                        <li class="@if($car->feature->bluetooth == true) check @else remove @endif"><span class="@if($car->feature->bluetooth == true) ion-ios-checkmark @else ion-ios-close @endif"></span>{{ __('bluetooth') }}</li>
+                                        <li class="@if($car->feature->onboard_computer == true) check @else remove @endif"><span class="@if($car->feature->onboard_computer == true) ion-ios-checkmark @else ion-ios-close @endif"></span>{{ __('onboard_computer') }}</li>
                                     </ul>
                                 </div>
                                 <div class="col-md-4">
                                     <ul class="features">
-                                        <li class="@if($car->feature->audio_input == true) check @else remove @endif"><span class="ion-ios-checkmark"></span>{{ __('audio_input') }}</li>
-                                        <li class="@if($car->feature->long_term_trips == true) check @else remove @endif"><span class="ion-ios-checkmark"></span>{{ __('long_term_trips') }}</li>
-                                        <li class="@if($car->feature->car_kit == true) check @else remove @endif"><span class="ion-ios-checkmark"></span>{{ __('car_kit') }}</li>
-                                        <li class="@if($car->feature->remote_central_locking == true) check @else remove @endif"><span class="ion-ios-checkmark"></span>{{ __('remote_central_locking') }}</li>
-                                        <li class="@if($car->feature->climate_control == true) check @else remove @endif"><span class="ion-ios-checkmark"></span>{{ __('climate_control') }}</li>
+                                        <li class="@if($car->feature->audio_input == true) check @else remove @endif"><span class="@if($car->feature->audio_input == true) ion-ios-checkmark @else ion-ios-close @endif"></span>{{ __('audio_input') }}</li>
+                                        <li class="@if($car->feature->long_term_trips == true) check @else remove @endif"><span class="@if($car->feature->long_term_trips == true) ion-ios-checkmark @else ion-ios-close @endif"></span>{{ __('long_term_trips') }}</li>
+                                        <li class="@if($car->feature->car_kit == true) check @else remove @endif"><span class="@if($car->feature->car_kit == true) ion-ios-checkmark @else ion-ios-close @endif"></span>{{ __('car_kit') }}</li>
+                                        <li class="@if($car->feature->remote_central_locking == true) check @else remove @endif"><span class="@if($car->feature->remote_central_locking == true) ion-ios-checkmark @else ion-ios-close @endif"></span>{{ __('remote_central_locking') }}</li>
+                                        <li class="@if($car->feature->climate_control == true) check @else remove @endif"><span class="@if($car->feature->climate_control == true) ion-ios-checkmark @else ion-ios-close @endif"></span>{{ __('climate_control') }}</li>
                                     </ul>
                                 </div>
                             </div>

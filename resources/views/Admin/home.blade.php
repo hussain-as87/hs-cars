@@ -123,7 +123,7 @@
                 </div>
             </div>
             @endcan
-
+            @can('car-list')
             <div class="col-md-4 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
@@ -160,6 +160,9 @@
                     </div>
                 </div>
             </div>
+            @endcan
+
+            @can('category-list')
             <div class="col-md-4 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
@@ -196,6 +199,8 @@
                     </div>
                 </div>
             </div>
+            @endcan
+
             @can('user-list')
             <div class="col-md-4 grid-margin stretch-card">
                 <div class="card">
@@ -234,6 +239,8 @@
                 </div>
             </div>
             @endcan
+
+            @can('service-list')
             <div class="col-md-4 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
@@ -270,6 +277,9 @@
                     </div>
                 </div>
             </div>
+            @endcan
+
+            @can('rents')
             <div class="col-md-4 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
@@ -288,11 +298,8 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-6 col-md-6 col-xl-7">
-                                <i class="mdi mdi-36px  mdi-archive-outline "></i>
-                            </div>
                             <div class="col-6 col-md-6 col-xl-5">
-                                <h3 class="mb-2"></h3>
+                                <h3 class="mb-2 text-primary"> {{ $rent_count_all }}</h3>
                                 @if ($rent_count >= 1)
                                 <div class="d-flex align-items-baseline">
                                     <p class="text-success">
@@ -307,11 +314,17 @@
                                     </p>
                                 </div>
                                 @endif
+                            </div><br>
+                            <div class="col-6 col-md-6 col-xl-7">
+                                <i class="mdi mdi-36px  mdi-archive-outline "></i>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            @endcan
+
+            @can('contacts')
             <div class="col-md-4 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
@@ -329,11 +342,8 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-6 col-md-6 col-xl-7">
-                                <i class="mdi mdi-36px  mdi-email-outline "></i>
-                            </div>
                             <div class="col-6 col-md-6 col-xl-5">
-                                <h3 class="mb-2"></h3>
+                                <h3 class="mb-2 text-primary"> {{ $contact_count_all }}</h3>
                                 @if ($contact_count >= 1)
                                 <div class="d-flex align-items-baseline">
                                     <p class="text-success">
@@ -349,10 +359,14 @@
                                 </div>
                                 @endif
                             </div>
+                            <div class="col-6 col-md-6 col-xl-7">
+                                <i class="mdi mdi-36px  mdi-email-outline "></i>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+            @endcan
         </div>
     </div>
 </div> <!-- row -->

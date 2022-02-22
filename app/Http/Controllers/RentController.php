@@ -52,7 +52,7 @@ class RentController extends Controller
         $interval = date_diff($datetime1, $datetime2);
         $total_amount = $interval->format('%a');
         $car = Car::find($request->car_id);
-        $amount = $car->pricing->in_day * $total_amount;
+        $amount = ($car->pricing->in_day+3) * $total_amount;
 
         $rent = Rent::create($data);
 

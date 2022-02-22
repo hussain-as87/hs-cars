@@ -46,7 +46,6 @@
                     <li class="nav-item {{ Request::segment(1) === 'services' ? 'active' : '' }}"><a href="{{ route('home.services') }}" class="nav-link">{{ __('services') }}</a></li>
                     <li class="nav-item {{ Request::segment(1) === 'pricing' ? 'active' : '' }}"><a href="{{ route('home.pricing') }}" class="nav-link">{{ __('pricing') }}</a></li>
                     <li class="nav-item {{ Request::segment(1) === 'cars' ? 'active' : '' }}"><a href="{{ route('home.cars') }}" class="nav-link">{{ __('cars') }}</a></li>
-                    <li class="nav-item {{ Request::segment(1) === 'blog' ? 'active' : '' }}"><a href="{{ route('home.blog') }}" class="nav-link">{{ __('blog') }}</a></li>
                     <li class="nav-item {{ Request::segment(1) === 'contact' ? 'active' : '' }}"><a href="{{ route('home.contact') }}" class="nav-link">{{ __('Contact') }}</a></li>
                 </ul>
             </div>

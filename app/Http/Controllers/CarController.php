@@ -49,14 +49,9 @@ class CarController extends Controller
         $cars = Car::with('pricing', 'category')->where('id','!=', $car->id)->where('category_id', $car->category_id)->orderByDesc('created_at')->paginate(3);
         return view('home.car-single', compact('car', 'cars'));
     }
-    public function blog()
-    {
-        $cars = Car::all();
-        return view('home.blog', compact('cars'));
-    }
+
     public function contact()
     {
-        $cars = Car::all();
-        return view('home.contact', compact('cars'));
+        return view('home.contact');
     }
 }
