@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Rent;
+use App\Models\Review;
 use App\Models\RentCar;
 use App\Models\Admin\Category;
 use Illuminate\Database\Eloquent\Model;
@@ -71,11 +72,15 @@ class Car extends Model
     {
         return $this->hasMany(Rent::class);
     }
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
     public function orders()
     {
         return $this->belongsToMany(Rent::class, 'rent_cars')
-        ->using(RentCar::class)
-        ->withPivot(['amount'])
-        ->as('details');
+            ->using(RentCar::class)
+            ->withPivot(['amount'])
+            ->as('details');
     }
 }

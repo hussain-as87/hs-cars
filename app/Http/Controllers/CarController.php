@@ -6,6 +6,7 @@ use App\Models\Admin\About;
 use App\Models\Car;
 use App\Models\Admin\Advert;
 use App\Models\Admin\Service;
+use App\Models\Review;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -45,9 +46,10 @@ class CarController extends Controller
     }
     public function single_car($id)
     {
+        $reviews = Review::with('user.profile')->orderByDesc('created_at')->get();
         $car = Car::with('pricing', 'category', 'feature')->where('id', $id)->first();
         $cars = Car::with('pricing', 'category')->where('id','!=', $car->id)->where('category_id', $car->category_id)->orderByDesc('created_at')->paginate(3);
-        return view('home.car-single', compact('car', 'cars'));
+        return view('home.car-single', compact('car', 'cars', 'reviews'));
     }
 
     public function contact()
