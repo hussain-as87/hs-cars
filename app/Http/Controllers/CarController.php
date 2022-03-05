@@ -47,9 +47,10 @@ class CarController extends Controller
     public function single_car($id)
     {
         $reviews = Review::with('user.profile')->orderByDesc('created_at')->get();
+        $review = Review::with('user.profile')->where(['car_id'=>$id,'user_id'=>auth()->id()])->first();
         $car = Car::with('pricing', 'category', 'feature')->where('id', $id)->first();
         $cars = Car::with('pricing', 'category')->where('id','!=', $car->id)->where('category_id', $car->category_id)->orderByDesc('created_at')->paginate(3);
-        return view('home.car-single', compact('car', 'cars', 'reviews'));
+        return view('home.car-single', compact('car', 'cars', 'reviews', 'review'));
     }
 
     public function contact()

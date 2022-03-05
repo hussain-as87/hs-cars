@@ -88,7 +88,6 @@
                         @endforeach
                     </tbody>
                 </table>
-                {!! $data->render() !!}
             </div>
         </div>
         <div class="row">

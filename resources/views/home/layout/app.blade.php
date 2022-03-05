@@ -26,6 +26,18 @@
     <link rel="stylesheet" href="{{ asset('css/icomoon.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     @toastr_css
+    @livewireStyles
+    <style>
+    .nobu {
+            background: none;
+            color: inherit;
+            border: none;
+            padding: 0;
+            font: inherit;
+            cursor: pointer;
+            outline: inherit;
+        }
+    </style>
 
     {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   --}}
@@ -102,7 +114,7 @@
                                 <li><a href="#"><span class="icon icon-phone"></span> <span class="text"> {{ config('settings.webiste_phone') }}</span></a></li>
                                 <li><a href="#"><span class="icon icon-envelope"></span> <span class="text"> {{ config('settings.webiste_email') }}</span></a></li>
                                 <li>
-                                    <a href="#"  id="languagesDropdown" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+                                    <a href="#" id="languagesDropdown" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
                                         <span class="icon icon-globe"></span>{{ __(config('locales.languages')[app()->getLocale()]['name']) }} <span class="caret"></span><i class="flag-icon flag-icon-{{__(config('locales.languages')[app()->getLocale()]['icon'])}} mt-1" title="us"></i>
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="languagesDropdown">
@@ -136,6 +148,7 @@
     <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
             <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
             <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg></div>
+    @livewireScripts
 
     @jquery
     @toastr_js
