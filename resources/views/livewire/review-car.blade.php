@@ -38,9 +38,9 @@
         </div>
         @endforeach
         @if($limit < $reviews_count)
-        <button type="button" wire:click="loadMore()" class="btn btn-link">{{ __('more') }} <i class="ion-ios-arrow-down"></i></button>
+        <button type="button" wire:click="loadMore()" class="btn btn-light">{{ __('more') }} <i class="ion-ios-arrow-down"></i></button>
         @elseif($limit > 3)
-        <button type="button" wire:click="loadLess()" class="btn btn-link">{{ __('less') }} <i class="ion-ios-arrow-up"></i></button>
+        <button type="button" wire:click="loadLess()" class="btn btn-light">{{ __('less') }} <i class="ion-ios-arrow-up"></i></button>
         @endif
 
         <!-- delete Modal -->

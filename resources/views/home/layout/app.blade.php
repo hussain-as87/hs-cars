@@ -28,7 +28,7 @@
     @toastr_css
     @livewireStyles
     <style>
-    .nobu {
+        .nobu {
             background: none;
             color: inherit;
             border: none;
@@ -37,6 +37,7 @@
             cursor: pointer;
             outline: inherit;
         }
+
     </style>
 
     {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -59,6 +60,38 @@
                     <li class="nav-item {{ Request::segment(1) === 'pricing' ? 'active' : '' }}"><a href="{{ route('home.pricing') }}" class="nav-link">{{ __('pricing') }}</a></li>
                     <li class="nav-item {{ Request::segment(1) === 'cars' ? 'active' : '' }}"><a href="{{ route('home.cars') }}" class="nav-link">{{ __('cars') }}</a></li>
                     <li class="nav-item {{ Request::segment(1) === 'contact' ? 'active' : '' }}"><a href="{{ route('home.contact') }}" class="nav-link">{{ __('Contact') }}</a></li>
+                    <!-- Right Side Of Navbar -->
+                    <!-- Authentication Links -->
+                    @guest
+                    @if (Route::has('login'))
+                    <li class="nav-item ">
+                        <a class="nav-link text-warning" href="{{ route('login') }}">{{ __('login') }}</a>
+                    </li>
+                    @endif
+
+                    @if (Route::has('register'))
+                    <li class="nav-item ">
+                        <a class="nav-link text-warning" href="{{ route('register') }}">{{ __('Register') }}</a>
+                    </li>
+                    @endif
+                    @else
+                    <li class="nav-item dropdown">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            {{ Auth::user()->name }}
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item text-danger" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                {{ __('logout') }}
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </div>
+                    </li>
+                    @endguest
                 </ul>
             </div>
         </div>
