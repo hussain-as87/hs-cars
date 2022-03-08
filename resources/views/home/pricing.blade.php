@@ -37,12 +37,17 @@
                                 <td class="product-name">
                                     <h3>{{ $car->name }}</h3>
                                     <p class="mb-0 rated">
+                                        @php
+                                        $rat = DB::table('reviews')->select(DB::raw('avg(rating) as avg'))->where('car_id','=',$car->id)->first();
+                                        @endphp
                                         <span>rated:</span>
-                                        <span class="ion-ios-star"></span>
-                                        <span class="ion-ios-star"></span>
-                                        <span class="ion-ios-star"></span>
-                                        <span class="ion-ios-star"></span>
-                                        <span class="ion-ios-star"></span>
+                                        @if($rat->avg == null)
+                                        (0)@else
+                                        ({{ round($rat->avg,1) }})
+                                        @endif
+                                        @for($i = 0; $i < $rat->avg; $i++)
+                                            <span class="ion-ios-star text-warning"></span>
+                                            @endfor
                                     </p>
                                 </td>
 
