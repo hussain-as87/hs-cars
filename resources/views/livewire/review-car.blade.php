@@ -37,12 +37,9 @@
             </div>
         </div>
         @endforeach
-        @if($pages >= $reviews_count)
-        @else
+        @if($limit < $reviews_count)
         <button type="button" wire:click="loadMore()" class="btn btn-link">{{ __('more') }} <i class="ion-ios-arrow-down"></i></button>
-        @endif
-
-        @if($pages > 3)
+        @elseif($limit > 3)
         <button type="button" wire:click="loadLess()" class="btn btn-link">{{ __('less') }} <i class="ion-ios-arrow-up"></i></button>
         @endif
 
