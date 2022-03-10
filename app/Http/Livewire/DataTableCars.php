@@ -18,6 +18,6 @@ class DataTableCars extends Component
         $data = Car::search($this->search)
             ->orderBy($this->orderBy, $this->orderAsc ? 'asc' : 'desc')
             ->paginate($this->perPage);
-        return view('livewire.data-table-cars', compact('data'))->with('i', ($request->input('page', 1) - 1) * 5);
+        return view('livewire.data-table-cars', compact('data'));
     }
 }

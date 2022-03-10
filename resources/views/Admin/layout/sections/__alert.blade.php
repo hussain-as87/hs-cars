@@ -14,7 +14,7 @@
 @elseif($message = Session::get('success'))
 <div class="alert alert-fill-success col-12" role="alert">
     <i data-feather="check-circle"></i>
-    <strong>{{ __('Successfully') }}!</strong> {{ __($message) }}.
+    <strong>{{ __('Successfully') }} ! </strong> {{ __($message) }}.
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
     </button>

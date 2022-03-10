@@ -12,12 +12,11 @@ class CategoriesController extends Controller
 {
     public function __construct()
     {
-        /* $this->authorizeResource(Product::class, 'product'); */
-        /*  $this->middleware('permission:category-list|category-create|category-edit|category-delete', ['only' => ['index', 'show']]);
+          $this->middleware('permission:category-list|category-create|category-edit|category-delete', ['only' => ['index', 'show']]);
         $this->middleware('permission:category-create', ['only' => ['create', 'store']]);
         $this->middleware('permission:category-edit', ['only' => ['edit', 'update']]);
         $this->middleware('permission:category-delete', ['only' => ['destroy']]);
-        $this->middleware('permission:category-trash', ['only' => ['trash', 'restore', 'forceDelete']]); */
+        $this->middleware('permission:category-trash', ['only' => ['trash', 'restore', 'forceDelete']]);
     }
 
     public function index(Category $category)
@@ -53,7 +52,7 @@ class CategoriesController extends Controller
         $category = Category::create($data);
 
         if ($category) {
-            return redirect()->route('categories.index')->with('success', __('Successfully Saved !!'));
+            return redirect()->route('categories.index')->with('success', 'Successfully Saved !!');
         } else {
             return redirect()->route('error-404')->with('direction', 'categories.index');
         }
@@ -80,7 +79,7 @@ class CategoriesController extends Controller
         $cate = $category->update($data);
 
         if ($cate) {
-            return redirect()->route('categories.index')->with('success', __('Successfully Updated !!'));
+            return redirect()->route('categories.index')->with('success', 'Successfully Updated !!');
         } else {
             return redirect()->route('error-404')->with('direction', 'categories.index');
         }
@@ -92,10 +91,55 @@ class CategoriesController extends Controller
             return redirect()->route('error-404')->with('direction', 'categories.index');
         } else {
             $category->delete();
-            return redirect()->route('categories.index')->with('delete', __('Successfully Deleted !!'));
+            return redirect()->route('categories.index')->with('delete', 'Successfully Deleted !!');
+        }
+    }
+    /**
+     * Remove the specified resource from storage.
+     *
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function trash()
+    {
+        return view('Admin.category.trashed');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function restore($id)
+    {
+        $category = Category::withTrashed()->findOrFail($id);
+        if (!$category) {
+            return redirect()->route('error-404')->with('direction', 'categories.index');
+        } else {
+            $category->restore();
+            return redirect()->route('categories.index')
+                ->with('success','Successfully Restore !!');
         }
     }
 
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function forceDelete($id)
+    {
+        $category = Category::withTrashed()->find($id);
+        if (!$category) {
+            return redirect()->route('error-404')->with('direction', 'categories.index');
+        } else {
+            $category->forceDelete();
+            return redirect()->route('categories.trash')
+                ->with('delete', 'Successfully Final Deleted !!');
+        }
+    }
     protected function getValidate(Request $request)
     {
         return  $request->validate([

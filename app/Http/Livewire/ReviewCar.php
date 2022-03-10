@@ -11,10 +11,13 @@ class ReviewCar extends Component
 {
     public $car;
     public $limit = 3;
-    public $rating = '0';
+    public $rating = '';
     public $comment = '';
     public $deleteId = '';
     public $updateId = '';
+    protected $rules = [
+        'comment' => 'required|max:500'
+    ];
 
     public function mount(Car $car)
     {
@@ -48,20 +51,16 @@ class ReviewCar extends Component
         if (Auth::user() == null) {
             return redirect()->to('/login');
         }
-        $this->validate([
-            'comment' => 'required|max:500',
-            'rating' => 'sometimes|integer'
-        ]);
+        $this->validate();
         $data['car_id'] = $this->car->id;
         $data['user_id'] = auth()->id();
         $data['review'] = $this->comment;
-        $data['rating'] = $this->rating;
+        $data['rating'] = $this->rating ? $this->rating : "0";
 
         $rev = Review::create($data);
 
         if ($rev) {
-            $this->comment = '';
-            $this->rating = '';
+            $this->reset_input();
             toastr()->success('Successfully Save !!');
             return redirect()->back();
         }
@@ -79,10 +78,7 @@ class ReviewCar extends Component
         if (Auth::user() == null) {
             return redirect()->to('/login');
         }
-        $this->validate([
-            'comment' => 'required|max:500',
-            'rating' => 'sometimes|integer'
-        ]);
+        $this->validate();
         $data['car_id'] = $this->car->id;
         $data['user_id'] = auth()->id();
         $data['review'] = $this->comment;
@@ -91,6 +87,7 @@ class ReviewCar extends Component
         $rev = Review::find($this->updateId)->update($data);
 
         if ($rev) {
+            $this->reset_input();
             toastr()->success('Successfully Updated !!');
             return redirect()->back();
         }
@@ -124,5 +121,10 @@ class ReviewCar extends Component
             toastr()->error('Successfully Deleted !!');
             return redirect()->back();
         }
+    }
+    public function reset_input()
+    {
+        $this->comment = '';
+        $this->rating = '';
     }
 }

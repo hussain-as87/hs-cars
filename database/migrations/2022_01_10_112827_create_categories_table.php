@@ -19,6 +19,7 @@ class CreateCategoriesTable extends Migration
             $table->json('name');
             $table->json('description');
             $table->text('logo');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

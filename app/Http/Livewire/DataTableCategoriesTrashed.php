@@ -2,23 +2,22 @@
 
 namespace App\Http\Livewire;
 
-use Livewire\Component;
-use Illuminate\Http\Request;
 use App\Models\Admin\Category;
+use Livewire\Component;
 
-class DataTableCategories extends Component
+class DataTableCategoriesTrashed extends Component
 {
     public $perPage = 10;
     public $search = '';
     public $orderAsc = true;
     public $orderBy = 'id';
 
-    public function render(Request $request)
+    public function render()
     {
-        $data = Category::search($this->search)
+        $data = Category::onlyTrashed()->search($this->search)
             ->orderBy($this->orderBy, $this->orderAsc ? 'asc' : 'desc')
             ->paginate($this->perPage);
-        return view(
-            'livewire.data-table-categories', compact('data'));
+        return view('livewire.data-table-categories-trashed', compact('data'));
     }
 }
+

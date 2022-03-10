@@ -79,7 +79,7 @@ class ProfileController extends Controller
         if (!$pro || !$user) {
             return redirect()->route('error-500')->with('direction', 'profile.edit');
         }
-        return redirect()->route('profile.index')->with('success', __('Successfully Updated !!'));
+        return redirect()->route('profile.index')->with('success', 'Successfully Updated !!');
     }
     protected function getValidation($request)
     {
