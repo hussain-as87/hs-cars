@@ -27,7 +27,10 @@ class CarsController extends Controller
         $this->middleware('permission:car-create', ['only' => ['create', 'store']]);
         $this->middleware('permission:car-edit', ['only' => ['edit', 'update']]);
         $this->middleware('permission:car-delete', ['only' => ['destroy']]);
+        $this->middleware('permission:car-trash', ['only' => ['trash', 'restore', 'forceDelete']]);
+
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -54,7 +57,7 @@ class CarsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -107,7 +110,7 @@ class CarsController extends Controller
 
             if ($car) {
                 DB::commit();
-                return redirect()->route('cars.index')->with('success', __('Successfully Saved !!'));
+                return redirect()->route('cars.index')->with('success', 'Successfully Saved !!');
             } else {
                 return redirect()->route('cars.index')->with('error', 'Have Error !!');
             }
@@ -120,13 +123,13 @@ class CarsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
         $categories = Category::all();
-            $car = Car::find($id);
+        $car = Car::find($id);
 
         $car_pricing = DB::table('car_pricing')->where('car_id', $id)->first();
         $car_features = DB::table('car_features')->where('car_id', $id)->first();
@@ -135,10 +138,11 @@ class CarsController extends Controller
         }
         return view('Admin.cars.edit', compact('car', 'categories', 'car_pricing', 'car_features'));
     }
+
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -159,8 +163,8 @@ class CarsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -210,7 +214,7 @@ class CarsController extends Controller
 
         if ($car) {
             $car->update($data);
-            return redirect()->route('cars.index')->with('success', __('Successfully Updated !!'));
+            return redirect()->route('cars.index')->with('success', 'Successfully Updated !!');
         } else {
             return redirect()->route('error-404')->with('direction', 'cars.index');
         }
@@ -219,7 +223,7 @@ class CarsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -228,11 +232,59 @@ class CarsController extends Controller
 
         if ($car) {
             $car->delete();
-            return redirect()->route('cars.index')->with('delete', __('Successfully Deleted !!'));
+            return redirect()->route('cars.index')->with('delete', 'Successfully Deleted !!');
         } else {
             return redirect()->route('error-404')->with('direction', 'cars.index');
         }
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function trash()
+    {
+        return view('Admin.cars.trashed');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function restore($id)
+    {
+        $car = Car::withTrashed()->findOrFail($id);
+        if (!$car) {
+            return redirect()->route('error-404')->with('direction', 'cars.index');
+        } else {
+            $car->restore();
+            return redirect()->route('cars.index')
+                ->with('success', 'Successfully Restore !!');
+        }
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function forceDelete($id)
+    {
+        $car = Car::withTrashed()->find($id);
+        if (!$car) {
+            return redirect()->route('error-404')->with('direction', 'cars.index');
+        } else {
+            $car->forceDelete();
+            return redirect()->route('cars.trash')
+                ->with('delete', 'Successfully Final Deleted !!');
+        }
+    }
+
     protected function getValidation($request)
     {
         return $request->validate([
@@ -251,7 +303,6 @@ class CarsController extends Controller
             'air_conditions' => 'required|integer|max:1',
             'child_seat' => 'required|integer|max:1',
             'gps' => 'required|integer|max:1',
-            'luggage' => 'required|integer|max:1',
             'music' => 'required|integer|max:1',
             'seat_beit' => 'required|integer|max:1',
             'sleeping_bed' => 'required|integer|max:1',

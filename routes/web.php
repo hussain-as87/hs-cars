@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\CategoriesController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -44,13 +45,25 @@ Auth::routes();
 
 
 Route::group(['middleware' => 'auth', 'prefix' => 'AdminDashboard/'], function () {
-    Route::get('/home', [\App\Http\Controllers\Admin\HomeController::class,'index'])->name('admin.home');
+    Route::get('/home', [\App\Http\Controllers\Admin\HomeController::class, 'index'])->name('admin.home');
 
     Route::resource('roles', RoleController::class);
-    Route::resource('users', UserController::class);
-    Route::resource('cars', CarsController::class);
-    Route::resource('categories', CategoriesController::class);
 
+    Route::resource('users', UserController::class)->except('destroy');
+    Route::get('/user/{id}/destroy', [UserController::class, 'destroy'])->name('users.destroy');
+    Route::get('/user/trash', [UserController::class, 'trash'])->name('users.trash');
+    Route::get('/user/restore/{id}', [UserController::class, 'restore'])->name('users.restore');
+    Route::get('/user/forceDelete/{id}', [UserController::class, 'forceDelete'])->name('users.forceDelete');
+
+    Route::resource('cars', CarsController::class);
+    Route::get('/car/trash', [CarsController::class, 'trash'])->name('cars.trash');
+    Route::get('/car/restore/{id}', [CarsController::class, 'restore'])->name('cars.restore');
+    Route::get('/car/forceDelete/{id}', [CarsController::class, 'forceDelete'])->name('cars.forceDelete');
+
+    Route::resource('categories', CategoriesController::class);
+    Route::get('/category/trash', [CategoriesController::class, 'trash'])->name('categories.trash');
+    Route::get('/category/restore/{id}', [CategoriesController::class, 'restore'])->name('categories.restore');
+    Route::get('/category/forceDelete/{id}', [CategoriesController::class, 'forceDelete'])->name('categories.forceDelete');
 
     Route::prefix('advert')->group(function () {
         Route::get('/', [AdvertController::class, 'index'])->name('advert.index');

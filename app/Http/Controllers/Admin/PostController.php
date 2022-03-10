@@ -55,7 +55,7 @@ class PostController extends Controller
         }
         $post = Post::create($data);
         if ($post) {
-            return redirect()->back()->with('success', __('Successfully Saved !!'));
+            return redirect()->back()->with('success', 'Successfully Saved !!');
         }
     }
 
@@ -112,7 +112,7 @@ class PostController extends Controller
         } else {
             $excec = $post->update($data);
             if ($excec) {
-                return redirect()->back()->with('success', __('Successfully Updated !!'));
+                return redirect()->back()->with('success', 'Successfully Updated !!');
             }
         }
     }
@@ -130,7 +130,7 @@ class PostController extends Controller
         } else {
             $excec = $post->delete();
             if ($excec) {
-                return redirect()->back()->with('delete', __('Successfully Deleted !!'));
+                return redirect()->back()->with('delete','Successfully Deleted !!');
             }
         }
     }

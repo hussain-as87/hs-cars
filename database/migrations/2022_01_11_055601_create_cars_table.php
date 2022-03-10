@@ -25,6 +25,7 @@ class CreateCarsTable extends Migration
             $table->text('seats');
             $table->text('luggage');
             $table->text('fuel');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

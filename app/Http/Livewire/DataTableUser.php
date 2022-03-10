@@ -18,6 +18,6 @@ class DataTableUser extends Component
         $data = User::search( $this->search)
             ->orderBy($this->orderBy, $this->orderAsc ? 'asc' : 'desc')->where('email','!=',auth()->user()->email)
             ->paginate($this->perPage);
-        return view('livewire.data-table-user',compact('data'))->with('i', ($request->input('page', 1) - 1) * 5);
+        return view('livewire.data-table-user',compact('data'));
     }
 }

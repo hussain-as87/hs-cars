@@ -5,13 +5,14 @@ namespace App\Models\Admin;
 use App\Models\Car;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Translatable\HasTranslations;
 use Nicolaslopezj\Searchable\SearchableTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Category extends Model
 {
-    use HasFactory, HasTranslations, SearchableTrait;
+    use HasFactory, HasTranslations, SearchableTrait ,SoftDeletes;
     public $translatable = ['name', 'description'];
 
     public $fillable = [
