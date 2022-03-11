@@ -49,6 +49,6 @@ class AdvertController extends Controller
             $data['image'] = $image;
         }
         $advert->update($data);
-        return redirect()->route('advert.index')->with('success', 'Successfully Updated !!');
+        return redirect()->route('advert.index')->with('warning', 'Successfully Updated !!');
     }
 }

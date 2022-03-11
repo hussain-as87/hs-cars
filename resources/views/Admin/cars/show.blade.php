@@ -9,9 +9,9 @@
 <div class="card">
     <div class="card-body">
         <div class="pull-right">
-            <a class="btn btn-warning" href="{{ route('cars.index') }}"> {{ __('Go Back') }} <i data-feather="arrow-left" class="icon-sm mr-2"></i></a>
-            <a class="btn btn-primary" href="{{ route('cars.create') }}"> {{ __('car-create') }} <i data-feather="plus-circle" class="icon-sm mr-2"></i></a>
-            <a class="btn btn-secondary " href="{{ route('cars.edit',$car->id) }}"> {{ __('car-edit') }} <i data-feather="edit-3" class="icon-sm mr-2"></i></a>
+            <a class="btn btn-outline-info" href="{{ route('cars.index') }}"> {{ __('Go Back') }} <i data-feather="arrow-left" class="icon-sm mr-2"></i></a>
+            <a class="btn btn-outline-primary" href="{{ route('cars.create') }}"> {{ __('car-create') }} <i data-feather="plus-circle" class="icon-sm mr-2"></i></a>
+            <a class="btn btn-outline-warning " href="{{ route('cars.edit',$car->id) }}"> {{ __('car-edit') }} <i data-feather="edit-3" class="icon-sm mr-2"></i></a>
         </div>
         <br />
         <div class="row">

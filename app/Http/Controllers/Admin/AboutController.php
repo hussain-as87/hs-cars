@@ -44,6 +44,6 @@ class AboutController extends Controller
             $data['photo'] = $image;
         }
         $about->update($data);
-        return redirect()->route('about.index')->with('success', 'Successfully Updated !!');
+        return redirect()->route('about.index')->with('warning', 'Successfully Updated !!');
     }
 }

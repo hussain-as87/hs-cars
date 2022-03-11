@@ -19,6 +19,22 @@
         <span aria-hidden="true">&times;</span>
     </button>
 </div>
+@elseif($message = Session::get('warning'))
+<div class="alert alert-fill-warning col-12" role="alert">
+    <i data-feather="check-circle"></i>
+    <strong>{{ __('Successfully') }} ! </strong> {{ __($message) }}.
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+@elseif($message = Session::get('primary'))
+<div class="alert alert-fill-primary col-12" role="alert">
+    <i data-feather="check-circle"></i>
+    <strong>{{ __('Successfully') }} ! </strong> {{ __($message) }}.
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
 @elseif($message = Session::get('delete'))
 <div class="alert alert-fill-danger col-12" role="alert">
     <i data-feather="x-circle"></i>

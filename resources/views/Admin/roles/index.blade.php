@@ -9,7 +9,7 @@
 <div class="card">
     <div class="card-body">
         <h4 class="card-title"> @can('role-create')
-            <a class="btn btn-secondary" href="{{ route('roles.create') }}">{{__('create role')}} <i data-feather="plus" class="icon-sm mr-2"></i></a>
+            <a class="btn btn-outline-primary" href="{{ route('roles.create') }}">{{__('create role')}} <i data-feather="plus" class="icon-sm mr-2"></i></a>
             @endcan</h4>
         <div class="table-responsive pt-3">
             <table class="table table-bordered">
@@ -25,12 +25,12 @@
                     <tr class="">
                         <td>{{ ++$i }}</td>
                         <td>{{ $role->name }}</td>
-                        <td><a class="btn btn-info" href="{{ route('roles.show',$role->id) }}">{{ __('show') }} <i data-feather="eye" class="icon-sm mr-2"></i></a>
+                        <td><a class="btn btn-outline-info" href="{{ route('roles.show',$role->id) }}">{{ __('show') }} <i data-feather="eye" class="icon-sm mr-2"></i></a>
                             @can('role-edit')
-                            <a class="btn btn-secondary" href="{{ route('roles.edit',$role->id) }}">{{ __('edit') }} <i data-feather="edit-3" class="icon-sm mr-2"></i></a>
+                            <a class="btn btn-outline-warning" href="{{ route('roles.edit',$role->id) }}">{{ __('edit') }} <i data-feather="edit-3" class="icon-sm mr-2"></i></a>
                             @endcan
                             @can('role-delete')
-                            <a href="" class="btn btn-danger">
+                            <a href="" class="btn btn-outline-danger">
                                 <form action="{{ route('roles.destroy',$role->id) }}" method="post">
                                     @csrf
                                     @method('DELETE')

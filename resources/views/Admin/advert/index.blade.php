@@ -9,7 +9,7 @@
 <div class="card">
     <div class="card-body">
         <h4 class="card-title">{{-- @can('advert-edit')  --}}
-            <a class="btn btn-secondary" href="{{ route('advert.edit') }}">{{ __('edit') }} <i data-feather="edit-3" class="icon-sm mr-2"></i></a>
+            <a class="btn btn-outline-warning" href="{{ route('advert.edit') }}">{{ __('edit') }} <i data-feather="edit-3" class="icon-sm mr-2"></i></a>
             {{-- @endcan  --}}</h4>
         <div class="table-responsive pt-3">
             <div class="row col-12">

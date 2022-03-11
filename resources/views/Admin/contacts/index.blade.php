@@ -32,7 +32,7 @@
                         <td>{{ $contact->created_at->diffForHumans() }}</td>
                         <td>
                             @can('contacts')
-                            <a href="" class="btn btn-danger">
+                            <a href="" class="btn btn-outline-danger">
                                 <form action="{{ route('contacts.destroy',$contact->id) }}" method="post">
                                     @csrf
                                     @method('DELETE')

@@ -14,7 +14,7 @@
     <div class="card-body">
         <h5>{{ __('create user') }}</h2>
 
-            <a class="btn btn-info" href="{{ route('users.index') }}">{{ __('Go Back') }} <i data-feather="arrow-left" class="icon-sm mr-2"></i></a>
+            <a class="btn btn-outline-info" href="{{ route('users.index') }}">{{ __('Go Back') }} <i data-feather="arrow-left" class="icon-sm mr-2"></i></a>
 
             <br />
 
@@ -57,7 +57,7 @@
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                    <button type="submit" class="btn btn-primary">{{ __('Submit') }} <i data-feather="save" class="icon-sm mr-2"></i></button>
+                    <button type="submit" class="btn btn-outline-primary">{{ __('Submit') }} <i data-feather="save" class="icon-sm mr-2"></i></button>
                 </div>
             </div>
             {!! Form::close() !!}

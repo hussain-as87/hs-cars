@@ -55,12 +55,14 @@ Route::group(['middleware' => 'auth', 'prefix' => 'AdminDashboard/'], function (
     Route::get('/user/restore/{id}', [UserController::class, 'restore'])->name('users.restore');
     Route::get('/user/forceDelete/{id}', [UserController::class, 'forceDelete'])->name('users.forceDelete');
 
-    Route::resource('cars', CarsController::class);
+    Route::resource('cars', CarsController::class)->except('destroy');
+    Route::get('/car/{id}/destroy', [CarsController::class, 'destroy'])->name('cars.destroy');
     Route::get('/car/trash', [CarsController::class, 'trash'])->name('cars.trash');
     Route::get('/car/restore/{id}', [CarsController::class, 'restore'])->name('cars.restore');
     Route::get('/car/forceDelete/{id}', [CarsController::class, 'forceDelete'])->name('cars.forceDelete');
 
-    Route::resource('categories', CategoriesController::class);
+    Route::resource('categories', CategoriesController::class)->except('destroy');
+    Route::get('/category/{id}/destroy', [CategoriesController::class, 'destroy'])->name('categories.destroy');
     Route::get('/category/trash', [CategoriesController::class, 'trash'])->name('categories.trash');
     Route::get('/category/restore/{id}', [CategoriesController::class, 'restore'])->name('categories.restore');
     Route::get('/category/forceDelete/{id}', [CategoriesController::class, 'forceDelete'])->name('categories.forceDelete');

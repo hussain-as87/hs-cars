@@ -36,7 +36,7 @@
                         <td>{{ $rc->created_at->diffForHumans() }}</td>
                         <td>
                             @can('rents-delete')
-                            <a href="" class="btn btn-danger">
+                            <a href="" class="btn btn-outline-danger">
                                 <form action="{{ route('rent.destroy',$rc->rent->id) }}" method="post">
                                     @csrf
                                     @method('DELETE')

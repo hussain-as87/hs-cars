@@ -142,7 +142,7 @@
                         @error('about_me') <span class="text-danger">{{ $message }}</span> @enderror </div>
                 </div>
                 <div class="pl-lg-4">
-                    <button class="btn btn-primary " type="submit">{{ __('edit') }} <i data-feather="edit" class="icon-sm mr-2"></i></button>
+                    <button class="btn btn-outline-primary " type="submit">{{ __('edit') }} <i data-feather="edit" class="icon-sm mr-2"></i></button>
 
                 </div>
             </fieldset>

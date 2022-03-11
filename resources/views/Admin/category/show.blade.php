@@ -9,10 +9,10 @@
 <div class="card">
     <div class="card-body">
         <div class="pull-right">
-            <a class="btn btn-warning" href="{{ route('categories.index') }}"> {{ __('Go Back') }} <i data-feather="arrow-left" class="icon-sm mr-2"></i></a>
-            <a class="btn btn-primary" href="{{ route('categories.create') }}"> {{ __('category-create') }} <i data-feather="plus-circle" class="icon-sm mr-2"></i></a>
-            <a class="btn btn-primary" href="{{ route('cars.create') }}"> {{ __('car-create') }} <i data-feather="plus-circle" class="icon-sm mr-2"></i></a>
-            <a class="btn btn-secondary " href="{{ route('categories.edit',$category->id) }}"> {{ __('category-edit') }} <i data-feather="edit-3" class="icon-sm mr-2"></i></a>
+            <a class="btn btn-outline-info" href="{{ route('categories.index') }}"> {{ __('Go Back') }} <i data-feather="arrow-left" class="icon-sm mr-2"></i></a>
+            <a class="btn btn-outline-primary" href="{{ route('categories.create') }}"> {{ __('category-create') }} <i data-feather="plus-circle" class="icon-sm mr-2"></i></a>
+            <a class="btn btn-outline-primary" href="{{ route('cars.create') }}"> {{ __('car-create') }} <i data-feather="plus-circle" class="icon-sm mr-2"></i></a>
+            <a class="btn btn-outline-warning " href="{{ route('categories.edit',$category->id) }}"> {{ __('category-edit') }} <i data-feather="edit-3" class="icon-sm mr-2"></i></a>
         </div>
         <br />
         <div class="row">

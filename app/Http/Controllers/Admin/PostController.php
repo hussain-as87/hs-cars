@@ -112,7 +112,7 @@ class PostController extends Controller
         } else {
             $excec = $post->update($data);
             if ($excec) {
-                return redirect()->back()->with('success', 'Successfully Updated !!');
+                return redirect()->back()->with('warning', 'Successfully Updated !!');
             }
         }
     }

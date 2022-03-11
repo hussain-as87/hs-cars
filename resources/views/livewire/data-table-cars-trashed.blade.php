@@ -68,7 +68,7 @@
                             <td>{{ $car->category->name }}</td>
                             <td>
                                 @can('car-trash')
-                                    <a class="btn btn-info"
+                                    <a class="btn btn-outline-primary"
                                        href="{{ route('cars.restore',$car->id) }}">{{ __('restore') }}
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                              fill="currentColor" class="bi bi-arrow-repeat" viewBox="0 0 16 16">
@@ -79,7 +79,7 @@
                                         </svg>
                                     </a>
 
-                                    <a class="btn btn-danger"
+                                    <a class="btn btn-outline-danger"
                                        href="{{ route('cars.forceDelete',$car->id) }}">{{ __('final delete') }}
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                              fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
