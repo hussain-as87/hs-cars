@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Car;
+use App\Models\DisableReview;
 use App\Models\Review;
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
@@ -16,6 +17,7 @@ class ReviewCar extends Component
     public $deleteId = '';
     public $updateId = '';
     protected $rules = [
+        'rating' => 'required_if:comment,null|max:500',
         'comment' => 'required_if:rating,null|max:500'
     ];
 
@@ -23,6 +25,7 @@ class ReviewCar extends Component
     {
         $this->car = $car;
     }
+
     public function loadMore()
     {
         if (Auth::user() == null) {
@@ -30,6 +33,7 @@ class ReviewCar extends Component
         }
         $this->limit = $this->limit + 5;
     }
+
     public function loadLess()
     {
         if (Auth::user() == null) {
@@ -42,10 +46,16 @@ class ReviewCar extends Component
 
     public function render()
     {
-        $reviews = Review::with('user.profile')->where('car_id', $this->car->id)->orderByDesc('created_at')->paginate($this->limit);
+        $disable_reviews = DisableReview::all();
+        foreach ($disable_reviews as $d) {
+            $reviews = Review::with('user.profile')->where('car_id', $this->car->id)
+                ->where('id', '!=', $d->review_id)
+                ->orderByDesc('created_at')->paginate($this->limit);
+        }
         $reviews_count = Review::where('car_id', $this->car->id)->get()->count();
         return view('livewire.review-car', compact('reviews', 'reviews_count'));
     }
+
     public function store()
     {
         if (Auth::user() == null) {
@@ -57,14 +67,21 @@ class ReviewCar extends Component
         $data['review'] = $this->comment;
         $data['rating'] = $this->rating ? $this->rating : "0";
 
-        $rev = Review::create($data);
+        $u = Review::where(['user_id' => \auth()->id(), 'car_id' => $this->car->id])->first();
 
-        if ($rev) {
+        if ($u == null) {
+            $rev = Review::create($data);
             $this->reset_input();
             toastr()->success('Successfully Save !!');
             return redirect()->back();
+        } else {
+            $u->update($data);
+            $this->reset_input();
+            toastr()->warning('Successfully Updated !!');
+            return redirect()->back();
         }
     }
+
     public function updateId($id)
     {
         if (Auth::user() == null) {
@@ -92,6 +109,7 @@ class ReviewCar extends Component
             return redirect()->back();
         }
     }
+
     /**
      * Write code on Method
      *
@@ -115,13 +133,19 @@ class ReviewCar extends Component
         if (Auth::user() == null) {
             return redirect()->to('/login');
         }
-        $rev = Review::find($this->deleteId)->delete();
-
-        if ($rev) {
+        $rev = Review::find($this->deleteId);
+        if ($rev->user_id === \auth()->id()) {
+            $rev->delete();
             toastr()->error('Successfully Deleted !!');
             return redirect()->back();
+        } else {
+            DisableReview::create(['user_id' => \auth()->id(), 'review_id' => $this->deleteId]);
+            toastr()->error('Successfully Disabled !!');
+            return redirect()->back();
         }
+
     }
+
     public function reset_input()
     {
         $this->comment = '';
