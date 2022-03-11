@@ -37,11 +37,11 @@
             </div>
         </div>
         @endforeach
-        @if($limit < $reviews_count) <button type="button" wire:click="loadMore()" class="btn btn-outline-light">
+        @if($limit < $reviews_count) <button type="button" wire:click="loadMore()" class="btn btn-outline-primary">
             {{ __('more') }} <i class="ion-ios-arrow-down"></i></button>
             @endif
             @if($limit > 3)
-            <button type="button" wire:click="loadLess()" class="btn btn-outline-light">
+            <button type="button" wire:click="loadLess()" class="btn btn-outline-primary">
                 {{ __('less') }} <i class="ion-ios-arrow-up"></i>
             </button>
             @endif
@@ -64,7 +64,7 @@
                             <p>{{ __('are you sure?') }}</p>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-outline-light close-btn" data-dismiss="modal">{{ __('close') }}</button>
+                            <button type="button" class="btn btn-outline-warning close-btn" data-dismiss="modal">{{ __('close') }}</button>
                             <button type="button" wire:click.prevent="destroy()" class="btn btn-outline-danger close-modal" data-dismiss="modal">{{ __('yes') }}
                             </button>
                         </div>
@@ -118,7 +118,7 @@
 
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">{{ __('close') }}</button>
+            <button type="button" class="btn btn-outline-warning" data-dismiss="modal">{{ __('close') }}</button>
             <button type="submit" class="btn btn-outline-primary">{{ __('Save') }}</button>
         </div>
     </form>
@@ -238,7 +238,7 @@
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" wire:click="reset_input()" class="btn btn-outline-light" data-dismiss="modal">{{ __('close') }}</button>
+                        <button type="button" wire:click="reset_input()" class="btn btn-outline-warning" data-dismiss="modal">{{ __('close') }}</button>
                         <button type="submit" class="btn btn-outline-primary">{{ __('Save') }}</button>
                     </div>
                 </form>

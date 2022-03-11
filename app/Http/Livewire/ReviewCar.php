@@ -16,7 +16,7 @@ class ReviewCar extends Component
     public $deleteId = '';
     public $updateId = '';
     protected $rules = [
-        'comment' => 'required|max:500'
+        'comment' => 'required_if:rating,null|max:500'
     ];
 
     public function mount(Car $car)
