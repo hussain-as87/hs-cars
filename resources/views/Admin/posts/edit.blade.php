@@ -58,7 +58,7 @@
                 {{-- <button wire:click="delete({{ $post->id }})" class="btn btn-danger" onclick="confirm({{ __("are you sure ?") }})">
                 <i data-feather="trash" class="icon-sm mr-2"></i>{{ __('delete') }}
                 </button> --}}
-                <button class="btn btn-primary">
+                <button class="btn btn-outline-primary">
                     <i data-feather="edit-2" class="icon-sm mr-2"></i>{{__('edit')}}
                 </button>
             </div>

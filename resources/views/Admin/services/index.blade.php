@@ -9,7 +9,7 @@
 <div class="card">
     <div class="card-body">
         <h4 class="card-title"> @can('service-create')
-            <a class="btn btn-secondary" href="{{ route('services.create') }}">{{__('service-create')}} <i data-feather="plus" class="icon-sm mr-2"></i></a>
+            <a class="btn btn-outline-primary" href="{{ route('services.create') }}">{{__('service-create')}} <i data-feather="plus" class="icon-sm mr-2"></i></a>
             @endcan</h4>
         <div class="table-responsive pt-3">
             <table class="table table-bordered">
@@ -32,10 +32,10 @@
 
                         <td>
                             @can('service-edit')
-                            <a class="btn btn-secondary" href="{{ route('services.edit',$service->id) }}">{{ __('edit') }} <i data-feather="edit-3" class="icon-sm mr-2"></i></a>
+                            <a class="btn btn-outline-warning" href="{{ route('services.edit',$service->id) }}">{{ __('edit') }} <i data-feather="edit-3" class="icon-sm mr-2"></i></a>
                             @endcan
                             @can('service-delete')
-                            <a href="" class="btn btn-danger">
+                            <a href="" class="btn btn-outline-danger">
                                 <form action="{{ route('services.destroy',$service->id) }}" method="post">
                                     @csrf
                                     @method('DELETE')

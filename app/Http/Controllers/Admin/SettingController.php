@@ -42,7 +42,7 @@ class SettingController extends Controller
             $setting->update();
             // When the settings have been updated, clear the cache for the key 'settings'
             $cache->forget('settings');
-            return redirect()->route('settings.index')->with('success', 'Successfully Updated !!');
+            return redirect()->route('settings.index')->with('warning', 'Successfully Updated !!');
         }
     }
 }

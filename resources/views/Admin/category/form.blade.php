@@ -46,5 +46,5 @@
 </div>
 <br />
 <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-    <button type="submit" class="btn btn-primary">{{ __('Submit') }} <i data-feather="save" class="icon-sm mr-2"></i></button>
+    <button type="submit" class="btn btn-outline-primary">{{ __('Submit') }} <i data-feather="save" class="icon-sm mr-2"></i></button>
 </div>

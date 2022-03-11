@@ -24,7 +24,7 @@
                         <td>{{ $setting->name }}</td>
                         <td>{{ $setting->value }}</td>
                         <td>
-                            <a class="btn btn-secondary" href="{{ route('settings.edit',$setting->id) }}">{{ __('edit') }} <i data-feather="edit-3" class="icon-sm mr-2"></i></a>
+                            <a class="btn btn-outline-warning" href="{{ route('settings.edit',$setting->id) }}">{{ __('edit') }} <i data-feather="edit-3" class="icon-sm mr-2"></i></a>
                         </td>
                     </tr>
                     @endforeach

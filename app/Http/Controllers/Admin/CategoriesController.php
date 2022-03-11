@@ -79,14 +79,15 @@ class CategoriesController extends Controller
         $cate = $category->update($data);
 
         if ($cate) {
-            return redirect()->route('categories.index')->with('success', 'Successfully Updated !!');
+            return redirect()->route('categories.index')->with('warning', 'Successfully Updated !!');
         } else {
             return redirect()->route('error-404')->with('direction', 'categories.index');
         }
     }
 
-    public function destroy(Category $category)
+    public function destroy($id)
     {
+        $category = Category::findOrFail($id);
         if (!$category) {
             return redirect()->route('error-404')->with('direction', 'categories.index');
         } else {
@@ -119,7 +120,7 @@ class CategoriesController extends Controller
         } else {
             $category->restore();
             return redirect()->route('categories.index')
-                ->with('success','Successfully Restore !!');
+                ->with('primary','Successfully Restore !!');
         }
     }
 

@@ -63,7 +63,7 @@
                             <td>{{ Str::limit($category->description,20) }}</td>
                             <td>{{ $category->created_at->diffForHumans() }}</td>
                             <td>@can('category-trash')
-                                    <a class="btn btn-info"
+                                    <a class="btn btn-outline-primary"
                                        href="{{ route('categories.restore',$category->id) }}">{{ __('restore') }}
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                              fill="currentColor" class="bi bi-arrow-repeat" viewBox="0 0 16 16">
@@ -74,7 +74,7 @@
                                         </svg>
                                     </a>
 
-                                    <a class="btn btn-danger"
+                                    <a class="btn btn-outline-danger"
                                        href="{{ route('categories.forceDelete',$category->id) }}">{{ __('final delete') }}
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                              fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">

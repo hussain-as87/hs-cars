@@ -1,7 +1,7 @@
 <div class="row" wire:polling>
     <div class="col-md-7">
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#storeModel" data-placement="top" title="{{ __('edit') }}">
+        <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#storeModel" data-placement="top" title="{{ __('edit') }}">
             {{ __('Create New Review') }} <i class="ion-ios-add"></i>
         </button>
         <hr>
@@ -37,11 +37,11 @@
             </div>
         </div>
         @endforeach
-        @if($limit < $reviews_count) <button type="button" wire:click="loadMore()" class="btn btn-light">
+        @if($limit < $reviews_count) <button type="button" wire:click="loadMore()" class="btn btn-outline-light">
             {{ __('more') }} <i class="ion-ios-arrow-down"></i></button>
             @endif
             @if($limit > 3)
-            <button type="button" wire:click="loadLess()" class="btn btn-light">
+            <button type="button" wire:click="loadLess()" class="btn btn-outline-light">
                 {{ __('less') }} <i class="ion-ios-arrow-up"></i>
             </button>
             @endif
@@ -64,8 +64,8 @@
                             <p>{{ __('are you sure?') }}</p>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-light close-btn" data-dismiss="modal">{{ __('close') }}</button>
-                            <button type="button" wire:click.prevent="destroy()" class="btn btn-danger close-modal" data-dismiss="modal">{{ __('yes') }}
+                            <button type="button" class="btn btn-outline-light close-btn" data-dismiss="modal">{{ __('close') }}</button>
+                            <button type="button" wire:click.prevent="destroy()" class="btn btn-outline-danger close-modal" data-dismiss="modal">{{ __('yes') }}
                             </button>
                         </div>
                     </div>
@@ -118,8 +118,8 @@
 
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __('close') }}</button>
-            <button type="submit" class="btn btn-primary">{{ __('Save') }}</button>
+            <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">{{ __('close') }}</button>
+            <button type="submit" class="btn btn-outline-primary">{{ __('Save') }}</button>
         </div>
     </form>
     @endif
@@ -238,8 +238,8 @@
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" wire:click="reset_input()" class="btn btn-light" data-dismiss="modal">{{ __('close') }}</button>
-                        <button type="submit" class="btn btn-primary">{{ __('Save') }}</button>
+                        <button type="button" wire:click="reset_input()" class="btn btn-outline-light" data-dismiss="modal">{{ __('close') }}</button>
+                        <button type="submit" class="btn btn-outline-primary">{{ __('Save') }}</button>
                     </div>
                 </form>
             </div>

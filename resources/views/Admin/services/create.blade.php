@@ -14,7 +14,7 @@
                     <h2>{{ __('service-create') }}</h2>
                 </div>
                 <div class="pull-right">
-                    <a class="btn btn-info" href="{{ route('services.index') }}"> {{ __('Go Back') }} <i data-feather="arrow-left" class="icon-sm mr-2"></i></a>
+                    <a class="btn btn-outline-info" href="{{ route('services.index') }}"> {{ __('Go Back') }} <i data-feather="arrow-left" class="icon-sm mr-2"></i></a>
                 </div>
             </div>
         </div>
@@ -23,7 +23,7 @@
         <form  action="{{ route('services.store') }}" method="POST">
             @include('Admin.services.form')
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-primary">{{ __('Submit') }} <i data-feather="save" class="icon-sm mr-2"></i></button>
+                <button type="submit" class="btn btn-outline-primary">{{ __('Submit') }} <i data-feather="save" class="icon-sm mr-2"></i></button>
             </div>
             </div>
         </form>

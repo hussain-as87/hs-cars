@@ -51,7 +51,7 @@
                     </div>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary"><i data-feather="plus" class="icon-sm mr-2"></i> {{__('create')}}</button>
+                <button class="btn btn-outline-primary"><i data-feather="plus" class="icon-sm mr-2"></i> {{__('create')}}</button>
             </div>
             </form>
 

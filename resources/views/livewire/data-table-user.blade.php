@@ -77,7 +77,7 @@
                                 @endif
                             </td>
                             <td>
-                                <a class="btn btn-info" href="{{ route('users.show', $user->id) }}">{{ __('show') }}
+                                <a class="btn btn-outline-info" href="{{ route('users.show', $user->id) }}">{{ __('show') }}
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                          class="bi bi-eye" viewBox="0 0 16 16">
                                         <path
@@ -87,7 +87,7 @@
                                     </svg>
                                 </a>
                                 @can('user-edit')
-                                    <a class="btn btn-secondary"
+                                    <a class="btn btn-outline-warning"
                                        href="{{ route('users.edit', $user->id) }}">{{ __('edit') }}
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                              fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
@@ -97,8 +97,10 @@
                                                   d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
                                         </svg>
                                     </a>
+                                @endcan
+                                @can('user-delete')
                                     <a href="{{ route('users.destroy',$user->id) }}"
-                                       class="btn btn-danger">{{ __('delete') }}
+                                       class="btn btn-outline-danger">{{ __('delete') }}
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                              fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
                                             <path

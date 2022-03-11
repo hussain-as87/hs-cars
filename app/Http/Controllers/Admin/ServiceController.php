@@ -101,7 +101,7 @@ class ServiceController extends Controller
         } else {
             $service->update($data);
             return redirect()->route('services.index')
-                ->with('success', 'Successfully Updated !!');
+                ->with('warning', 'Successfully Updated !!');
         }
     }
     /**

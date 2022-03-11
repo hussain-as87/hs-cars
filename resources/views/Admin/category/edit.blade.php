@@ -14,7 +14,7 @@
                     <h2>{{ __('category-edit') }}</h2>
                 </div>
                 <div class="pull-right">
-                    <a class="btn btn-info" href="{{ route('categories.index') }}"> {{ __('Go Back') }} <i data-feather="arrow-left" class="icon-sm mr-2"></i></a>
+                    <a class="btn btn-outline-info" href="{{ route('categories.index') }}"> {{ __('Go Back') }} <i data-feather="arrow-left" class="icon-sm mr-2"></i></a>
                 </div>
             </div>
         </div>

@@ -214,7 +214,7 @@ class CarsController extends Controller
 
         if ($car) {
             $car->update($data);
-            return redirect()->route('cars.index')->with('success', 'Successfully Updated !!');
+            return redirect()->route('cars.index')->with('warning', 'Successfully Updated !!');
         } else {
             return redirect()->route('error-404')->with('direction', 'cars.index');
         }
@@ -229,7 +229,6 @@ class CarsController extends Controller
     public function destroy($id)
     {
         $car = Car::findOrFail($id);
-
         if ($car) {
             $car->delete();
             return redirect()->route('cars.index')->with('delete', 'Successfully Deleted !!');
@@ -263,7 +262,7 @@ class CarsController extends Controller
         } else {
             $car->restore();
             return redirect()->route('cars.index')
-                ->with('success', 'Successfully Restore !!');
+                ->with('primary', 'Successfully Restore !!');
         }
     }
 

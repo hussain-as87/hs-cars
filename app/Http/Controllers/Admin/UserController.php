@@ -148,7 +148,7 @@ class UserController extends Controller
             $user->assignRole($request->input('roles'));
 
             return redirect()->route('users.index')
-                ->with('success', __('Successfully Updated !!'));
+                ->with('warning', __('Successfully Updated !!'));
         }
     }
 
@@ -184,7 +184,7 @@ class UserController extends Controller
         } else {
             $user->restore();
             return redirect()->route('users.index')
-                ->with('success', 'Successfully Restore !!');
+                ->with('primary', 'Successfully Restore !!');
         }
     }
 
