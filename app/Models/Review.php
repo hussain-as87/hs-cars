@@ -20,4 +20,8 @@ class Review extends Model
     {
         return $this->belongsTo(Car::class)->withDefault();
     }
+    public function disable_reviews()
+    {
+        return $this->hasMany(DisableReview::class);
+    }
 }

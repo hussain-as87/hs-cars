@@ -128,4 +128,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Review::class);
     }
+    public function disable_reviews()
+    {
+        return $this->hasMany(DisableReview::class);
+    }
+
 }

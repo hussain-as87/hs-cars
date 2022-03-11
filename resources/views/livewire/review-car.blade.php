@@ -18,8 +18,11 @@
                 </h4>
                 <p class="star">
                     <span>
-                        @for($i = 0; $i < $review->rating; $i++)
-                            <i class="ion-ios-star text-warning"></i>
+                        @if($review->rating == 0)
+                             <i class="ion-ios-star text-secondary"></i>
+                        @endif
+                            @for($i = 0; $i < $review->rating; $i++)
+                             <i class="ion-ios-star text-warning"></i>
                             @endfor
                     </span>
                     <span class="text-right">{{-- <a href="#" class="reply"><i class="icon-reply"></i></a>  --}}
