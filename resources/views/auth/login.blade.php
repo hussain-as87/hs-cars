@@ -57,7 +57,7 @@
                                         {{ __('Forgot Your Password?') }}
                                     </a>
                                 @endif
-                                <a href="{{route('register')}}" class="d-block mt-3 text-muted">{{__('Already a user? Sign in')}}</a>
+                                <a href="{{route('register')}}" class="d-block mt-3 text-muted">{{__('Create a free account.')}}</a>
                             </form>
                         </div>
                     </div>
