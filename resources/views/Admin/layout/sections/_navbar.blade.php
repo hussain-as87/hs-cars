@@ -14,7 +14,7 @@
                         <i data-feather="search"></i>
                     </div>
                 </div>
-         @livewire('search-bar-admin')
+         {{--@livewire('search-bar-admin')--}}
            </div>
         </form>
         <ul class="navbar-nav">

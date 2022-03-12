@@ -46,12 +46,10 @@ class ReviewCar extends Component
 
     public function render()
     {
-        $disable_reviews = DisableReview::all();
-        foreach ($disable_reviews as $d) {
-            $reviews = Review::with('user.profile')->where('car_id', $this->car->id)
-                ->where('id', '!=', $d->review_id)
-                ->orderByDesc('created_at')->paginate($this->limit);
-        }
+        $reviews = Review::whereNotIn('id',function($query) {
+            $query->select('review_id')->from('disable_reviews');
+        })->with('user.profile')->where('car_id', $this->car->id)
+            ->orderByDesc('created_at')->paginate($this->limit);
         $reviews_count = Review::where('car_id', $this->car->id)->get()->count();
         return view('livewire.review-car', compact('reviews', 'reviews_count'));
     }
