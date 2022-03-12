@@ -18,11 +18,11 @@
                                 @csrf
 
                                 <div class="form-group">
-                                    <label for="email">{{ __('E-Mail Address') }}</label>
-                                    <input type="email" class="form-control @error('email') is-invalid @enderror"
-                                           id="exampleInputEmail1"  name="email"
-                                           value="{{ old('email') }}">
-                                    @error('email')
+                                    <label for="email">{{ __('username') }}</label>
+                                    <input type="text" class="form-control @error('username') is-invalid @enderror"
+                                           id="exampleInputEmail1"  name="username"
+                                           value="{{ old('username') }}">
+                                    @error('username')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
