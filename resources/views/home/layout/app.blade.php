@@ -40,7 +40,7 @@
          .auth-page .auth-left-wrapper {
              width: 100%;
              height: 100%;
-             background-image: url('{{asset('background images/dhiva-krishna-YApS6TjKJ9c-unsplash.jpg')}}');
+             background-image: url('{{asset('background images/pexels-kam-pratt-3457780.jpg')}}');
              background-size: cover;
          }
     </style>
