@@ -2,7 +2,7 @@
 
 body,
 html {
-  padding-right: 0 !important; //resets padding right added by Bootstrap modal
+    padding-right: 0 !important; //resets padding right added by Bootstrap modal
 }
 
 body {
@@ -11,25 +11,25 @@ body {
     text-align: left;
     background-color: $content-bg;
     height: 100%;
-  }
+}
 
 *:-moz-full-screen,
 *:-webkit-full-screen,
 *:fullscreen *:-ms-full-screen {
-  overflow: auto;
+    overflow: auto;
 }
 
 
 pre {
-  background-color: color(gray-lighter);
-  padding: 15px;
-  font-size: 14px;
+    background-color: color(gray-lighter);
+    padding: 15px;
+    font-size: 14px;
 }
 
 code {
-  padding: 5px;
-  font-family: $type1;
-  font-weight: 400;
-  font-size: $default-font-size;
-  border-radius: 4px;
+    padding: 5px;
+    font-family: $type1;
+    font-weight: 400;
+    font-size: $default-font-size;
+    border-radius: 4px;
 }

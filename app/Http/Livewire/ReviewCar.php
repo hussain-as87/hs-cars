@@ -46,7 +46,7 @@ class ReviewCar extends Component
 
     public function render()
     {
-        $reviews = Review::whereNotIn('id',function($query) {
+        $reviews = Review::whereNotIn('id', function ($query) {
             $query->select('review_id')->from('disable_reviews');
         })->with('user.profile')->where('car_id', $this->car->id)
             ->orderByDesc('created_at')->paginate($this->limit);

@@ -25,16 +25,16 @@ class LikePost extends Component
 
     public function store()
     {
-            $li = Like::where('post_id', $this->post->id)->where('user_id', auth()->id())->first();
+        $li = Like::where('post_id', $this->post->id)->where('user_id', auth()->id())->first();
 
-            if ($li === null) {
-                Like::create([
-                    'post_id' => $this->post->id,
-                    'user_id' => auth()->id()
-                ]);
-            } else {
-                $li->delete();
-            }
+        if ($li === null) {
+            Like::create([
+                'post_id' => $this->post->id,
+                'user_id' => auth()->id()
+            ]);
+        } else {
+            $li->delete();
+        }
 
     }
 }

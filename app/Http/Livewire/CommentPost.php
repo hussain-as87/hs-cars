@@ -20,16 +20,19 @@ class CommentPost extends Component
     {
         $this->limitPerPage = $this->limitPerPage + 5;
     }
+
     public function loadLess()
     {
         if ($this->limitPerPage != 5) {
             $this->limitPerPage = $this->limitPerPage - 5;
         }
     }
+
     public function mount(Post $post)
     {
         $this->post = $post;
     }
+
     public function render()
     {
         $comment = Comment::where('user_id', auth()->id())->where('post_id', $this->post->id)->first();
@@ -38,6 +41,7 @@ class CommentPost extends Component
 
         return view('livewire.comment-post', compact('comment', 'comments'));
     }
+
     public function store()
     {
         $this->validate(['description' => 'required|max:500']);
@@ -48,6 +52,7 @@ class CommentPost extends Component
         ]);
         $this->description = '';
     }
+
     public function update($id)
     {
         $this->validate(['description_up' => 'required|max:500']);
@@ -60,6 +65,7 @@ class CommentPost extends Component
         $comment->update();
         $this->description_up = '';
     }
+
     public function destroy($id)
     {
         $comment = Comment::where('id', $id)->first();
@@ -68,6 +74,6 @@ class CommentPost extends Component
         }
         $comment->delete();
         return redirect()->back();
-      //  return  redirect(url()->previous() . '#post-' . $this->post->id);
+        //  return  redirect(url()->previous() . '#post-' . $this->post->id);
     }
 }

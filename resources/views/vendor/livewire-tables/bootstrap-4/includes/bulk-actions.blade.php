@@ -1,7 +1,8 @@
 @if ($this->showBulkActionsDropdown)
     <div class="mb-3 mb-md-0" id="{{ $bulkKey = \Illuminate\Support\Str::random() }}-bulkActionsWrapper">
         <div class="dropdown d-block d-md-inline">
-            <button class="btn dropdown-toggle d-block w-100 d-md-inline" type="button" id="{{ $bulkKey }}-bulkActions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button class="btn dropdown-toggle d-block w-100 d-md-inline" type="button" id="{{ $bulkKey }}-bulkActions"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 @lang('Bulk Actions')
             </button>
 

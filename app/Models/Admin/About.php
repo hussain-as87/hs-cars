@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class About extends Model
 {
     use HasFactory, HasTranslations;
+
     public $timestamps = false;
     protected $fillable = ['description', 'photo'];
     public $translatable = ['description'];

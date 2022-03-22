@@ -7,7 +7,8 @@ Contact: nobleui123@gmail.com
 Purchase: https://1.envato.market/nobleui_admin
 License: You must have a valid license purchased only from above link or https://themeforest.net/user/nobleui/portfolio/ in order to legally use the theme for your project.
 -->
-<html class="no-js" lang="{{ config('settings.locale') }}||{{ str_replace('_', '-', app()->getLocale()) }}" {{--  dir="{{ config('locales.languages')[app()->getLocale()]['rtl_support'] }}" --}}>
+<html class="no-js"
+      lang="{{ config('settings.locale') }}||{{ str_replace('_', '-', app()->getLocale()) }}" {{--  dir="{{ config('locales.languages')[app()->getLocale()]['rtl_support'] }}" --}}>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,13 +28,13 @@ License: You must have a valid license purchased only from above link or https:/
     @endif --}}
 
     @if(Session::get('them'))
-    <link rel="stylesheet" href="{{ asset('assets/css/demo_'.Session::get('them').'/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/demo_'.Session::get('them').'/style.css') }}">
     @else
-    <link rel="stylesheet" href="{{ asset('assets/css/demo_'.auth()->user()->profile->them.'/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/demo_'.auth()->user()->profile->them.'/style.css') }}">
     @endif
 
     @if (config('locales.languages')[app()->getLocale()]['rtl_support'] == 'rtl')
-    <link rel="stylesheet" href="{{ asset('css/bootstrap-rtl.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/bootstrap-rtl.css') }}">
     @endif
 
     <link rel="stylesheet" href="{{ asset('assets/vendors/sweetalert2/sweetalert2.min.css') }}">
@@ -53,7 +54,7 @@ License: You must have a valid license purchased only from above link or https:/
     <link rel="stylesheet" href="{{asset('assets/css/demo_2/tailwind.css')}}">
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <!-- End layout tailwind --> --}}
-    <link rel="shortcut icon" href="{{asset('assets/images/favicon.png')}}" />
+    <link rel="shortcut icon" href="{{asset('assets/images/favicon.png')}}"/>
     <link rel="stylesheet" href="{{ asset('MaterialDesign-Webfont-master/css/materialdesignicons.min.css') }}">
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -111,160 +112,163 @@ License: You must have a valid license purchased only from above link or https:/
 
 </head>
 <body>
-    <div class="main-wrapper">
+<div class="main-wrapper">
 
-        <!-- partial:partials/_sidebar.html -->
-        @include('Admin.layout.sections._sidebar')
-        <nav class="settings-sidebar">
-            <div class="sidebar-body">
-                <a href="#" class="settings-sidebar-toggler">
-                    <i data-feather="settings"></i>
-                </a>
-                <div class="theme-wrapper">
-                    <form action="{{ route('change.them.light') }}" method="post">
-                        @csrf
-                        <h6 class="text-muted mb-2">{{ __('Light Theme') }}:</h6>
-                        <button type="submit" class="theme-item">
-                            <img src="{{ asset('assets/images/screenshots/light.jpg') }}" alt="light theme">
-                        </button>
-                    </form>
-                    <form action="{{ route('change.them.dark') }}" method="post">
-                        @csrf
-                        <h6 class="text-muted mb-2">{{ __('Dark Theme') }}:</h6>
-                        <button type="submit" class="theme-item active">
-                            <img src="{{ asset('assets/images/screenshots/dark.jpg') }}" alt="dark theme">
-                        </button>
-                    </form>
-                </div>
-
+    <!-- partial:partials/_sidebar.html -->
+    @include('Admin.layout.sections._sidebar')
+    <nav class="settings-sidebar">
+        <div class="sidebar-body">
+            <a href="#" class="settings-sidebar-toggler">
+                <i data-feather="settings"></i>
+            </a>
+            <div class="theme-wrapper">
+                <form action="{{ route('change.them.light') }}" method="post">
+                    @csrf
+                    <h6 class="text-muted mb-2">{{ __('Light Theme') }}:</h6>
+                    <button type="submit" class="theme-item">
+                        <img src="{{ asset('assets/images/screenshots/light.jpg') }}" alt="light theme">
+                    </button>
+                </form>
+                <form action="{{ route('change.them.dark') }}" method="post">
+                    @csrf
+                    <h6 class="text-muted mb-2">{{ __('Dark Theme') }}:</h6>
+                    <button type="submit" class="theme-item active">
+                        <img src="{{ asset('assets/images/screenshots/dark.jpg') }}" alt="dark theme">
+                    </button>
+                </form>
             </div>
-        </nav>
-        <!-- partial -->
-
-        <div class="page-wrapper">
-
-            <!-- partial:partials/_navbar.html -->
-            @include('Admin.layout.sections._navbar')
-            <!-- partial -->
-
-            <div class="page-content" style="width: 100%;">
-
-                <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
-                    <div>
-                        <h4 class="mb-3 mb-md-0">@yield('title-page')</h4>
-                    </div>
-                    <div class="d-flex align-items-center flex-wrap text-nowrap">
-                        <div class="input-group date datepicker dashboard-date mr-2 mb-2 mb-md-0 d-md-none d-xl-flex" id="dashboardDate">
-                            <span class="input-group-addon bg-transparent"><i data-feather="calendar" class=" text-primary"></i></span>
-                            <input type="text" class="form-control text-secondary" style="height:36px;padding:2px;text-align:center">
-                        </div>
-                        <div class="input-group date datepicker dashboard-date mr-2 mb-2 mb-md-0 d-md-none d-xl-flex" id="">
-                            <span class="input-group-addon bg-transparent"><i data-feather="clock" class="text-primary"></i></span>
-                            <div class="text-secondary" id="__time"></div>
-                        </div>
-                        {{-- <button type="button" class="btn btn-outline-info btn-icon-text mr-2 d-none d-md-block">
-                            <i class="btn-icon-prepend" data-feather="download"></i>
-                            Import
-                        </button>
-                        <button type="button" class="btn btn-outline-primary btn-icon-text mr-2 mb-2 mb-md-0">
-                            <i class="btn-icon-prepend" data-feather="printer"></i>
-                            Print
-                        </button>
-                        <button type="button" class="btn btn-primary btn-icon-text mb-2 mb-md-0">
-                            <i class="btn-icon-prepend" data-feather="download-cloud"></i>
-                            Download Report
-                        </button>  --}}
-                    </div>
-                </div>
-                @include('Admin.layout.sections.__alert')
-
-                <div class="sp" id="spinner-wrapper">
-                    <div class="spinner-border text-primary" role="status">
-                        <span class="sr-only">Loading...</span>
-                    </div>
-                </div>
-                @yield('content')
-            </div>
-
-            <!-- partial:partials/_footer.html -->
-            @include('Admin.layout.sections._footer')
-            <!-- partial -->
 
         </div>
+    </nav>
+    <!-- partial -->
+
+    <div class="page-wrapper">
+
+        <!-- partial:partials/_navbar.html -->
+    @include('Admin.layout.sections._navbar')
+    <!-- partial -->
+
+        <div class="page-content" style="width: 100%;">
+
+            <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
+                <div>
+                    <h4 class="mb-3 mb-md-0">@yield('title-page')</h4>
+                </div>
+                <div class="d-flex align-items-center flex-wrap text-nowrap">
+                    <div class="input-group date datepicker dashboard-date mr-2 mb-2 mb-md-0 d-md-none d-xl-flex"
+                         id="dashboardDate">
+                        <span class="input-group-addon bg-transparent"><i data-feather="calendar"
+                                                                          class=" text-primary"></i></span>
+                        <input type="text" class="form-control text-secondary"
+                               style="height:36px;padding:2px;text-align:center">
+                    </div>
+                    <div class="input-group date datepicker dashboard-date mr-2 mb-2 mb-md-0 d-md-none d-xl-flex" id="">
+                        <span class="input-group-addon bg-transparent"><i data-feather="clock" class="text-primary"></i></span>
+                        <div class="text-secondary" id="__time"></div>
+                    </div>
+                    {{-- <button type="button" class="btn btn-outline-info btn-icon-text mr-2 d-none d-md-block">
+                        <i class="btn-icon-prepend" data-feather="download"></i>
+                        Import
+                    </button>
+                    <button type="button" class="btn btn-outline-primary btn-icon-text mr-2 mb-2 mb-md-0">
+                        <i class="btn-icon-prepend" data-feather="printer"></i>
+                        Print
+                    </button>
+                    <button type="button" class="btn btn-primary btn-icon-text mb-2 mb-md-0">
+                        <i class="btn-icon-prepend" data-feather="download-cloud"></i>
+                        Download Report
+                    </button>  --}}
+                </div>
+            </div>
+            @include('Admin.layout.sections.__alert')
+
+            <div class="sp" id="spinner-wrapper">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
+            @yield('content')
+        </div>
+
+        <!-- partial:partials/_footer.html -->
+    @include('Admin.layout.sections._footer')
+    <!-- partial -->
+
     </div>
+</div>
 
 
-    @livewireScripts
-    {{-- <script type="text/javascript">
-        window.onscroll = function (ev) {
-            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-                window.livewire.emit('load-more');
-            }
-        };
-
-    </script> --}}
-    {{-- <script type="text/javascript">
-        window.livewire.on('userStore', () => {
-            $('#createModal').modal('hide');
-            $('#updateModal').modal('hide');
-            $('#updatecomment_*').modal('hide');
-        });
-
-    </script> --}}
-    @stack('scripts')
-    <!-- core:js -->
-    <script src="{{ asset('assets/vendors/core/core.js') }}"></script>
-    <script src="{{ asset('js/main.js') }}"></script>
-    <!-- endinject -->
-    <!-- plugin js for this page -->
-    <script src="{{ asset('assets/vendors/chartjs/Chart.min.js') }}"></script>
-    <script src="{{ asset('assets/vendors/jquery.flot/jquery.flot.js') }}"></script>
-    <script src="{{ asset('assets/vendors/jquery.flot/jquery.flot.resize.js') }}"></script>
-    <script src="{{ asset('assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js') }}"></script>
-    <script src="{{ asset('assets/vendors/apexcharts/apexcharts.min.js') }}"></script>
-    <script src="{{ asset('assets/vendors/progressbar.js/progressbar.min.js') }}"></script>
-    <!-- end plugin js for this page -->
-    <!-- inject:js -->
-    <script src="{{ asset('assets/vendors/feather-icons/feather.min.js') }}"></script>
-    <script src="{{ asset('assets/js/template.js') }}"></script>
-    <!-- endinject -->
-    <!-- custom js for this page -->
-    <script src="{{ asset('assets/js/dashboard.js') }}"></script>
-    <script src="{{ asset('assets/js/datepicker.js') }}"></script>
-    <!-- end custom js for this page -->
-    <script type="text/javascript">
-        function showTime() {
-            var date = new Date()
-                , t = new Date(Date(
-                    date.getFullYear()
-                    , date.getMonth()
-                    , date.getDate()
-                    , date.getHours()
-                    , date.getMinutes()
-                    , date.getSeconds()
-                ));
-
-            document.getElementById('__time').innerHTML = t.toLocaleTimeString();
+@livewireScripts
+{{-- <script type="text/javascript">
+    window.onscroll = function (ev) {
+        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+            window.livewire.emit('load-more');
         }
+    };
 
-        setInterval(showTime, 1000);
+</script> --}}
+{{-- <script type="text/javascript">
+    window.livewire.on('userStore', () => {
+        $('#createModal').modal('hide');
+        $('#updateModal').modal('hide');
+        $('#updatecomment_*').modal('hide');
+    });
 
-    </script>
-    <script src="{{ asset('assets/js/file-upload.js') }}"></script>
-    <script type="text/javascript">
-        var scrollbarExample = new PerfectScrollbar('.perfect-scrollbar-example');
+</script> --}}
+@stack('scripts')
+<!-- core:js -->
+<script src="{{ asset('assets/vendors/core/core.js') }}"></script>
+<script src="{{ asset('js/main.js') }}"></script>
+<!-- endinject -->
+<!-- plugin js for this page -->
+<script src="{{ asset('assets/vendors/chartjs/Chart.min.js') }}"></script>
+<script src="{{ asset('assets/vendors/jquery.flot/jquery.flot.js') }}"></script>
+<script src="{{ asset('assets/vendors/jquery.flot/jquery.flot.resize.js') }}"></script>
+<script src="{{ asset('assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js') }}"></script>
+<script src="{{ asset('assets/vendors/apexcharts/apexcharts.min.js') }}"></script>
+<script src="{{ asset('assets/vendors/progressbar.js/progressbar.min.js') }}"></script>
+<!-- end plugin js for this page -->
+<!-- inject:js -->
+<script src="{{ asset('assets/vendors/feather-icons/feather.min.js') }}"></script>
+<script src="{{ asset('assets/js/template.js') }}"></script>
+<!-- endinject -->
+<!-- custom js for this page -->
+<script src="{{ asset('assets/js/dashboard.js') }}"></script>
+<script src="{{ asset('assets/js/datepicker.js') }}"></script>
+<!-- end custom js for this page -->
+<script type="text/javascript">
+    function showTime() {
+        var date = new Date()
+            , t = new Date(Date(
+            date.getFullYear()
+            , date.getMonth()
+            , date.getDate()
+            , date.getHours()
+            , date.getMinutes()
+            , date.getSeconds()
+        ));
 
-    </script>
-    <script type="text/javascript">
-        let spinnerWrapper = document.querySelector('#spinner-wrapper');
+        document.getElementById('__time').innerHTML = t.toLocaleTimeString();
+    }
 
-        window.addEventListener('load', function() {
-            // spinnerWrapper.style.display = 'none';
-            spinnerWrapper.parentElement.removeChild(spinnerWrapper);
-        });
+    setInterval(showTime, 1000);
 
-    </script>
-    @php
+</script>
+<script src="{{ asset('assets/js/file-upload.js') }}"></script>
+<script type="text/javascript">
+    var scrollbarExample = new PerfectScrollbar('.perfect-scrollbar-example');
+
+</script>
+<script type="text/javascript">
+    let spinnerWrapper = document.querySelector('#spinner-wrapper');
+
+    window.addEventListener('load', function () {
+        // spinnerWrapper.style.display = 'none';
+        spinnerWrapper.parentElement.removeChild(spinnerWrapper);
+    });
+
+</script>
+@php
     $result = App\Models\Rent::SaleInMonth();
     $rents = App\Models\RentCar::distinct(['product_id', 'id'])->get();
 
@@ -277,61 +281,61 @@ License: You must have a valid license purchased only from above link or https:/
     $month[] = $res->month;
     $date[] = $res->day.'/'.$res->month.'/'.$res->year;}
 
-    @endphp
-    <script type="text/javascript">
-        // Apex Line chart start
-        var options = {
-            chart: {
-                height: 400
-                , type: "line"
-                , parentHeightOffset: 0
+@endphp
+<script type="text/javascript">
+    // Apex Line chart start
+    var options = {
+        chart: {
+            height: 400
+            , type: "line"
+            , parentHeightOffset: 0
+        }
+        , colors: ["#4d8af0"]
+        , grid: {
+            borderColor: "rgba(77, 138, 240, .1)"
+            , padding: {
+                bottom: -6
             }
-            , colors: ["#4d8af0"]
-            , grid: {
-                borderColor: "rgba(77, 138, 240, .1)"
-                , padding: {
-                    bottom: -6
-                }
-            }
-            , series: [{
-                    name: "Data a"
-                    , data: [{!!implode(',', $total) !!}]
-                }
+        }
+        , series: [{
+            name: "Data a"
+            , data: [{!!implode(',', $total) !!}]
+        }
 
-            ]
-            , xaxis: {
-                type: "datetime"
-                , categories: ["{!! implode('", "',$year) !!}"]
+        ]
+        , xaxis: {
+            type: "datetime"
+            , categories: ["{!! implode('", "',$year) !!}"]
+        }
+        , markers: {
+            size: 0
+        }
+        , stroke: {
+            width: 6
+            , curve: "smooth"
+            , lineCap: "round"
+        }
+        , legend: {
+            show: true
+            , position: "top"
+            , horizontalAlign: 'left'
+            , containerMargin: {
+                top: 30
             }
-            , markers: {
-                size: 0
-            }
-            , stroke: {
-                width: 6
-                , curve: "smooth"
-                , lineCap: "round"
-            }
-            , legend: {
-                show: true
-                , position: "top"
-                , horizontalAlign: 'left'
-                , containerMargin: {
-                    top: 30
+        }
+        , responsive: [{
+            breakpoint: 1000
+            , options: {
+                legend: {
+                    fontSize: "11px"
                 }
             }
-            , responsive: [{
-                breakpoint: 1000
-                , options: {
-                    legend: {
-                        fontSize: "11px"
-                    }
-                }
-            }]
-        };
-        var apexLineChart = new ApexCharts(document.querySelector("#apexLine"), options);
-        apexLineChart.render();
-        // Apex Line chart end
+        }]
+    };
+    var apexLineChart = new ApexCharts(document.querySelector("#apexLine"), options);
+    apexLineChart.render();
+    // Apex Line chart end
 
-    </script>
+</script>
 </body>
 </html>

@@ -14,7 +14,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Car extends Model
 {
-    use HasFactory, HasTranslations, SearchableTrait ,SoftDeletes;
+    use HasFactory, HasTranslations, SearchableTrait, SoftDeletes;
+
     public $translatable = ['name', 'description'];
 
     public $fillable = [
@@ -57,26 +58,32 @@ class Car extends Model
     {
         return $this->belongsTo(User::class);
     }
+
     public function category()
     {
         return $this->belongsTo(Category::class);
     }
+
     public function feature()
     {
         return $this->hasOne(CarFeatuer::class);
     }
+
     public function pricing()
     {
         return $this->hasOne(CarPricing::class);
     }
+
     public function rents()
     {
         return $this->hasMany(Rent::class);
     }
+
     public function reviews()
     {
         return $this->hasMany(Review::class);
     }
+
     public function orders()
     {
         return $this->belongsToMany(Rent::class, 'rent_cars')

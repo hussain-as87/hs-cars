@@ -13,7 +13,9 @@
                         @if(isset($customFilters[$key]) && method_exists($customFilters[$key], 'options'))
                             @if(is_array($value))
                                 @foreach($value as $selectedValue)
-                                    {{ $customFilters[$key]->options()[$selectedValue] ?? $selectedValue }}@if(!$loop->last), @endif
+                                    {{ $customFilters[$key]->options()[$selectedValue] ?? $selectedValue }}@if(!$loop->last)
+                                        ,
+                                    @endif
                                 @endforeach
                             @else
                                 {{ $customFilters[$key]->options()[$value] ?? $value }}
@@ -31,7 +33,7 @@
                         >
                             <span class="visually-hidden">@lang('Remove filter option')</span>
                             <svg style="width:.5em;height:.5em" stroke="currentColor" fill="none" viewBox="0 0 8 8">
-                                <path stroke-linecap="round" stroke-width="1.5" d="M1 1l6 6m0-6L1 7" />
+                                <path stroke-linecap="round" stroke-width="1.5" d="M1 1l6 6m0-6L1 7"/>
                             </svg>
                         </a>
                     </span>

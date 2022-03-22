@@ -8,7 +8,7 @@
 @section('content')
     <div class="card">
         <div class="card-body">
-            <livewire:data-table-cars-trashed />
+            <livewire:data-table-cars-trashed/>
         </div>
     </div>
 @endsection

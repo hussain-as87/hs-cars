@@ -28,7 +28,6 @@ class ProfileController extends Controller
     }
 
 
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -54,11 +53,11 @@ class ProfileController extends Controller
         $user_data['email'] = $request->email;
         $user_data['username'] = $request->username;
         if ($request->hasFile('avatar')) {
-            $image =  ImageUpload::upload_image($request->avatar, 'users/avatar');
+            $image = ImageUpload::upload_image($request->avatar, 'users/avatar');
             $prof_data['avatar'] = $image;
         }
         if ($request->hasFile('background_image')) {
-            $image =  ImageUpload::upload_image($request->background_image, 'users/background_image');
+            $image = ImageUpload::upload_image($request->background_image, 'users/background_image');
             $prof_data['background_image'] = $image;
         }
         $prof_data['f_name'] = $request->f_name;
@@ -81,6 +80,7 @@ class ProfileController extends Controller
         }
         return redirect()->route('profile.index')->with('warning', 'Successfully Updated !!');
     }
+
     protected function getValidation($request)
     {
         return $request->validate([

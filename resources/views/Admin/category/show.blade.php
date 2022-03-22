@@ -1,34 +1,39 @@
 @extends('Admin.layout.app')
 @section('title')
-{{ $category->name }}
+    {{ $category->name }}
 @endsection
 @section('title-page')
-{{ $category->name }}
+    {{ $category->name }}
 @endsection
 @section('content')
-<div class="card">
-    <div class="card-body">
-        <div class="pull-right">
-            <a class="btn btn-outline-info" href="{{ route('categories.index') }}"> {{ __('Go Back') }} <i data-feather="arrow-left" class="icon-sm mr-2"></i></a>
-            <a class="btn btn-outline-primary" href="{{ route('categories.create') }}"> {{ __('category-create') }} <i data-feather="plus-circle" class="icon-sm mr-2"></i></a>
-            <a class="btn btn-outline-primary" href="{{ route('cars.create') }}"> {{ __('car-create') }} <i data-feather="plus-circle" class="icon-sm mr-2"></i></a>
-            <a class="btn btn-outline-warning " href="{{ route('categories.edit',$category->id) }}"> {{ __('category-edit') }} <i data-feather="edit-3" class="icon-sm mr-2"></i></a>
-        </div>
-        <br />
-        <div class="row">
-            <div class="col-9 perfect-scrollbar-example">
-                {{$category->description }}
+    <div class="card">
+        <div class="card-body">
+            <div class="pull-right">
+                <a class="btn btn-outline-info" href="{{ route('categories.index') }}"> {{ __('Go Back') }} <i
+                        data-feather="arrow-left" class="icon-sm mr-2"></i></a>
+                <a class="btn btn-outline-primary" href="{{ route('categories.create') }}"> {{ __('category-create') }}
+                    <i data-feather="plus-circle" class="icon-sm mr-2"></i></a>
+                <a class="btn btn-outline-primary" href="{{ route('cars.create') }}"> {{ __('car-create') }} <i
+                        data-feather="plus-circle" class="icon-sm mr-2"></i></a>
+                <a class="btn btn-outline-warning "
+                   href="{{ route('categories.edit',$category->id) }}"> {{ __('category-edit') }} <i
+                        data-feather="edit-3" class="icon-sm mr-2"></i></a>
             </div>
-            <div class="col-3">
-                <img class="w-100" src="{{ asset('storage/categories/'.$category->logo)}}" />
+            <br/>
+            <div class="row">
+                <div class="col-9 perfect-scrollbar-example">
+                    {{$category->description }}
+                </div>
+                <div class="col-3">
+                    <img class="w-100" src="{{ asset('storage/categories/'.$category->logo)}}"/>
+                </div>
             </div>
-        </div>
-        <br />
-        <br />
-        <hr />
-        <div class="row col-12">
-        <livewire:data-table-single-category :category="$category"/>
+            <br/>
+            <br/>
+            <hr/>
+            <div class="row col-12">
+                <livewire:data-table-single-category :category="$category"/>
+            </div>
         </div>
     </div>
-</div>
 @endsection

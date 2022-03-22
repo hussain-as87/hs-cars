@@ -39,7 +39,7 @@ return [
     |
     */
 
-    'debug' => (bool) env('APP_DEBUG', false),
+    'debug' => (bool)env('APP_DEBUG', false),
 
     /*
     |--------------------------------------------------------------------------
@@ -67,7 +67,7 @@ return [
     |
     */
 
-    'timezone' => config('settings.timezone','Asia/Jerusalem'),
+    'timezone' => config('settings.timezone', 'Asia/Jerusalem'),
 
     /*
     |--------------------------------------------------------------------------
@@ -93,7 +93,7 @@ return [
     |
     */
 
-    'fallback_locale' => config('settings.language','en'),
+    'fallback_locale' => config('settings.language', 'en'),
 
     /*
     |--------------------------------------------------------------------------

@@ -3,7 +3,8 @@
         <div class="row">
             <div class="col-sm-12 col-md-6">
                 <div class="dataTables_length" id="dataTableExample_length"><label>{{__('show')}}
-                        <select name="dataTableExample_length" aria-controls="dataTableExample" wire:model="perPage" class="custom-select custom-select-sm form-control">
+                        <select name="dataTableExample_length" aria-controls="dataTableExample" wire:model="perPage"
+                                class="custom-select custom-select-sm form-control">
                             <option value="10">10</option>
                             <option value="25">25</option>
                             <option value="50">50</option>
@@ -13,7 +14,8 @@
             <div class="col-sm-12 col-md-3">
                 <div class="dataTables_length" id="sort_by">
                     <p>{{__('order by')}}
-                        <select wire:model="orderBy" name="perPage" id="sort_by" class="custom-select custom-select-sm form-control form-control-sm">
+                        <select wire:model="orderBy" name="perPage" id="sort_by"
+                                class="custom-select custom-select-sm form-control form-control-sm">
                             <option value="id">{{__('id')}}</option>
                             <option value="name">{{__('name')}}</option>
                             <option value="created_at">{{__('created at')}}</option>
@@ -25,7 +27,8 @@
             <div class="col-sm-12 col-md-3">
                 <div class="dataTables_filter" id="sort">
                     <p>{{__('sort type')}}
-                        <select id="sort" wire:model="orderAsc" name="perPage" class="custom-select custom-select-sm form-control form-control-sm">
+                        <select id="sort" wire:model="orderAsc" name="perPage"
+                                class="custom-select custom-select-sm form-control form-control-sm">
                             <option value="1">{{__('Ascending')}}</option>
                             <option value="0">{{__('Descending')}}</option>
                         </select>
@@ -33,12 +36,15 @@
                 </div>
             </div>
             <div class="col-sm-12 col-md-6">
-                <div id="dataTableExample_filter" class="dataTables_filter"><label><input wire:model.debounce.300ms="search" type="search" class="form-control" placeholder="{{__('Search Here')}}" aria-controls="dataTableExample"></label></div>
+                <div id="dataTableExample_filter" class="dataTables_filter"><label><input
+                            wire:model.debounce.300ms="search" type="search" class="form-control"
+                            placeholder="{{__('Search Here')}}" aria-controls="dataTableExample"></label></div>
             </div>
         </div>
         <div class="row">
             <div class="col-sm-12">
-                <table id="dataTableExample" class="table dataTable no-footer" role="grid" aria-describedby="dataTableExample_info">
+                <table id="dataTableExample" class="table dataTable no-footer" role="grid"
+                       aria-describedby="dataTableExample_info">
                     <thead>
                     <tr>
                         <th>{{ __('logo') }}</th>
@@ -56,7 +62,7 @@
                             $car_count = App\Models\Car::whereBelongsTo($category)->count();
                         @endphp
                         <tr class="">
-                            <td><img src="{{ asset('storage/categories/'.$category->logo)}}" /> </td>
+                            <td><img src="{{ asset('storage/categories/'.$category->logo)}}"/></td>
                             <td>{{ $category->name }}</td>
                             <td>{{ $category->user->name }}</td>
                             <td>{{ $car_count == 0 ? __('not yet!'): $car_count }}</td>

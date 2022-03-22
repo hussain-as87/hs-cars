@@ -22,6 +22,7 @@ class CarController extends Controller
         $services = Service::orderBy('id', 'DESC')->paginate(4);
         return view('home\index', compact('cars', 'advert', 'about', 'services', 'cars_count', 'users_count'));
     }
+
     public function about()
     {
         $cars_count = Car::all()->count();
@@ -29,27 +30,31 @@ class CarController extends Controller
         $about = About::first();
         return view('home.about', compact('cars_count', 'users_count', 'about'));
     }
+
     public function service()
     {
         $services = Service::orderByDesc('created_at')->paginate(4);
         return view('home.services', compact('services'));
     }
+
     public function pricing()
     {
         $cars = Car::with('pricing')->orderByDesc('created_at')->paginate(6);
         return view('home.pricing', compact('cars'));
     }
+
     public function cars()
     {
         $cars = Car::with('pricing', 'category')->orderByDesc('created_at')->paginate(10);
         return view('home.car', compact('cars'));
     }
+
     public function single_car($id)
     {
         $reviews = Review::with('user.profile')->orderByDesc('created_at')->get();
-        $review = Review::with('user.profile')->where(['car_id'=>$id,'user_id'=>auth()->id()])->first();
+        $review = Review::with('user.profile')->where(['car_id' => $id, 'user_id' => auth()->id()])->first();
         $car = Car::with('pricing', 'category', 'feature')->where('id', $id)->first();
-        $cars = Car::with('pricing', 'category')->where('id','!=', $car->id)->where('category_id', $car->category_id)->orderByDesc('created_at')->paginate(3);
+        $cars = Car::with('pricing', 'category')->where('id', '!=', $car->id)->where('category_id', $car->category_id)->orderByDesc('created_at')->paginate(3);
         return view('home.car-single', compact('car', 'cars', 'reviews', 'review'));
     }
 

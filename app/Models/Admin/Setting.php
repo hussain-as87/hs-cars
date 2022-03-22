@@ -9,8 +9,8 @@ class Setting extends Model
 {
     protected $table = 'settings';
 
-/*     public $timestamps = false;
- */
+    /*     public $timestamps = false;
+     */
     protected $fillable = [
         'name',
         'value',

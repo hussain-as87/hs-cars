@@ -12,7 +12,7 @@ class CategoriesController extends Controller
 {
     public function __construct()
     {
-          $this->middleware('permission:category-list|category-create|category-edit|category-delete', ['only' => ['index', 'show']]);
+        $this->middleware('permission:category-list|category-create|category-edit|category-delete', ['only' => ['index', 'show']]);
         $this->middleware('permission:category-create', ['only' => ['create', 'store']]);
         $this->middleware('permission:category-edit', ['only' => ['edit', 'update']]);
         $this->middleware('permission:category-delete', ['only' => ['destroy']]);
@@ -43,7 +43,7 @@ class CategoriesController extends Controller
 
         $data['name'] = $request->name;
         $data['description'] = $request->description;
-        $data['user_id'] =auth()->id();
+        $data['user_id'] = auth()->id();
 
         if ($request->hasFile('logo')) {
             $logo = ImageUpload::upload_image($request->logo, 'categories');
@@ -70,7 +70,7 @@ class CategoriesController extends Controller
 
         $data['name'] = $request->name;
         $data['description'] = $request->description;
-        $data['user_id'] =auth()->id();
+        $data['user_id'] = auth()->id();
 
         if ($request->hasFile('logo')) {
             $logo = ImageUpload::upload_image($request->logo, 'categories');
@@ -95,6 +95,7 @@ class CategoriesController extends Controller
             return redirect()->route('categories.index')->with('delete', 'Successfully Deleted !!');
         }
     }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -120,7 +121,7 @@ class CategoriesController extends Controller
         } else {
             $category->restore();
             return redirect()->route('categories.index')
-                ->with('primary','Successfully Restore !!');
+                ->with('primary', 'Successfully Restore !!');
         }
     }
 
@@ -141,9 +142,10 @@ class CategoriesController extends Controller
                 ->with('delete', 'Successfully Final Deleted !!');
         }
     }
+
     protected function getValidate(Request $request)
     {
-        return  $request->validate([
+        return $request->validate([
             'name.*' => 'required',
             'description.*' => 'required',
             'logo' => 'sometimes|file|image|mimes:png,jpg,jepg'

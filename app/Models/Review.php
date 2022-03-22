@@ -10,16 +10,19 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Review extends Model
 {
     use HasFactory;
+
     protected $fillable = ['user_id', 'car_id', 'rating', 'review'];
 
     public function user()
     {
         return $this->belongsTo(User::class)->withDefault();
     }
+
     public function car()
     {
         return $this->belongsTo(Car::class)->withDefault();
     }
+
     public function disable_reviews()
     {
         return $this->hasMany(DisableReview::class);

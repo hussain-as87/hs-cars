@@ -16,8 +16,9 @@ class SettingController extends Controller
      */
     function __construct()
     {
-        $this->middleware('permission:settings', ['only' => ['edit', 'update','index']]);
+        $this->middleware('permission:settings', ['only' => ['edit', 'update', 'index']]);
     }
+
     public function index()
     {
         $settings = Setting::all();

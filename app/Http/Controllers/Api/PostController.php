@@ -23,7 +23,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $user =  auth()->user()->currentAccessToken()->tokenable->id;
+        $user = auth()->user()->currentAccessToken()->tokenable->id;
         $posts = Post::with('user', 'comments', 'likes')->orderBy('created_at', 'Desc')->paginate(5);
         if (!$posts) {
             return new JsonResponse([
@@ -39,12 +39,12 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        $user =  auth()->user()->currentAccessToken()->tokenable->id;
+        $user = auth()->user()->currentAccessToken()->tokenable->id;
         $request->validate([
             'description' => 'required|max:500',
             'photo' => 'sometimes|image|mimes:jpg,jepg,png,gif|max:200000',
@@ -76,13 +76,13 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request)
     {
-        $user =  auth()->user()->currentAccessToken()->tokenable->id;
+        $user = auth()->user()->currentAccessToken()->tokenable->id;
         $request->validate([
             'id' => 'required|integer',
             'description' => 'required|max:500',
@@ -116,7 +116,7 @@ class PostController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy(Request $request)

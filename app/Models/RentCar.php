@@ -9,12 +9,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class RentCar extends Model
 {
     use HasFactory;
+
     protected $fillable = ['rent_id', 'car_id', 'amount', 'quantity', 'price'];
     protected $table = 'rent_cars';
+
     public function rent()
     {
         return $this->belongsTo(Rent::class);
     }
+
     public function car()
     {
         return $this->belongsTo(Car::class);

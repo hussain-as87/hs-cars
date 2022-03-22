@@ -12,7 +12,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Category extends Model
 {
-    use HasFactory, HasTranslations, SearchableTrait ,SoftDeletes;
+    use HasFactory, HasTranslations, SearchableTrait, SoftDeletes;
+
     public $translatable = ['name', 'description'];
 
     public $fillable = [
@@ -44,6 +45,7 @@ class Category extends Model
     {
         return $this->belongsTo(User::class);
     }
+
     public function cars()
     {
         return $this->hasMany(Car::class);

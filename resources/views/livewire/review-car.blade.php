@@ -9,15 +9,15 @@
         <h3 class="head">{{ $reviews_count }} {{ __('Reviews') }}</h3>
 
         @foreach($reviews as $key => $review)
-                    <div class="review d-flex">
-                        <img class="user-img" src="@if($review->user->profile->avatar){{asset('storage/users/avatar/'.$review->user->profile->avatar)}}
+            <div class="review d-flex">
+                <img class="user-img" src="@if($review->user->profile->avatar){{asset('storage/users/avatar/'.$review->user->profile->avatar)}}
                                            @else https://ui-avatars.com/api/?name={{ $review->user->name }}@endif"/>
-                        <div class="desc">
-                            <h4>
-                                <span class="text-left">{{ $review->user->name }}</span>
-                                <span class="text-right">{{ $review->created_at->format('d M Y') }}</span>
-                            </h4>
-                            <p class="star">
+                <div class="desc">
+                    <h4>
+                        <span class="text-left">{{ $review->user->name }}</span>
+                        <span class="text-right">{{ $review->created_at->format('d M Y') }}</span>
+                    </h4>
+                    <p class="star">
                     <span>
                         @if($review->rating == 0)
                             <i class="ion-ios-star text-secondary"></i>
@@ -26,23 +26,23 @@
                             <i class="ion-ios-star text-warning"></i>
                         @endfor
                     </span>
-                                <span class="text-right">{{-- <a href="#" class="reply"><i class="icon-reply"></i></a>  --}}
+                        <span class="text-right">{{-- <a href="#" class="reply"><i class="icon-reply"></i></a>  --}}
                         <button wire:click="destroyId({{ $review->id }})" data-toggle="modal"
                                 data-target="#deleteconfirm" type="button" class="nobu reply text-danger"
                                 data-toggle="tooltip" data-placement="top" title="{{ __('delete') }}"
                                 wire:click="destroy">
                             <i class="ion-ios-backspace"></i>
                         </button>
-                                    <!-- Button trigger modal -->
+                            <!-- Button trigger modal -->
                         {{-- <button wire:click="updateId({{ $review->id }})" type="button" class="nobu reply text-primary" data-toggle="modal" data-target="#exampleModal" data-placement="top" title="{{ __('edit') }}">
                         <i class="ion-ios-build"></i>
                         </button> --}}
                     </span>
-                            </p>
-                            <p>{{ $review->review }}</p>
-                            </form>
-                        </div>
-                    </div>
+                    </p>
+                    <p>{{ $review->review }}</p>
+                    </form>
+                </div>
+            </div>
         @endforeach
         @if($limit < $reviews->count())
             <button type="button" wire:click="loadMore()" class="btn btn-outline-primary">

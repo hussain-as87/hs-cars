@@ -19,16 +19,19 @@ class RentController extends Controller
         $this->middleware('permission:rents-delete', ['only' => 'destroy']);
         $this->middleware('auth');
     }
+
     public function rent_home($id)
     {
         $car = Car::find($id);
         return view('home.rent', compact('car'));
     }
+
     public function index()
     {
         $rents = RentCar::with('car', 'rent.user')->orderByDesc('created_at')->paginate(10);
         return view('Admin.rents.index', compact('rents'));
     }
+
     public function store(Request $request)
     {
         $request->validate([
@@ -52,7 +55,7 @@ class RentController extends Controller
         $interval = date_diff($datetime1, $datetime2);
         $total_amount = $interval->format('%a');
         $car = Car::find($request->car_id);
-        $amount = ($car->pricing->in_day+3) * $total_amount;
+        $amount = ($car->pricing->in_day + 3) * $total_amount;
 
         $rent = Rent::create($data);
 
@@ -65,7 +68,7 @@ class RentController extends Controller
             'amount' => $amount,
         ]);
         toastr()->success(__('Successfully Saved !!'));
-        return  redirect()->back();
+        return redirect()->back();
     }
 
     public function destroy($id)

@@ -24,7 +24,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, HasRoles
-    , SearchableTrait ,SoftDeletes;
+        , SearchableTrait, SoftDeletes;
 
     protected $searchable = [
         /**
@@ -96,38 +96,47 @@ class User extends Authenticatable
     {
         return $this->hasMany(Comment::class);
     }
+
     public function categories()
     {
         return $this->hasMany(Category::class);
     }
+
     public function cars()
     {
         return $this->hasMany(Car::class);
     }
+
     public function services()
     {
         return $this->hasMany(Service::class);
     }
+
     public function rents()
     {
         return $this->hasMany(Rent::class);
     }
+
     public function about()
     {
         return $this->hasOne(About::class);
     }
+
     public function advert()
     {
         return $this->hasOne(Advert::class);
     }
+
     public function orders()
     {
         return $this->hasMany(Order::class);
     }
+
     public function reviews()
     {
         return $this->hasMany(Review::class);
     }
+
     public function disable_reviews()
     {
         return $this->hasMany(DisableReview::class);

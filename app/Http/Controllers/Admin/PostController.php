@@ -130,10 +130,11 @@ class PostController extends Controller
         } else {
             $excec = $post->delete();
             if ($excec) {
-                return redirect()->back()->with('delete','Successfully Deleted !!');
+                return redirect()->back()->with('delete', 'Successfully Deleted !!');
             }
         }
     }
+
     protected function getValidationFactory()
     {
         return request()->validate([

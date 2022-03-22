@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Service extends Model
 {
-    use HasFactory ,HasTranslations;
+    use HasFactory, HasTranslations;
+
     public $translatable = ['name', 'description'];
     public $fillable = ['name', 'description', 'user_id', 'logo'];
 
@@ -16,6 +17,7 @@ class Service extends Model
     {
         return $this->belongsTo(User::class);
     }
+
     protected function asJson($value)
     {
         return json_encode($value, JSON_UNESCAPED_UNICODE);

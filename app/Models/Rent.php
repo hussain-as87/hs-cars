@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Rent extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'user_id',
         'location',
@@ -31,6 +32,7 @@ class Rent extends Model
             ->using(RentCar::class)/*model of relation between orders & products */
             ->withPivot(['amount'])->as('details');
     }
+
     public static function SaleInMonth()
     {
         return DB::select("SELECT month(r.created_at) AS month,

@@ -21,16 +21,19 @@ class AboutController extends Controller
         $this->middleware('permission:about-list', ['only' => ['index']]);
         $this->middleware('permission:about-edit', ['only' => ['edit', 'update']]);
     }
+
     public function index()
     {
         $about = About::first();
         return view('Admin.about.index', compact('about'));
     }
+
     public function edit()
     {
         $about = About::first();
         return view('Admin.about.edit', compact('about'));
     }
+
     public function update(Request $request)
     {
         $request->validate([

@@ -1,14 +1,14 @@
 @extends('Admin.layout.app')
 @section('title')
-{{ __('categories') }}
+    {{ __('categories') }}
 @endsection
 @section('title-page')
-{{ __('categories') }}
+    {{ __('categories') }}
 @endsection
 @section('content')
-<div class="card">
-    <div class="card-body">
-        <livewire:data-table-categories />
+    <div class="card">
+        <div class="card-body">
+            <livewire:data-table-categories/>
+        </div>
     </div>
-</div>
 @endsection
