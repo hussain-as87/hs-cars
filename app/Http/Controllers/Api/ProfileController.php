@@ -36,8 +36,8 @@ class ProfileController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request)
@@ -85,6 +85,7 @@ class ProfileController extends Controller
             ], 201);
         }
     }
+
     protected function getValidation($request)
     {
         return $request->validate([
@@ -102,6 +103,7 @@ class ProfileController extends Controller
             'background_image' => 'sometimes|file|mimes:jpg,png,jepg|max:200000',
         ]);
     }
+
     public function fetchUsers()
     {
         return UsersResource::collection(User::all());

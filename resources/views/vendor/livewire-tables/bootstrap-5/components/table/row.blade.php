@@ -11,7 +11,7 @@
 
     @if ($url)
         onclick="window.open('{{ $url }}', '{{ $target }}')"
-        style="cursor:pointer"
+    style="cursor:pointer"
     @endif
 >
     {{ $slot }}

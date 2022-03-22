@@ -21,16 +21,19 @@ class AdvertController extends Controller
         $this->middleware('permission:advert-list', ['only' => ['index']]);
         $this->middleware('permission:advert-edit', ['only' => ['edit', 'update']]);
     }
+
     public function index()
     {
         $advert = Advert::first();
         return view('Admin.advert.index', compact('advert'));
     }
+
     public function edit()
     {
         $advert = Advert::first();
         return view('Admin.advert.edit', compact('advert'));
     }
+
     public function update(Request $request)
     {
         $request->validate([

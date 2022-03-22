@@ -15,9 +15,9 @@ class DataTableUser extends Component
 
     public function render(Request $request)
     {
-        $data = User::search( $this->search)
-            ->orderBy($this->orderBy, $this->orderAsc ? 'asc' : 'desc')->where('email','!=',auth()->user()->email)
+        $data = User::search($this->search)
+            ->orderBy($this->orderBy, $this->orderAsc ? 'asc' : 'desc')->where('email', '!=', auth()->user()->email)
             ->paginate($this->perPage);
-        return view('livewire.data-table-user',compact('data'));
+        return view('livewire.data-table-user', compact('data'));
     }
 }

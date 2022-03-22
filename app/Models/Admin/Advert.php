@@ -9,7 +9,8 @@ use Cohensive\Embed\Facades\Embed;
 
 class Advert extends Model
 {
-    use HasFactory,HasTranslations;
+    use HasFactory, HasTranslations;
+
     public $translatable = ['title', 'description'];
 
     public $fillable = [
@@ -24,6 +25,7 @@ class Advert extends Model
     {
         return $this->belongsTo(User::class);
     }
+
     public function getVideoHtmlAttribute()
     {
         $embed = Embed::make($this->video)->parseUrl();

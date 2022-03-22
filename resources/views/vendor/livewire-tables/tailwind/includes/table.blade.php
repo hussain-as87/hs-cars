@@ -7,7 +7,7 @@
 >
     <x-slot name="head">
         @if ($reordering)
-            <x-livewire-tables::table.heading />
+            <x-livewire-tables::table.heading/>
         @endif
 
         @if ($bulkActionsEnabled && count($this->bulkActions))
@@ -27,7 +27,7 @@
                 @continue($columnSelect && ! $this->isColumnSelectEnabled($column))
 
                 @if ($column->isBlank())
-                    <x-livewire-tables::table.heading />
+                    <x-livewire-tables::table.heading/>
                 @else
                     <x-livewire-tables::table.heading
                         :sortingEnabled="$sortingEnabled"
@@ -52,11 +52,11 @@
                 :customAttributes="method_exists($this, 'setSecondaryHeaderRowAttributes') ? $this->setSecondaryHeaderRowAttributes($rows) : []"
             >
                 @if ($reordering)
-                    <x-livewire-tables::table.cell />
+                    <x-livewire-tables::table.cell/>
                 @endif
 
                 @if ($bulkActionsEnabled && count($this->bulkActions))
-                    <x-livewire-tables::table.cell />
+                    <x-livewire-tables::table.cell/>
                 @endif
 
                 @foreach($columns as $column)
@@ -76,7 +76,7 @@
                                 @endif
                             </x-livewire-tables::table.cell>
                         @else
-                            <x-livewire-tables::table.cell />
+                            <x-livewire-tables::table.cell/>
                         @endif
                     @endif
                 @endforeach
@@ -113,8 +113,10 @@
             >
                 @if ($reordering)
                     <x-livewire-tables::table.cell wire:sortable.handle>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="inline" style="width:1em;height:1em;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        <svg xmlns="http://www.w3.org/2000/svg" class="inline" style="width:1em;height:1em;" fill="none"
+                             viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M4 6h16M4 12h16M4 18h16"/>
                         </svg>
                     </x-livewire-tables::table.cell>
                 @endif
@@ -140,8 +142,10 @@
             <x-livewire-tables::table.row>
                 <x-livewire-tables::table.cell :colspan="$colspan" class="dark:bg-gray-800">
                     <div class="flex justify-center items-center space-x-2 dark:bg-gray-800">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-gray-400" fill="none"
+                             viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"/>
                         </svg>
 
                         <span class="font-medium py-8 text-gray-400 text-xl dark:text-white">@lang($emptyMessage)</span>
@@ -160,11 +164,11 @@
                 :customAttributes="method_exists($this, 'setFooterRowAttributes') ? $this->setFooterRowAttributes($rows) : []"
             >
                 @if ($reordering)
-                    <x-livewire-tables::table.footer />
+                    <x-livewire-tables::table.footer/>
                 @endif
 
                 @if ($bulkActionsEnabled && count($this->bulkActions))
-                    <x-livewire-tables::table.footer />
+                    <x-livewire-tables::table.footer/>
                 @endif
 
                 @foreach($columns as $column)
@@ -184,7 +188,7 @@
                                 @endif
                             </x-livewire-tables::table.footer>
                         @else
-                            <x-livewire-tables::table.footer />
+                            <x-livewire-tables::table.footer/>
                         @endif
                     @endif
                 @endforeach

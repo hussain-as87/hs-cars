@@ -14,7 +14,7 @@ class AddThemToProfilesTable extends Migration
     public function up()
     {
         Schema::table('profiles', function (Blueprint $table) {
-            $table->enum('them',[1,2])->default(2);
+            $table->enum('them', [1, 2])->default(2)->after('about_me');
         });
     }
 

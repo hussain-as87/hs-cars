@@ -19,9 +19,10 @@ class DataTableSingleCategory extends Component
     {
         $this->category = $category;
     }
+
     public function render(Request $request)
     {
-        $data = Car::where('category_id',$this->category->id)->search($this->search)
+        $data = Car::where('category_id', $this->category->id)->search($this->search)
             ->orderBy($this->orderBy, $this->orderAsc ? 'asc' : 'desc')
             ->paginate($this->perPage);
         return view('livewire.data-table-single-category', compact('data'));

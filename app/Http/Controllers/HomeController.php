@@ -17,7 +17,7 @@ class HomeController extends Controller
         if (Auth::user() != null) {
             Auth::user()->profile()->update(['them' => $them]);
         }
-        return  redirect()->back()->with(Session::put('them', $them));
+        return redirect()->back()->with(Session::put('them', $them));
     }
 
     public function change_them_light(Request $request)

@@ -13,7 +13,7 @@ class ImageUpload
     {
         $extension = $photo->getClientOriginalExtension();
         $image_name = time() . '.' . $extension;
-        $photo->storeAs($path, $image_name,'public');
+        $photo->storeAs($path, $image_name, 'public');
         return $image_name;
     }
 
@@ -21,7 +21,7 @@ class ImageUpload
     {
         $extension = $video->getClientOriginalExtension();
         $video_name = time() . '.' . $extension;
-        $video->storeAs($path, $video_name,'public');
+        $video->storeAs($path, $video_name, 'public');
         return $video_name;
     }
 

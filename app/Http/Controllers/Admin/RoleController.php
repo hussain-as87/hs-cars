@@ -49,7 +49,7 @@ class RoleController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
@@ -65,10 +65,11 @@ class RoleController extends Controller
         return redirect()->route('roles.index')
             ->with('success', 'Successfully Saved !!');
     }
+
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function show($id)
@@ -88,7 +89,7 @@ class RoleController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function edit($id)
@@ -109,8 +110,8 @@ class RoleController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, $id)
@@ -133,10 +134,11 @@ class RoleController extends Controller
                 ->with('warning', 'Successfully Updated !!');
         }
     }
+
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)

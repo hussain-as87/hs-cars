@@ -9,14 +9,14 @@ use App\Http\Controllers\Controller;
 
 class CommentController extends Controller
 {
-     /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $user =  auth()->user()->currentAccessToken()->tokenable->id;
+        $user = auth()->user()->currentAccessToken()->tokenable->id;
         $comments = Comment::with('user', 'post')->orderBy('created_at', 'Desc')->paginate(5);
         if (!$comments) {
             return new JsonResponse([
@@ -32,12 +32,12 @@ class CommentController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        $user =  auth()->user()->currentAccessToken()->tokenable->id;
+        $user = auth()->user()->currentAccessToken()->tokenable->id;
         $request->validate([
             'description' => 'required|max:500',
             'post_id' => 'required|integer',
@@ -62,13 +62,13 @@ class CommentController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request)
     {
-        $user =  auth()->user()->currentAccessToken()->tokenable->id;
+        $user = auth()->user()->currentAccessToken()->tokenable->id;
         $request->validate([
             'description' => 'required|max:500',
             'post_id' => 'required|integer',
@@ -94,7 +94,7 @@ class CommentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy(Request $request)
@@ -110,7 +110,7 @@ class CommentController extends Controller
         } else {
             $comment->delete();
             return new JsonResponse([
-                'message' =>'the comment '. $comment->id . ' is deleted !!!'
+                'message' => 'the comment ' . $comment->id . ' is deleted !!!'
             ], 201);
         }
     }

@@ -19,7 +19,7 @@
     <section class="ftco-section contact-section">
         <div class="row w-100 mx-0 auth-page">
             <div class="col-md-8 col-xl-6 mx-auto">
-                <div class="card">
+                <div class="card login-border">
                     <div class="row">
                         <div class="col-md-4 pr-md-0">
                             <div class="auth-left-wrapper">

@@ -45,7 +45,7 @@ class ServiceController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
@@ -65,7 +65,7 @@ class ServiceController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function edit($id)
@@ -81,8 +81,8 @@ class ServiceController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, $id)
@@ -104,10 +104,11 @@ class ServiceController extends Controller
                 ->with('warning', 'Successfully Updated !!');
         }
     }
+
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)
@@ -121,6 +122,7 @@ class ServiceController extends Controller
                 ->with('delete', 'Successfully Deleted !!');
         }
     }
+
     protected function getValidation($request)
     {
         $request->validate([

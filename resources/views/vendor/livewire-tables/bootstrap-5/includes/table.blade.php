@@ -7,7 +7,7 @@
 >
     <x-slot name="head">
         @if ($reordering)
-            <x-livewire-tables::bs5.table.heading />
+            <x-livewire-tables::bs5.table.heading/>
         @endif
 
         @if ($bulkActionsEnabled && count($this->bulkActions))
@@ -25,7 +25,7 @@
                 @continue($columnSelect && ! $this->isColumnSelectEnabled($column))
 
                 @if ($column->isBlank())
-                    <x-livewire-tables::bs5.table.heading />
+                    <x-livewire-tables::bs5.table.heading/>
                 @else
                     <x-livewire-tables::bs5.table.heading
                         :sortingEnabled="$sortingEnabled"
@@ -50,11 +50,11 @@
                 :customAttributes="method_exists($this, 'setSecondaryHeaderRowAttributes') ? $this->setSecondaryHeaderRowAttributes($rows) : []"
             >
                 @if ($reordering)
-                    <x-livewire-tables::bs5.table.cell />
+                    <x-livewire-tables::bs5.table.cell/>
                 @endif
 
                 @if ($bulkActionsEnabled && count($this->bulkActions))
-                    <x-livewire-tables::bs5.table.cell />
+                    <x-livewire-tables::bs5.table.cell/>
                 @endif
 
                 @foreach($columns as $column)
@@ -74,7 +74,7 @@
                                 @endif
                             </x-livewire-tables::bs5.table.cell>
                         @else
-                            <x-livewire-tables::bs5.table.cell />
+                            <x-livewire-tables::bs5.table.cell/>
                         @endif
                     @endif
                 @endforeach
@@ -105,8 +105,10 @@
             >
                 @if ($reordering)
                     <x-livewire-tables::bs5.table.cell wire:sortable.handle>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="d-inline" style="width:1em;height:1em;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        <svg xmlns="http://www.w3.org/2000/svg" class="d-inline" style="width:1em;height:1em;"
+                             fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M4 6h16M4 12h16M4 18h16"/>
                         </svg>
                     </x-livewire-tables::bs5.table.cell>
                 @endif
@@ -144,11 +146,11 @@
                 :customAttributes="method_exists($this, 'setFooterRowAttributes') ? $this->setFooterRowAttributes($rows) : []"
             >
                 @if ($reordering)
-                    <x-livewire-tables::bs5.table.footer />
+                    <x-livewire-tables::bs5.table.footer/>
                 @endif
 
                 @if ($bulkActionsEnabled && count($this->bulkActions))
-                    <x-livewire-tables::bs5.table.footer />
+                    <x-livewire-tables::bs5.table.footer/>
                 @endif
 
                 @foreach($columns as $column)
@@ -168,7 +170,7 @@
                                 @endif
                             </x-livewire-tables::bs5.table.footer>
                         @else
-                            <x-livewire-tables::bs5.table.footer />
+                            <x-livewire-tables::bs5.table.footer/>
                         @endif
                     @endif
                 @endforeach

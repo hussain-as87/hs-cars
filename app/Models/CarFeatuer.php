@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class CarFeatuer extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'car_id',
         'air_conditions',

@@ -14,8 +14,8 @@
                         <i data-feather="search"></i>
                     </div>
                 </div>
-         {{--@livewire('search-bar-admin')--}}
-           </div>
+                {{--@livewire('search-bar-admin')--}}
+            </div>
         </form>
         <ul class="navbar-nav">
             <li class="nav-item dropdown">
@@ -236,14 +236,14 @@
                                     <span>{{__('edit profile')}}</span>
                                 </a>
                             </li>
-                           {{-- <li class="nav-item">
-                                <a href="javascript:;" class="nav-link">
-                                    <i data-feather="repeat"></i>
-                                    <span>{{__('switch user')}}</span>
-                                </a>
-                            </li>--}}
+                            {{-- <li class="nav-item">
+                                 <a href="javascript:;" class="nav-link">
+                                     <i data-feather="repeat"></i>
+                                     <span>{{__('switch user')}}</span>
+                                 </a>
+                             </li>--}}
                             <li class="nav-item">
-                                <a class="nav-link"href="{{ route('logout') }}"
+                                <a class="nav-link" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                     <i data-feather="log-out"></i>

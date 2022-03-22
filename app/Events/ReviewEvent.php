@@ -16,6 +16,7 @@ class ReviewEvent implements ShouldBroadcastNow
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     public $review;
+
     /**
      * Create a new event instance.
      *
