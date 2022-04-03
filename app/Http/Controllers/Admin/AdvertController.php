@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 
 class AdvertController extends Controller
 {
-    public $path_photo = 'about';
+    public $path_photo = 'advert';
 
     /**
      * Display a listing of the resource.
