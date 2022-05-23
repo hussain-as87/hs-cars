@@ -159,14 +159,14 @@
                                              aria-labelledby="dropdownMenuButton2">
                                             @can('car-list')
                                                 <a class="dropdown-item d-flex align-items-center"
-                                                   href="{{ route('roles.index') }}"><i data-feather="eye"
+                                                   href="{{ route('cars.index') }}"><i data-feather="eye"
                                                                                         class="icon-sm mr-2"></i> <span
                                                         class="">{{ __('view') }}</span></a>
 
                                             @endcan
                                             @can('car-create')
                                                 <a class="dropdown-item d-flex align-items-center"
-                                                   href="{{ route('roles.create') }}"><i data-feather="plus"
+                                                   href="{{ route('cars.create') }}"><i data-feather="plus"
                                                                                          class="icon-sm mr-2"></i> <span
                                                         class="">{{ __('create') }}</span></a>
                                             @endcan
@@ -300,14 +300,14 @@
                                              aria-labelledby="dropdownMenuButton2">
                                             @can('service-list')
                                                 <a class="dropdown-item d-flex align-items-center"
-                                                   href="{{ route('roles.index') }}"><i data-feather="eye"
+                                                   href="{{ route('services.index') }}"><i data-feather="eye"
                                                                                         class="icon-sm mr-2"></i> <span
                                                         class="">{{ __('view') }}</span></a>
 
                                             @endcan
                                             @can('service-create')
                                                 <a class="dropdown-item d-flex align-items-center"
-                                                   href="{{ route('roles.create') }}"><i data-feather="plus"
+                                                   href="{{ route('services.create') }}"><i data-feather="plus"
                                                                                          class="icon-sm mr-2"></i> <span
                                                         class="">{{ __('create') }}</span></a>
                                             @endcan
