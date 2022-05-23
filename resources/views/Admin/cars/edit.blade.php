@@ -74,7 +74,7 @@
                             <input type="text" class="form-control file-upload-info" disabled=""
                                    placeholder="{{ __('Upload image') }}">
                             <span class="input-group-append">
-                            <button class="file-upload-browse btn btn-primary" type="button">{{ __('upload') }}</button>
+                            <button class="file-upload-browse btn btn-primary" type="button">{{ __('Upload image') }}</button>
                         </span>
                         </div>
                     </div>
